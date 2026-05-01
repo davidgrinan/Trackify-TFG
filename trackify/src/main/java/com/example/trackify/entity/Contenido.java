@@ -34,6 +34,4 @@ public class Contenido {
 
     @Column(name = "descripcion")
     private String descripcion;
-
-
 }
