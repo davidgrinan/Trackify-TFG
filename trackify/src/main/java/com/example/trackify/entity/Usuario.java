@@ -49,4 +49,9 @@ public class Usuario implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles.stream().map(ur -> new SimpleGrantedAuthority("ROLE_" + ur.getRol().name())).collect(Collectors.toList());
     }
+
+    @Override
+    public String getUsername() {
+        return nombreUsuario;
+    }
 }
