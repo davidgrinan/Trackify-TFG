@@ -1,6 +1,7 @@
 package com.example.trackify.entity;
 
 import com.example.trackify.Enum.Tipo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -34,4 +35,9 @@ public class Contenido {
 
     @Column(name = "descripcion")
     private String descripcion;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "usuario_id", nullable = false)
+    private Usuario usuario;
 }

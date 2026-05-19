@@ -45,6 +45,9 @@ public class Usuario implements UserDetails {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> roles;
 
+    @OneToMany(mappedBy = "usuario")
+    private List<Contenido> contenidos;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles.stream().map(ur -> new SimpleGrantedAuthority("ROLE_" + ur.getRol().name())).collect(Collectors.toList());
