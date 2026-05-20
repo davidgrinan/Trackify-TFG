@@ -1,7 +1,5 @@
 package com.example.trackify.entity;
 
-import com.example.trackify.Enum.Tipo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,24 +18,25 @@ public class Contenido {
     @Column(nullable = false)
     private String titulo;
 
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private Tipo tipo;
-
-    @Column(nullable = false)
-    private String genero;
-
-    @Column(nullable = false)
-    private String estado;
-
-    @Column()
+    @Column
     private Integer valoracion;
 
     @Column(name = "descripcion")
     private String descripcion;
 
-    @JsonIgnore
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "genero_id", nullable = false)
+    private Genero genero;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "estado_id", nullable = false)
+    private Estado estado;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "tipo_id", nullable = false)
+    private Tipo tipo;
 }

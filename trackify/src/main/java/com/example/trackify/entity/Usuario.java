@@ -1,5 +1,6 @@
 package com.example.trackify.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import lombok.AllArgsConstructor;
@@ -45,7 +46,8 @@ public class Usuario implements UserDetails {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> roles;
 
-    @OneToMany(mappedBy = "usuario")
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Contenido> contenidos;
 
     @Override
