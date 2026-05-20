@@ -1,0 +1,59 @@
+CREATE TABLE estado
+(
+    id     BIGINT AUTO_INCREMENT NOT NULL,
+    nombre VARCHAR(255) NOT NULL,
+    CONSTRAINT pk_estado PRIMARY KEY (id)
+);
+
+CREATE TABLE genero
+(
+    id     BIGINT AUTO_INCREMENT NOT NULL,
+    nombre VARCHAR(255) NOT NULL,
+    CONSTRAINT pk_genero PRIMARY KEY (id)
+);
+
+CREATE TABLE tipo
+(
+    id     BIGINT AUTO_INCREMENT NOT NULL,
+    nombre VARCHAR(255) NOT NULL,
+    CONSTRAINT pk_tipo PRIMARY KEY (id)
+);
+
+ALTER TABLE contenido
+    ADD estado_id BIGINT NULL;
+
+ALTER TABLE contenido
+    ADD genero_id BIGINT NULL;
+
+ALTER TABLE contenido
+    ADD tipo_id BIGINT NULL;
+
+ALTER TABLE contenido
+    MODIFY estado_id BIGINT NOT NULL;
+
+ALTER TABLE contenido
+    MODIFY genero_id BIGINT NOT NULL;
+
+ALTER TABLE contenido
+    MODIFY tipo_id BIGINT NOT NULL;
+
+ALTER TABLE contenido
+    ADD CONSTRAINT FK_CONTENIDO_ON_ESTADO FOREIGN KEY (estado_id) REFERENCES estado (id);
+
+ALTER TABLE contenido
+    ADD CONSTRAINT FK_CONTENIDO_ON_GENERO FOREIGN KEY (genero_id) REFERENCES genero (id);
+
+ALTER TABLE contenido
+    ADD CONSTRAINT FK_CONTENIDO_ON_TIPO FOREIGN KEY (tipo_id) REFERENCES tipo (id);
+
+ALTER TABLE contenido
+DROP
+COLUMN estado;
+
+ALTER TABLE contenido
+DROP
+COLUMN genero;
+
+ALTER TABLE contenido
+DROP
+COLUMN tipo;
