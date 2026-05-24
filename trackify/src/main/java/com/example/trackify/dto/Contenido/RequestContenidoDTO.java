@@ -11,7 +11,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Getter
 @Setter
-public class CrearContenidoDTO implements Serializable {
+public class RequestContenidoDTO implements Serializable {
     private String titulo;
     private Integer valoracion;
     private String descripcion;

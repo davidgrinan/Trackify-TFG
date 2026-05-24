@@ -13,7 +13,7 @@ import lombok.*;
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
+    private Integer id;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
