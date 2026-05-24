@@ -5,7 +5,9 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,6 +24,5 @@ public class Genero {
     private String nombre;
 
     @OneToMany(mappedBy = "genero")
-    @JsonIgnore
-    private List<Contenido> contenidos = new ArrayList<>();
+    private Set<Contenido> contenidos = new LinkedHashSet<>();
 }

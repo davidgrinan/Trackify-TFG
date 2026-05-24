@@ -1,7 +1,9 @@
 package com.example.trackify.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.engine.internal.Cascade;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,20 +25,24 @@ public class Contenido {
 
     @Column(name = "descripcion")
     private String descripcion;
-
-    @ManyToOne(fetch = FetchType.LAZY)
+    
+    @JsonIgnore
+    @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    @ManyToOne
     @JoinColumn(name = "genero_id", nullable = false)
     private Genero genero;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    @ManyToOne
     @JoinColumn(name = "estado_id", nullable = false)
     private Estado estado;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    @ManyToOne
     @JoinColumn(name = "tipo_id", nullable = false)
     private Tipo tipo;
 }
