@@ -1,10 +1,13 @@
 package com.example.trackify.config;
 
+import com.example.trackify.Enum.RoleType;
 import com.example.trackify.entity.Estado;
 import com.example.trackify.entity.Genero;
+import com.example.trackify.entity.Role;
 import com.example.trackify.entity.Tipo;
 import com.example.trackify.repository.Estado.IEstadoRepository;
 import com.example.trackify.repository.Genero.IGeneroRepository;
+import com.example.trackify.repository.Role.IRoleRepository;
 import com.example.trackify.repository.Tipo.ITipoRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,13 +22,16 @@ public class DatosIniciales implements CommandLineRunner {
     private final IGeneroRepository generoRepository;
     private final ITipoRepository tipoRepository;
     private final IEstadoRepository estadoRepository;
+    private final IRoleRepository roleRepository;
 
     public DatosIniciales(IGeneroRepository generoRepository,
                           ITipoRepository tipoRepository,
-                          IEstadoRepository estadoRepository) {
+                          IEstadoRepository estadoRepository,
+                          IRoleRepository roleRepository) {
         this.generoRepository = generoRepository;
         this.tipoRepository = tipoRepository;
         this.estadoRepository = estadoRepository;
+        this.roleRepository = roleRepository;
     }
 
     @Override
@@ -34,7 +40,6 @@ public class DatosIniciales implements CommandLineRunner {
         try {
 
             logger.info("Iniciando insercion de datos iniciales...");
-
 
             crearGeneroSiNoExiste("Acción");
             crearGeneroSiNoExiste("Drama");
@@ -48,6 +53,9 @@ public class DatosIniciales implements CommandLineRunner {
             crearEstadoSiNoExiste("Visto");
             crearEstadoSiNoExiste("Pendiente");
             crearEstadoSiNoExiste("No ver");
+
+            crearRoleSiNoExiste(RoleType.ADMIN);
+            crearRoleSiNoExiste(RoleType.USER);
 
             logger.info("Insercion de datos iniciales finalizada");
 
@@ -76,6 +84,13 @@ public class DatosIniciales implements CommandLineRunner {
         if (!estadoRepository.existsByNombre(nombre)) {
             estadoRepository.save(new Estado(null, nombre, null));
             logger.info("Estado añadido: {}", nombre);
+        }
+    }
+
+    private void crearRoleSiNoExiste(RoleType rol) {
+        if (!roleRepository.existsByRol(rol)) {
+            roleRepository.save(new Role(null, rol));
+            logger.info("Role añadido: {}", rol);
         }
     }
 }

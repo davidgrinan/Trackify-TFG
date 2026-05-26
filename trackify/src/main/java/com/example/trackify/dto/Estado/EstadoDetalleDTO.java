@@ -7,9 +7,6 @@ import lombok.Setter;
 
 import java.io.Serializable;
 
-/**
- * DTO for {@link com.example.trackify.entity.Estado}
- */
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter

@@ -3,7 +3,6 @@ package com.example.trackify.dto.Contenido;
 import com.example.trackify.dto.Estado.EstadoDetalleDTO;
 import com.example.trackify.dto.Genero.GeneroDetalleDTO;
 import com.example.trackify.dto.Tipo.TipoDetalleDTO;
-import com.example.trackify.dto.Usuario.UsuarioDetalleDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,5 +22,4 @@ public class ContenidoDTO implements Serializable {
     private GeneroDetalleDTO genero;
     private TipoDetalleDTO tipo;
     private EstadoDetalleDTO estado;
-    private UsuarioDetalleDTO usuario;
 }
