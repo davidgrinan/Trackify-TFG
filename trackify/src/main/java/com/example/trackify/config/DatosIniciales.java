@@ -38,7 +38,6 @@ public class DatosIniciales implements CommandLineRunner {
     public void run(String... args) {
 
         try {
-
             logger.info("Iniciando insercion de datos iniciales...");
 
             crearGeneroSiNoExiste("Acción");
