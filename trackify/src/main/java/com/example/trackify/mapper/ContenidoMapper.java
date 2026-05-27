@@ -4,17 +4,15 @@ import com.example.trackify.dto.Contenido.ContenidoDTO;
 import com.example.trackify.dto.Contenido.ContenidoDetalleDTO;
 import com.example.trackify.dto.Contenido.RequestContenidoDTO;
 import com.example.trackify.entity.Contenido;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.MappingTarget;
-import org.mapstruct.ReportingPolicy;
+import org.mapstruct.*;
 
 import java.util.List;
 
 @Mapper(
         componentModel = "spring",
         uses = {GeneroMapper.class, TipoMapper.class, EstadoMapper.class, UsuarioMapper.class},
-        unmappedTargetPolicy = ReportingPolicy.IGNORE
+        unmappedTargetPolicy = ReportingPolicy.IGNORE,
+        injectionStrategy = InjectionStrategy.CONSTRUCTOR
 )
 public interface ContenidoMapper {
 

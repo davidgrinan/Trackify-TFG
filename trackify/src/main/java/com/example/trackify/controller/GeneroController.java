@@ -1,0 +1,30 @@
+package com.example.trackify.controller;
+
+import com.example.trackify.dto.Genero.GeneroDetalleDTO;
+import com.example.trackify.service.genero.IGeneroService;
+import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/genero")
+@AllArgsConstructor
+public class GeneroController {
+
+    private final IGeneroService generoService;
+
+    @GetMapping("/generos")
+    public ResponseEntity<List<GeneroDetalleDTO>> listar() {
+        return ResponseEntity.ok(generoService.listarTodos());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<GeneroDetalleDTO> obtener(@PathVariable Long id) {
+        return ResponseEntity.ok(generoService.obtenerPorId(id));
+    }
+}
