@@ -21,29 +21,27 @@ public class ControllerExceptionHandler {
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Response> handlerValidationArgumentsErrors(MethodArgumentNotValidException ex)
-    {
+    public ResponseEntity<Response> handlerValidationArgumentsErrors(MethodArgumentNotValidException ex) {
         logger.error(ex.getMessage(), ex.getStackTrace(), ex);
 
-        Map<String,String> errors = new HashMap<>();
+        Map<String, String> errors = new HashMap<>();
 
         ex.getBindingResult().getFieldErrors().forEach(error -> {
-           String fieldName = ((FieldError) error).getField();
-           String errorMessage = error.getDefaultMessage();
-           errors.put(fieldName, errorMessage);
+            String fieldName = ((FieldError) error).getField();
+            String errorMessage = error.getDefaultMessage();
+            errors.put(fieldName, errorMessage);
         });
 
-        String mapAsString  = errors.keySet().stream()
+        String mapAsString = errors.keySet().stream()
                 .map(key -> key + ": " + errors.get(key))
-                .collect(Collectors.joining("," , "{", "}"));
+                .collect(Collectors.joining(",", "{", "}"));
 
         return new ResponseEntity<Response>(Response.validationError(mapAsString), HttpStatus.BAD_REQUEST);
     }
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(CreateEntityException.class)
-    public ResponseEntity<Response> handleCreateEntityException(CreateEntityException ex)
-    {
+    public ResponseEntity<Response> handleCreateEntityException(CreateEntityException ex) {
         logger.error(ex.getMessage(), ex.getStackTrace(), ex);
 
         return new ResponseEntity<Response>(
@@ -54,8 +52,7 @@ public class ControllerExceptionHandler {
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(NotFoundEntityException.class)
-    public ResponseEntity<Response> handleNotFoundEntityException(NotFoundEntityException ex)
-    {
+    public ResponseEntity<Response> handleNotFoundEntityException(NotFoundEntityException ex) {
         return new ResponseEntity<Response>(
                 Response.generalError(HttpStatus.NOT_FOUND.value(), ex.getMessage()),
                 HttpStatus.NOT_FOUND
@@ -64,8 +61,7 @@ public class ControllerExceptionHandler {
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(UpdateEntityException.class)
-    public ResponseEntity<Response> handleUpdateEntityException(UpdateEntityException ex)
-    {
+    public ResponseEntity<Response> handleUpdateEntityException(UpdateEntityException ex) {
         logger.error(ex.getMessage(), ex.getStackTrace(), ex);
 
         return new ResponseEntity<Response>(
@@ -76,8 +72,7 @@ public class ControllerExceptionHandler {
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(DeleteEntityException.class)
-    public ResponseEntity<Response> handleDeleteEntityException(DeleteEntityException ex)
-    {
+    public ResponseEntity<Response> handleDeleteEntityException(DeleteEntityException ex) {
         logger.error(ex.getMessage(), ex.getStackTrace(), ex);
 
         return new ResponseEntity<Response>(
@@ -88,8 +83,7 @@ public class ControllerExceptionHandler {
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(ErrorGenericoException.class)
-    public ResponseEntity<Response> handleErrorGenericoException(ErrorGenericoException ex)
-    {
+    public ResponseEntity<Response> handleErrorGenericoException(ErrorGenericoException ex) {
         logger.error(ex.getMessage(), ex.getStackTrace(), ex);
 
         return new ResponseEntity<Response>(
@@ -100,8 +94,7 @@ public class ControllerExceptionHandler {
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<Response> handleIllegalArgumentException(IllegalArgumentException ex)
-    {
+    public ResponseEntity<Response> handleIllegalArgumentException(IllegalArgumentException ex) {
         logger.error(ex.getMessage(), ex.getStackTrace(), ex);
 
         return new ResponseEntity<Response>(
@@ -112,8 +105,7 @@ public class ControllerExceptionHandler {
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(AccessDeniedException.class)
-    public ResponseEntity<Response> handleAccessDeniedException(AccessDeniedException ex)
-    {
+    public ResponseEntity<Response> handleAccessDeniedException(AccessDeniedException ex) {
         logger.error(ex.getMessage(), ex.getStackTrace(), ex);
 
         return new ResponseEntity<Response>(
@@ -124,8 +116,7 @@ public class ControllerExceptionHandler {
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<Response> handleException(Exception ex)
-    {
+    public ResponseEntity<Response> handleException(Exception ex) {
         logger.error(ex.getMessage(), ex.getStackTrace(), ex);
 
         return new ResponseEntity<Response>(
@@ -136,25 +127,27 @@ public class ControllerExceptionHandler {
 
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     @ExceptionHandler(UnauthorizedException.class)
-    public ResponseEntity<Response> unauthorized(
+    public ResponseEntity<Response> unauthorizedException(
             UnauthorizedException ex) {
 
         logger.error(ex.getMessage(), ex.getStackTrace(), ex);
 
-        return ResponseEntity
-                .status(HttpStatus.UNAUTHORIZED)
-                .body(Response.error(ex.getMessage()));
+        return new ResponseEntity<Response>(
+                Response.generalError(HttpStatus.UNAUTHORIZED.value(), ex.getMessage()),
+                HttpStatus.UNAUTHORIZED
+        );
     }
 
     @ResponseStatus(HttpStatus.FORBIDDEN)
     @ExceptionHandler(ForbiddenException.class)
-    public ResponseEntity<Response> forbidden(
+    public ResponseEntity<Response> forbiddenException(
             ForbiddenException ex) {
 
         logger.error(ex.getMessage(), ex.getStackTrace(), ex);
 
-        return ResponseEntity
-                .status(HttpStatus.FORBIDDEN)
-                .body(Response.error(ex.getMessage()));
+        return new ResponseEntity<Response>(
+                Response.generalError(HttpStatus.FORBIDDEN.value(), ex.getMessage()),
+                HttpStatus.FORBIDDEN
+        );
     }
 }

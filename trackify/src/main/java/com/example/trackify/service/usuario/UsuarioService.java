@@ -3,15 +3,16 @@ package com.example.trackify.service.usuario;
 import com.example.trackify.entity.Usuario;
 import com.example.trackify.exceptions.NotFoundEntityException;
 import com.example.trackify.repository.Usuario.IUsuarioRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
+@AllArgsConstructor
 public class UsuarioService implements IUsuarioService {
-    @Autowired
-    private IUsuarioRepository userRepository;
+
+    private final IUsuarioRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

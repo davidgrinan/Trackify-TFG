@@ -17,5 +17,6 @@ public interface UsuarioMapper {
     @Mapping(target = "roles", ignore = true)
     Usuario toUsuarioFromCreateUsuarioDTO(CrearUsuarioDTO dto);
 
+    @Mapping(target = "roles", ignore = true)
     CrearUsuarioDTO toCrearUsuarioDTOFromUsuario(Usuario usuario);
 }

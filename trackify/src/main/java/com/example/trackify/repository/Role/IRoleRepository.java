@@ -1,5 +1,6 @@
 package com.example.trackify.repository.Role;
 
+import com.example.trackify.Enum.RoleType;
 import com.example.trackify.entity.Role;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -14,4 +15,6 @@ public interface IRoleRepository extends CrudRepository<Role, Long>
 {
     @Query(value = "SELECT * FROM role WHERE id IN :rolenames", nativeQuery = true)
     Set<Role> findByNombreIn(@Param("rolenames") Set<Integer> rolenames);
+
+    boolean existsByRol(RoleType rol);
 }
