@@ -20,7 +20,6 @@ public class TipoController {
     private final Logger logger =
             LoggerFactory.getLogger(TipoController.class);
 
-
     @GetMapping("/tipos")
     public ResponseEntity<List<TipoDetalleDTO>> listar() {
         logger.info("listando tipos");

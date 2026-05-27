@@ -20,7 +20,6 @@ public class EstadoController {
     private final IEstadoService estadoService;
     private final Logger logger = LoggerFactory.getLogger(EstadoController.class);
 
-
     @GetMapping("/estados")
     public ResponseEntity<List<EstadoDetalleDTO>> listar() {
         logger.info("listando estados");

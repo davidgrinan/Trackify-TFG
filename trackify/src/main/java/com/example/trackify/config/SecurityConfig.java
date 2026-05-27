@@ -56,8 +56,15 @@ public class SecurityConfig {
                         .authenticationEntryPoint(jwtEntryPoint)
                         .accessDeniedHandler(jwtAccessDenied))
                 .authorizeHttpRequests(auth -> auth
+
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
+
+                        .requestMatchers("/api/contenido/**").hasRole("USER")
+                        .requestMatchers("/api/estados/**").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers("/api/genero/**").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers("/api/tipo/**").hasAnyRole("USER", "ADMIN")
+
                         .anyRequest().authenticated()
                 )
                 .userDetailsService(userDetailsService())

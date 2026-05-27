@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,7 +27,8 @@ public class ContenidoController {
             LoggerFactory.getLogger(ContenidoController.class);
 
     @PostMapping("/usuario/{usuarioId}")
-    public ResponseEntity<ContenidoDTO> crear(@PathVariable Long usuarioId, @Valid @RequestBody RequestContenidoDTO dto) {
+    public ResponseEntity<ContenidoDTO> crear(@PathVariable Long usuarioId,
+                                              @Valid @RequestBody RequestContenidoDTO dto) {
 
         logger.info("Petición para crear contenido del usuario {}", usuarioId);
 
@@ -64,7 +66,8 @@ public class ContenidoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ContenidoDTO> actualizar(@PathVariable Long id, @Valid @RequestBody RequestContenidoDTO dto) {
+    public ResponseEntity<ContenidoDTO> actualizar(@PathVariable Long id,
+                                                   @Valid @RequestBody RequestContenidoDTO dto) {
 
         logger.info("Petición para actualizar contenido {}", id);
 
@@ -96,8 +99,8 @@ public class ContenidoController {
                                                       @RequestParam(required = false) String genero,
                                                       @RequestParam(required = false) String estado,
                                                       @RequestParam(required = false) Integer valoracion,
-                                                      @RequestParam(required = false) String titulo)
-    {
+                                                      @RequestParam(required = false) String titulo) {
+
         logger.info("Petición de filtrado para usuario {}", usuarioId);
 
         List<ContenidoDTO> contenidos =
