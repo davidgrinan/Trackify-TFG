@@ -6,6 +6,7 @@ import com.example.trackify.dto.Contenido.RequestContenidoDTO;
 import com.example.trackify.entity.Contenido;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
 
 import java.util.List;
@@ -31,4 +32,11 @@ public interface ContenidoMapper {
     @Mapping(target = "tipo", ignore = true)
     @Mapping(target = "estado", ignore = true)
     Contenido toEntity(RequestContenidoDTO requestContenidoDTO);
+
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "usuario", ignore = true)
+    @Mapping(target = "genero", ignore = true)
+    @Mapping(target = "tipo", ignore = true)
+    @Mapping(target = "estado", ignore = true)
+    void updateEntityFromDTO(RequestContenidoDTO dto, @MappingTarget Contenido entity);
 }

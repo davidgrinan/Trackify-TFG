@@ -3,7 +3,6 @@ package com.example.trackify.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.engine.internal.Cascade;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,7 +24,7 @@ public class Contenido {
 
     @Column(name = "descripcion")
     private String descripcion;
-    
+
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)

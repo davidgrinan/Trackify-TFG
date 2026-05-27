@@ -2,7 +2,10 @@ package com.example.trackify.entity;
 
 import com.example.trackify.Enum.RoleType;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
