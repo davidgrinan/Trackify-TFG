@@ -150,4 +150,15 @@ public class ControllerExceptionHandler {
                 HttpStatus.FORBIDDEN
         );
     }
+
+    @ResponseStatus(HttpStatus.CONFLICT)
+    @ExceptionHandler(DuplicateEntityException.class)
+    public ResponseEntity<Response> handlerDuplicateEntityException (DuplicateEntityException ex) {
+        logger.error(ex.getMessage(), ex.getStackTrace(), ex);
+
+        return new ResponseEntity<Response>(
+                Response.generalError(HttpStatus.CONFLICT.value(), ex.getMessage()),
+                HttpStatus.CONFLICT
+        );
+    }
 }
