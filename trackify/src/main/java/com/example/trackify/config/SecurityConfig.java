@@ -29,26 +29,22 @@ public class SecurityConfig {
     private final JwtEntryPoint jwtEntryPoint;
     private final JwtAccessDenied jwtAccessDenied;
     private final IUsuarioService usuarioService;
-
-    // ================= USER DETAILS =================
+    
     @Bean
     public UserDetailsService userDetailsService() {
         return usuarioService::loadUserByUsername;
     }
 
-    // ================= PASSWORD ENCODER =================
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-    // ================= AUTH MANAGER =================
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
     }
 
-    // ================= SECURITY FILTER CHAIN =================
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 

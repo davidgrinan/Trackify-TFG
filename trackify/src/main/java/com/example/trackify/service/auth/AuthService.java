@@ -38,8 +38,6 @@ public class AuthService implements IAuthService {
 
     private final Logger logger = LoggerFactory.getLogger(AuthService.class);
 
-
-
     @Override
     public void register(CrearUsuarioDTO dto) {
 

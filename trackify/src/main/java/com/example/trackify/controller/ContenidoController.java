@@ -25,12 +25,8 @@ public class ContenidoController {
     private final Logger logger =
             LoggerFactory.getLogger(ContenidoController.class);
 
-    // ---------------- CREATE ----------------
     @PostMapping("/usuario/{usuarioId}")
-    public ResponseEntity<ContenidoDTO> crear(
-            @PathVariable Long usuarioId,
-            @Valid @RequestBody RequestContenidoDTO dto
-    ) {
+    public ResponseEntity<ContenidoDTO> crear(@PathVariable Long usuarioId, @Valid @RequestBody RequestContenidoDTO dto) {
 
         logger.info("Petición para crear contenido del usuario {}", usuarioId);
 
@@ -45,11 +41,8 @@ public class ContenidoController {
         );
     }
 
-    // ---------------- GET BY ID ----------------
     @GetMapping("/{id}")
-    public ResponseEntity<ContenidoDTO> obtenerPorId(
-            @PathVariable Long id
-    ) {
+    public ResponseEntity<ContenidoDTO> obtenerPorId(@PathVariable Long id) {
 
         logger.info("Petición para obtener contenido con id {}", id);
 
@@ -59,11 +52,8 @@ public class ContenidoController {
         return ResponseEntity.ok(contenidoDTO);
     }
 
-    // ---------------- LIST BY USER ----------------
     @GetMapping("/usuario/{usuarioId}")
-    public ResponseEntity<List<ContenidoDTO>> listarPorUsuario(
-            @PathVariable Long usuarioId
-    ) {
+    public ResponseEntity<List<ContenidoDTO>> listarPorUsuario(@PathVariable Long usuarioId) {
 
         logger.info("Petición para listar contenidos del usuario {}", usuarioId);
 
@@ -73,12 +63,8 @@ public class ContenidoController {
         return ResponseEntity.ok(contenidos);
     }
 
-    // ---------------- UPDATE ----------------
     @PutMapping("/{id}")
-    public ResponseEntity<ContenidoDTO> actualizar(
-            @PathVariable Long id,
-            @Valid @RequestBody RequestContenidoDTO dto
-    ) {
+    public ResponseEntity<ContenidoDTO> actualizar(@PathVariable Long id, @Valid @RequestBody RequestContenidoDTO dto) {
 
         logger.info("Petición para actualizar contenido {}", id);
 
@@ -90,11 +76,8 @@ public class ContenidoController {
         return ResponseEntity.ok(contenidoDTO);
     }
 
-    // ---------------- DELETE ----------------
     @DeleteMapping("/{id}")
-    public ResponseEntity<Response> eliminar(
-            @PathVariable Long id
-    ) {
+    public ResponseEntity<Response> eliminar(@PathVariable Long id) {
 
         logger.info("Petición para eliminar contenido {}", id);
 
@@ -107,27 +90,14 @@ public class ContenidoController {
         );
     }
 
-    // ---------------- FILTER ----------------
     @GetMapping("/filtros/{usuarioId}")
-    public ResponseEntity<List<ContenidoDTO>> filtrar(
-            @PathVariable Long usuarioId,
-
-            @RequestParam(required = false)
-            String tipo,
-
-            @RequestParam(required = false)
-            String genero,
-
-            @RequestParam(required = false)
-            String estado,
-
-            @RequestParam(required = false)
-            Integer valoracion,
-
-            @RequestParam(required = false)
-            String titulo
-    ) {
-
+    public ResponseEntity<List<ContenidoDTO>> filtrar(@PathVariable Long usuarioId,
+                                                      @RequestParam(required = false) String tipo,
+                                                      @RequestParam(required = false) String genero,
+                                                      @RequestParam(required = false) String estado,
+                                                      @RequestParam(required = false) Integer valoracion,
+                                                      @RequestParam(required = false) String titulo)
+    {
         logger.info("Petición de filtrado para usuario {}", usuarioId);
 
         List<ContenidoDTO> contenidos =
