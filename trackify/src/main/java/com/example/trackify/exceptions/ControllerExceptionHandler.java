@@ -133,4 +133,28 @@ public class ControllerExceptionHandler {
                 HttpStatus.INTERNAL_SERVER_ERROR
         );
     }
+
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    @ExceptionHandler(UnauthorizedException.class)
+    public ResponseEntity<Response> unauthorized(
+            UnauthorizedException ex) {
+
+        logger.error(ex.getMessage(), ex.getStackTrace(), ex);
+
+        return ResponseEntity
+                .status(HttpStatus.UNAUTHORIZED)
+                .body(Response.error(ex.getMessage()));
+    }
+
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    @ExceptionHandler(ForbiddenException.class)
+    public ResponseEntity<Response> forbidden(
+            ForbiddenException ex) {
+
+        logger.error(ex.getMessage(), ex.getStackTrace(), ex);
+
+        return ResponseEntity
+                .status(HttpStatus.FORBIDDEN)
+                .body(Response.error(ex.getMessage()));
+    }
 }

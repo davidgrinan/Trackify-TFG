@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -28,6 +30,9 @@ public class CrearUsuarioDTO implements Serializable {
     @Email(message = "El email no tiene un formato valido")
     private String email;
 
+    @NotNull(message = "La fecha de creacion es obligatoria")
+    private LocalDateTime fechaCreacion;
+
     @NotEmpty(message = "El usuario debe tener al menos un rol")
-    private List<Integer> roles;
+    private Set<Integer> roles;
 }
