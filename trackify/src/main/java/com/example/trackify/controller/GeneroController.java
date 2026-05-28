@@ -20,7 +20,7 @@ import java.util.List;
 @RequestMapping("/api")
 @AllArgsConstructor
 @SecurityRequirement(name = "bearerAuth")
-@Tag(name = "Géneros", description = "Consulta de géneros de contenido")
+@Tag(name = "Géneros", description = "Consulta de géneros")
 public class GeneroController {
 
     private final IGeneroService generoService;

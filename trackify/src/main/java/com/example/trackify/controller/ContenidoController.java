@@ -26,7 +26,7 @@ import java.util.List;
 @RequestMapping("/api/contenido")
 @AllArgsConstructor
 @SecurityRequirement(name = "bearerAuth")
-@Tag(name = "Contenido", description = "Gestión de contenidos multimedia del usuario autenticado")
+@Tag(name = "Contenido", description = "Gestión de contenidos multimedia")
 public class ContenidoController {
 
     private final IContenidoService contenidoService;

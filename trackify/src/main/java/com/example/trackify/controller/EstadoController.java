@@ -23,7 +23,7 @@ import java.util.List;
 @RequestMapping("/api")
 @AllArgsConstructor
 @SecurityRequirement(name = "bearerAuth")
-@Tag(name = "Estados", description = "Consulta de estados de contenido")
+@Tag(name = "Estados", description = "Consulta de estados")
 public class EstadoController {
 
     private final IEstadoService estadoService;
