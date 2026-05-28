@@ -2188,3 +2188,66 @@ com.example.trackify.exceptions.UnauthorizedException: Usuario no autenticado
 2026-05-28 14:23:34.609 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.destroy - Closing JPA EntityManagerFactory for persistence unit 'default'
 2026-05-28 14:23:34.614 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-1 - Shutdown initiated...
 2026-05-28 14:23:34.617 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-1 - Shutdown completed.
+2026-05-28 14:28:29.514 [restartedMain] INFO  c.e.trackify.TrackifyApplication.logStarting - Starting TrackifyApplication v1.0.0 using Java 22.0.2 with PID 22832 (Z:\TFG\Trackify-TFG\trackify\target\classes started by admin in Z:\TFG\Trackify-TFG\trackify)
+2026-05-28 14:28:29.517 [restartedMain] INFO  c.e.trackify.TrackifyApplication.logStartupProfileInfo - The following 1 profile is active: "dev"
+2026-05-28 14:28:29.571 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor.log - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-05-28 14:28:29.572 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor.log - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-05-28 14:28:30.593 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-28 14:28:30.699 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Finished Spring Data repository scanning in 96 ms. Found 6 JPA repository interfaces.
+2026-05-28 14:28:31.420 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer.initialize - Tomcat initialized with port 8080 (http)
+2026-05-28 14:28:31.607 [restartedMain] INFO  o.a.catalina.core.StandardService.log - Starting service [Tomcat]
+2026-05-28 14:28:31.608 [restartedMain] INFO  o.a.catalina.core.StandardEngine.log - Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-05-28 14:28:31.679 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer.prepareWebApplicationContext - Root WebApplicationContext: initialization completed in 2106 ms
+2026-05-28 14:28:31.833 [restartedMain] WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-28 14:28:31.986 [restartedMain] INFO  org.hibernate.orm.jpa.logPersistenceUnitInformation - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-05-28 14:28:32.067 [restartedMain] INFO  org.hibernate.orm.core.logVersion - HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-05-28 14:28:32.680 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo.addTransformer - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-28 14:28:32.726 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource.getConnection - HikariPool-1 - Starting...
+2026-05-28 14:28:32.827 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool.checkFailFast - HikariPool-1 - Added connection org.mariadb.jdbc.Connection@aac207e
+2026-05-28 14:28:32.830 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource.getConnection - HikariPool-1 - Start completed.
+2026-05-28 14:28:32.909 [restartedMain] INFO  o.hibernate.orm.connections.pooling.logConnectionInfo - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mariadb://localhost:3307/trackify?user=david&password=***]
+	Database driver: MariaDB Connector/J
+	Database dialect: MariaDBDialect
+	Database version: 12.2.2
+	Default catalog/schema: trackify/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-05-28 14:28:34.084 [restartedMain] INFO  org.hibernate.orm.core.initiateService - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-28 14:28:34.141 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-28 14:28:34.410 [restartedMain] INFO  o.s.d.j.r.q.QueryEnhancerFactories.<clinit> - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-05-28 14:28:34.816 [restartedMain] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure - Found 2 UserDetailsService beans, with names [usuarioService, userDetailsService]. Global Authentication Manager will not use a UserDetailsService for username/password login. Consider publishing a single UserDetailsService bean.
+2026-05-28 14:28:36.221 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - 2 SQL migrations were detected but not run because they did not follow the filename convention.
+2026-05-28 14:28:36.222 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - Set 'validateMigrationNaming' to true to fail fast and see a list of the invalid file names.
+2026-05-28 14:28:36.227 [restartedMain] WARN  o.m.jdbc.message.server.ErrorPacket.warn - Error: 1193-HY000: Unknown system variable 'WSREP_ON'
+2026-05-28 14:28:36.244 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor.info - Database: jdbc:mariadb://localhost:3307/trackify?user=david&password=******** (MariaDB 12.2)
+2026-05-28 14:28:36.251 [restartedMain] WARN  o.f.c.i.database.base.Database.warn - Using MariaDB 12.2 which is newer than the version Flyway has been verified with. The latest verified version of MariaDB is 11.7.
+2026-05-28 14:28:36.280 [restartedMain] INFO  o.f.c.i.s.JdbcTableSchemaHistory.info - Repair of failed migration in Schema History table `trackify`.`flyway_schema_history` not necessary. No failed migration detected.
+2026-05-28 14:28:36.285 [restartedMain] INFO  o.f.core.internal.command.DbRepair.info - Successfully repaired schema history table `trackify`.`flyway_schema_history` (execution time 00:00.018s).
+2026-05-28 14:28:36.294 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - 2 SQL migrations were detected but not run because they did not follow the filename convention.
+2026-05-28 14:28:36.294 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - Set 'validateMigrationNaming' to true to fail fast and see a list of the invalid file names.
+2026-05-28 14:28:36.294 [restartedMain] WARN  o.m.jdbc.message.server.ErrorPacket.warn - Error: 1193-HY000: Unknown system variable 'WSREP_ON'
+2026-05-28 14:28:36.302 [restartedMain] WARN  o.f.c.i.database.base.Database.warn - Using MariaDB 12.2 which is newer than the version Flyway has been verified with. The latest verified version of MariaDB is 11.7.
+2026-05-28 14:28:36.309 [restartedMain] INFO  o.f.core.internal.command.DbValidate.info - Successfully validated 1 migration (execution time 00:00.003s)
+2026-05-28 14:28:36.317 [restartedMain] INFO  o.f.core.internal.command.DbMigrate.info - Current version of schema `trackify`: 1
+2026-05-28 14:28:36.321 [restartedMain] INFO  o.f.core.internal.command.DbMigrate.info - Schema `trackify` is up to date. No migration necessary.
+2026-05-28 14:28:36.325 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - 2 SQL migrations were detected but not run because they did not follow the filename convention.
+2026-05-28 14:28:36.326 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - Set 'validateMigrationNaming' to true to fail fast and see a list of the invalid file names.
+2026-05-28 14:28:36.326 [restartedMain] WARN  o.m.jdbc.message.server.ErrorPacket.warn - Error: 1193-HY000: Unknown system variable 'WSREP_ON'
+2026-05-28 14:28:36.333 [restartedMain] WARN  o.f.c.i.database.base.Database.warn - Using MariaDB 12.2 which is newer than the version Flyway has been verified with. The latest verified version of MariaDB is 11.7.
+2026-05-28 14:28:36.339 [restartedMain] INFO  o.f.core.internal.command.DbValidate.info - Successfully validated 1 migration (execution time 00:00.002s)
+2026-05-28 14:28:36.342 [restartedMain] INFO  o.f.core.internal.command.DbMigrate.info - Current version of schema `trackify`: 1
+2026-05-28 14:28:36.343 [restartedMain] INFO  o.f.core.internal.command.DbMigrate.info - Schema `trackify` is up to date. No migration necessary.
+2026-05-28 14:28:37.156 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer.start - Tomcat started on port 8080 (http) with context path '/'
+2026-05-28 14:28:37.164 [restartedMain] INFO  c.e.trackify.TrackifyApplication.logStarted - Started TrackifyApplication in 8.359 seconds (process running for 9.297)
+2026-05-28 14:28:37.168 [restartedMain] INFO  c.e.trackify.config.DatosIniciales.run - Iniciando insercion de datos iniciales...
+2026-05-28 14:28:37.329 [restartedMain] INFO  c.e.trackify.config.DatosIniciales.run - Insercion de datos iniciales finalizada
+2026-05-28 14:28:46.393 [SpringApplicationShutdownHook] INFO  o.s.boot.tomcat.GracefulShutdown.shutDownGracefully - Commencing graceful shutdown. Waiting for active requests to complete
+2026-05-28 14:28:46.397 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown.doShutdown - Graceful shutdown complete
+2026-05-28 14:28:46.405 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.destroy - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-28 14:28:46.409 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-1 - Shutdown initiated...
+2026-05-28 14:28:46.414 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-1 - Shutdown completed.

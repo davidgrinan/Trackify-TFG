@@ -103,14 +103,14 @@ public class ControllerExceptionHandler {
         );
     }
 
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
     @ExceptionHandler(AccessDeniedException.class)
     public ResponseEntity<Response> handleAccessDeniedException(AccessDeniedException ex) {
         logger.error(ex.getMessage(), ex.getStackTrace(), ex);
 
         return new ResponseEntity<Response>(
-                Response.generalError(HttpStatus.INTERNAL_SERVER_ERROR.value(), ex.getMessage()),
-                HttpStatus.INTERNAL_SERVER_ERROR
+                Response.generalError(HttpStatus.FORBIDDEN.value(), ex.getMessage()),
+                HttpStatus.FORBIDDEN
         );
     }
 
