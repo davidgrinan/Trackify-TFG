@@ -20,7 +20,6 @@ public class CrearUsuarioDTO implements Serializable {
 
     @NotBlank(message = "La contraseña es obligatoria")
     @Size(min = 6, max = 100, message = "La contraseña debe tener entre 6 y 100 caracteres")
-    @Pattern(regexp = "^(?=.*[A-Z])(?=.*\\d).+$", message = "La contraseña debe contener al menos una mayuscula y un numero")
     private String password;
 
     @NotBlank(message = "El email es obligatorio")
