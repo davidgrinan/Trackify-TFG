@@ -29,10 +29,4 @@ public class CrearUsuarioDTO implements Serializable {
     @NotBlank(message = "El email es obligatorio")
     @Email(message = "El email no tiene un formato valido")
     private String email;
-
-    @NotNull(message = "La fecha de creacion es obligatoria")
-    private LocalDateTime fechaCreacion;
-
-    @NotEmpty(message = "El usuario debe tener al menos un rol")
-    private Set<Integer> roles;
 }

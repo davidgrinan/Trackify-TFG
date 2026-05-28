@@ -1,5 +1,6 @@
 package com.example.trackify.service.auth;
 
+import com.example.trackify.Enum.RoleType;
 import com.example.trackify.config.security.JwtTokenProvider;
 import com.example.trackify.dto.Usuario.CrearUsuarioDTO;
 import com.example.trackify.dto.Usuario.LoginUsuarioDTO;
@@ -9,8 +10,8 @@ import com.example.trackify.exceptions.CreateEntityException;
 import com.example.trackify.exceptions.DuplicateEntityException;
 import com.example.trackify.exceptions.UnauthorizedException;
 import com.example.trackify.mapper.UsuarioMapper;
-import com.example.trackify.repository.Role.IRoleRepository;
 import com.example.trackify.repository.Usuario.IUsuarioRepository;
+import com.example.trackify.service.role.IRoleService;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +22,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Set;
 
 @Service
@@ -29,7 +29,7 @@ import java.util.Set;
 public class AuthService implements IAuthService {
 
     private final IUsuarioRepository usuarioRepository;
-    private final IRoleRepository rolRepository;
+    private final IRoleService roleService;
     private final UsuarioMapper usuarioMapper;
 
     private final PasswordEncoder passwordEncoder;
@@ -55,19 +55,18 @@ public class AuthService implements IAuthService {
 
             Usuario usuario = usuarioMapper.toUsuarioFromCreateUsuarioDTO(dto);
 
-            usuario.setPassword(
-                    passwordEncoder.encode(dto.getPassword())
-            );
-
+            usuario.setPassword(passwordEncoder.encode(dto.getPassword()));
             usuario.setFechaCreacion(LocalDateTime.now());
 
-            Set<Role> roles = rolRepository.findByNombreIn(dto.getRoles());
-
-            usuario.setRoles(roles);
+            Role roleUser = roleService.obtenerPorRol(RoleType.USER);
+            usuario.setRoles(Set.of(roleUser));
 
             usuarioRepository.save(usuario);
 
             logger.info("Usuario registrado correctamente {}", usuario.getNombreUsuario());
+
+        } catch (DuplicateEntityException ex) {
+            throw ex;
 
         } catch (Exception ex) {
 
@@ -96,19 +95,13 @@ public class AuthService implements IAuthService {
                             )
                     );
 
-            String token = jwtTokenProvider.generateToken(authentication);
-
-            logger.info("Login correcto usuario {}", dto.getNombreUsuario());
-
-            return token;
+            return jwtTokenProvider.generateToken(authentication);
 
         } catch (Exception ex) {
 
             logger.error("Error login usuario {}", dto.getNombreUsuario(), ex);
 
-            throw new UnauthorizedException(
-                    "Usuario o contraseña incorrectos"
-            );
+            throw new UnauthorizedException("Usuario o contraseña incorrectos");
         }
     }
 }
