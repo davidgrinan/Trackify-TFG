@@ -1,7 +1,6 @@
 package com.example.trackify.controller;
 
 import com.example.trackify.dto.Estado.EstadoDetalleDTO;
-import com.example.trackify.service.estado.EstadoService;
 import com.example.trackify.service.estado.IEstadoService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.AllArgsConstructor;

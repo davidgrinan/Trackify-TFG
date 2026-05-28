@@ -7,6 +7,7 @@ import com.example.trackify.exceptions.DuplicateEntityException;
 import com.example.trackify.exceptions.Response;
 import com.example.trackify.exceptions.UnauthorizedException;
 import com.example.trackify.service.auth.IAuthService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +26,7 @@ public class AuthController {
     private final Logger logger = LoggerFactory.getLogger(AuthController.class);
 
     @PostMapping("/register")
-    public ResponseEntity<Response> register(@RequestBody CrearUsuarioDTO dto) {
+    public ResponseEntity<Response> register(@Valid @RequestBody CrearUsuarioDTO dto) {
 
         logger.info("PETICIÓN REGISTER usuario {}", dto.getNombreUsuario());
 
@@ -60,7 +61,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Response> login(@RequestBody LoginUsuarioDTO dto) {
+    public ResponseEntity<Response> login(@Valid @RequestBody LoginUsuarioDTO dto) {
 
         logger.info("PETICIÓN LOGIN usuario {}", dto.getNombreUsuario());
 

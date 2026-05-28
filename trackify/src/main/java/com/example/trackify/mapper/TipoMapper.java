@@ -4,7 +4,6 @@ import com.example.trackify.dto.Tipo.TipoDetalleDTO;
 import com.example.trackify.entity.Tipo;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 
 import java.util.List;
