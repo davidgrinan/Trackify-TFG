@@ -16,8 +16,11 @@ public class UsuarioService implements IUsuarioService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
         Usuario user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new NotFoundEntityException("User not found: " + username));
+                .orElseThrow(() ->
+                        new NotFoundEntityException("Usuario " + username + " no encontrado")
+                );
 
         return new org.springframework.security.core.userdetails.User(
                 user.getUsername(),

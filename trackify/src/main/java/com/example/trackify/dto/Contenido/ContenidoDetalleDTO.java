@@ -14,4 +14,5 @@ public class ContenidoDetalleDTO implements Serializable {
     private long id;
     private String titulo;
     private Integer valoracion;
-    private String descripcion;}
+    private String descripcion;
+}

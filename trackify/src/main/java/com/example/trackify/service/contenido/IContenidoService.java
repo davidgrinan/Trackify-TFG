@@ -7,17 +7,17 @@ import java.util.List;
 
 public interface IContenidoService {
 
-    ContenidoDTO crear(Long usuarioId, RequestContenidoDTO dto);
+    ContenidoDTO crear(String username, RequestContenidoDTO dto);
 
-    ContenidoDTO obtenerPorId(Long id);
+    ContenidoDTO obtenerPorId(String username, Long id);
 
-    List<ContenidoDTO> listarPorUsuario(Long usuarioId);
+    List<ContenidoDTO> listarPorUsuario(String username);
 
-    ContenidoDTO actualizar(Long id, RequestContenidoDTO dto);
+    ContenidoDTO actualizar(String username, Long id, RequestContenidoDTO dto);
 
-    void eliminar(Long id);
+    void eliminar(String username, Long id);
 
-    List<ContenidoDTO> filtrar(Long usuarioId,
+    List<ContenidoDTO> filtrar(String username,
                                String tipo,
                                String genero,
                                String estado,

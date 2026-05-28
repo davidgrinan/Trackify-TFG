@@ -4,13 +4,13 @@ import com.example.trackify.dto.Contenido.ContenidoDTO;
 import com.example.trackify.dto.Contenido.RequestContenidoDTO;
 import com.example.trackify.exceptions.Response;
 import com.example.trackify.service.contenido.IContenidoService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +19,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/contenido")
 @AllArgsConstructor
+@SecurityRequirement(name = "bearerAuth")
 public class ContenidoController {
 
     private final IContenidoService contenidoService;
@@ -26,92 +27,93 @@ public class ContenidoController {
     private final Logger logger =
             LoggerFactory.getLogger(ContenidoController.class);
 
-    @PostMapping("/usuario/{usuarioId}")
-    public ResponseEntity<ContenidoDTO> crear(@PathVariable Long usuarioId,
+    @PostMapping
+    public ResponseEntity<ContenidoDTO> crear(Authentication authentication,
                                               @Valid @RequestBody RequestContenidoDTO dto) {
 
-        logger.info("Petición para crear contenido del usuario {}", usuarioId);
+        String username = authentication.getName();
 
-        ContenidoDTO contenidoDTO =
-                contenidoService.crear(usuarioId, dto);
+        logger.info("Petición para crear contenido del usuario {}", username);
 
-        logger.info("Contenido creado correctamente");
-
-        return new ResponseEntity<>(
-                contenidoDTO,
-                HttpStatus.CREATED
-        );
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<ContenidoDTO> obtenerPorId(@PathVariable Long id) {
-
-        logger.info("Petición para obtener contenido con id {}", id);
-
-        ContenidoDTO contenidoDTO =
-                contenidoService.obtenerPorId(id);
+        ContenidoDTO contenidoDTO = contenidoService.crear(username, dto);
 
         return ResponseEntity.ok(contenidoDTO);
     }
 
-    @GetMapping("/usuario/{usuarioId}")
-    public ResponseEntity<List<ContenidoDTO>> listarPorUsuario(@PathVariable Long usuarioId) {
+    @GetMapping("/{id}")
+    public ResponseEntity<ContenidoDTO> obtenerPorId(Authentication authentication,
+                                                     @PathVariable Long id) {
 
-        logger.info("Petición para listar contenidos del usuario {}", usuarioId);
+        String username = authentication.getName();
 
-        List<ContenidoDTO> contenidos =
-                contenidoService.listarPorUsuario(usuarioId);
+        logger.info("Petición para obtener contenido {} del usuario {}", id, username);
+
+        ContenidoDTO contenidoDTO = contenidoService.obtenerPorId(username, id);
+
+        return ResponseEntity.ok(contenidoDTO);
+    }
+
+    @GetMapping("/listarporusuario")
+    public ResponseEntity<List<ContenidoDTO>> listarPorUsuario(Authentication authentication) {
+
+        String username = authentication.getName();
+
+        logger.info("Petición para listar contenidos del usuario {}", username);
+
+        List<ContenidoDTO> contenidos = contenidoService.listarPorUsuario(username);
 
         return ResponseEntity.ok(contenidos);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ContenidoDTO> actualizar(@PathVariable Long id,
+    public ResponseEntity<ContenidoDTO> actualizar(Authentication authentication,
+                                                   @PathVariable Long id,
                                                    @Valid @RequestBody RequestContenidoDTO dto) {
 
-        logger.info("Petición para actualizar contenido {}", id);
+        String username = authentication.getName();
 
-        ContenidoDTO contenidoDTO =
-                contenidoService.actualizar(id, dto);
+        logger.info("Petición para actualizar contenido {} del usuario {}", id, username);
 
-        logger.info("Contenido actualizado correctamente");
+        ContenidoDTO contenidoDTO = contenidoService.actualizar(username, id, dto);
 
         return ResponseEntity.ok(contenidoDTO);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Response> eliminar(@PathVariable Long id) {
+    public ResponseEntity<Response> eliminar(Authentication authentication,
+                                             @PathVariable Long id) {
 
-        logger.info("Petición para eliminar contenido {}", id);
+        String username = authentication.getName();
 
-        contenidoService.eliminar(id);
+        logger.info("Petición para eliminar contenido {} del usuario {}", id, username);
 
-        logger.info("Contenido eliminado correctamente");
+        contenidoService.eliminar(username, id);
 
         return ResponseEntity.ok(
                 Response.ok("Contenido eliminado correctamente")
         );
     }
 
-    @GetMapping("/filtros/{usuarioId}")
-    public ResponseEntity<List<ContenidoDTO>> filtrar(@PathVariable Long usuarioId,
+    @GetMapping("/filtros")
+    public ResponseEntity<List<ContenidoDTO>> filtrar(Authentication authentication,
                                                       @RequestParam(required = false) String tipo,
                                                       @RequestParam(required = false) String genero,
                                                       @RequestParam(required = false) String estado,
                                                       @RequestParam(required = false) Integer valoracion,
                                                       @RequestParam(required = false) String titulo) {
 
-        logger.info("Petición de filtrado para usuario {}", usuarioId);
+        String username = authentication.getName();
 
-        List<ContenidoDTO> contenidos =
-                contenidoService.filtrar(
-                        usuarioId,
-                        tipo,
-                        genero,
-                        estado,
-                        valoracion,
-                        titulo
-                );
+        logger.info("Petición de filtrado para usuario {}", username);
+
+        List<ContenidoDTO> contenidos = contenidoService.filtrar(
+                username,
+                tipo,
+                genero,
+                estado,
+                valoracion,
+                titulo
+        );
 
         return ResponseEntity.ok(contenidos);
     }

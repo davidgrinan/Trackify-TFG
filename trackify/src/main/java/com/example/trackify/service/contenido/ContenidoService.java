@@ -29,86 +29,82 @@ public class ContenidoService implements IContenidoService {
     private final Logger logger = LoggerFactory.getLogger(ContenidoService.class);
 
     @Override
-    public ContenidoDTO crear(Long usuarioId, RequestContenidoDTO dto) {
+    public ContenidoDTO crear(String username, RequestContenidoDTO dto) {
 
-        logger.info("Creando contenido para usuario {}", usuarioId);
+        logger.info("Creando contenido para usuario {}", username);
 
         try {
-
-            Usuario usuario = usuarioRepository.findById(usuarioId)
-                    .orElseThrow(() ->
-                            new NotFoundEntityException(
-                                    "El usuario con id " +  usuarioId + " no encontrado"
-                            ));
+            Usuario usuario = obtenerUsuarioPorUsername(username);
 
             Contenido contenido = contenidoMapper.toEntity(dto);
             contenido.setUsuario(usuario);
 
             contenido = contenidoRepository.save(contenido);
 
-            logger.info("Contenido creado correctamente con id {}", contenido.getId());
-
             return contenidoMapper.toDTO(contenido);
 
         } catch (Exception ex) {
-
-            logger.error("Error creando contenido para usuario {}", usuarioId, ex);
+            logger.error("Error creando contenido para usuario {}", username, ex);
 
             throw new CreateEntityException(
                     Contenido.class.getSimpleName(),
-                    "Usuario ID: " + usuarioId + " | DTO: " + dto,
+                    "Usuario: " + username + " | DTO: " + dto,
                     ex
             );
         }
     }
 
     @Override
-    public ContenidoDTO obtenerPorId(Long id) {
+    public ContenidoDTO obtenerPorId(String username, Long id) {
 
-        logger.info("Buscando contenido con id {}", id);
+        logger.info("Buscando contenido {} del usuario {}", id, username);
+
+        Usuario usuario = obtenerUsuarioPorUsername(username);
 
         Contenido contenido = contenidoRepository.findById(id)
                 .orElseThrow(() ->
-                        new NotFoundEntityException(
-                                "Contenido con id " + id + " no encontrado"
-                        ));
+                        new NotFoundEntityException("Contenido con id " + id + " no encontrado")
+                );
+
+        validarPropietario(contenido, usuario);
 
         return contenidoMapper.toDTO(contenido);
     }
 
     @Override
-    public List<ContenidoDTO> listarPorUsuario(Long usuarioId) {
+    public List<ContenidoDTO> listarPorUsuario(String username) {
 
-        logger.info("Listando contenidos del usuario {}", usuarioId);
+        logger.info("Listando contenidos del usuario {}", username);
+
+        Usuario usuario = obtenerUsuarioPorUsername(username);
 
         return contenidoMapper.toDTOList(
-                contenidoRepository.listarContenidoPorUsuario(usuarioId)
+                contenidoRepository.listarContenidoPorUsuario(usuario.getCodigo())
         );
     }
 
     @Override
-    public ContenidoDTO actualizar(Long id, RequestContenidoDTO dto) {
+    public ContenidoDTO actualizar(String username, Long id, RequestContenidoDTO dto) {
 
-        logger.info("Actualizando contenido con id {}", id);
+        logger.info("Actualizando contenido {} del usuario {}", id, username);
 
         try {
+            Usuario usuario = obtenerUsuarioPorUsername(username);
 
             Contenido contenido = contenidoRepository.findById(id)
                     .orElseThrow(() ->
-                            new NotFoundEntityException(
-                                    "Contenido con id " + id + " no encontrado"
-                            ));
+                            new NotFoundEntityException("Contenido con id " + id + " no encontrado")
+                    );
+
+            validarPropietario(contenido, usuario);
 
             contenidoMapper.updateEntityFromDTO(dto, contenido);
 
             contenido = contenidoRepository.save(contenido);
 
-            logger.info("Contenido actualizado correctamente con id {}", id);
-
             return contenidoMapper.toDTO(contenido);
 
         } catch (Exception ex) {
-
             logger.error("Error actualizando contenido con id {}", id, ex);
 
             throw new UpdateEntityException(
@@ -120,24 +116,23 @@ public class ContenidoService implements IContenidoService {
     }
 
     @Override
-    public void eliminar(Long id) {
+    public void eliminar(String username, Long id) {
 
-        logger.info("Eliminando contenido con id {}", id);
+        logger.info("Eliminando contenido {} del usuario {}", id, username);
 
         try {
+            Usuario usuario = obtenerUsuarioPorUsername(username);
 
             Contenido contenido = contenidoRepository.findById(id)
                     .orElseThrow(() ->
-                            new NotFoundEntityException(
-                                    "Contenido con id " + id + " no encontrado"
-                            ));
+                            new NotFoundEntityException("Contenido con id " + id + " no encontrado")
+                    );
+
+            validarPropietario(contenido, usuario);
 
             contenidoRepository.delete(contenido);
 
-            logger.info("Contenido eliminado correctamente con id {}", id);
-
         } catch (Exception ex) {
-
             logger.error("Error eliminando contenido con id {}", id, ex);
 
             throw new DeleteEntityException(
@@ -149,13 +144,20 @@ public class ContenidoService implements IContenidoService {
     }
 
     @Override
-    public List<ContenidoDTO> filtrar(Long usuarioId, String tipo, String genero, String estado, Integer valoracion, String titulo) {
+    public List<ContenidoDTO> filtrar(String username,
+                                      String tipo,
+                                      String genero,
+                                      String estado,
+                                      Integer valoracion,
+                                      String titulo) {
 
-        logger.info("Filtrando contenidos del usuario {}", usuarioId);
+        logger.info("Filtrando contenidos del usuario {}", username);
+
+        Usuario usuario = obtenerUsuarioPorUsername(username);
 
         return contenidoMapper.toDTOList(
                 contenidoRepository.filtrarContenido(
-                        usuarioId,
+                        usuario.getCodigo(),
                         tipo,
                         genero,
                         estado,
@@ -163,5 +165,18 @@ public class ContenidoService implements IContenidoService {
                         titulo
                 )
         );
+    }
+
+    private Usuario obtenerUsuarioPorUsername(String username) {
+        return usuarioRepository.findByUsername(username)
+                .orElseThrow(() ->
+                        new NotFoundEntityException("Usuario " + username + " no encontrado")
+                );
+    }
+
+    private void validarPropietario(Contenido contenido, Usuario usuario) {
+        if (!contenido.getUsuario().getCodigo().equals(usuario.getCodigo())) {
+            throw new NotFoundEntityException("Contenido no encontrado para este usuario");
+        }
     }
 }
