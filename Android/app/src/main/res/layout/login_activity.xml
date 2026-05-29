@@ -32,8 +32,7 @@
                 android:layout_height="wrap_content"
                 android:text="Track"
                 android:textColor="#00BFA5"
-                android:textSize="40sp
-"
+                android:textSize="40sp"
                 android:textStyle="bold" />
 
             <TextView
