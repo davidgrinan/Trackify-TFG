@@ -119,6 +119,18 @@ public class UtilJSONParser {
                 imagenUrl
         );
     }
+
+    public static JSONObject createCambiarPassword(String nuevaPassword) {
+        JSONObject json = new JSONObject();
+
+        try {
+            json.put("nuevaPassword", nuevaPassword);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return json;
+    }
     private UtilJSONParser() {
         throw new AssertionError();
     }

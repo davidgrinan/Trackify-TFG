@@ -6,6 +6,7 @@ import com.example.trackify.repository.Usuario.IUsuarioRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 public class UsuarioService implements IUsuarioService {
 
     private final IUsuarioRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -27,5 +29,17 @@ public class UsuarioService implements IUsuarioService {
                 user.getPassword(),
                 user.getAuthorities()
         );
+
+
+    }
+    @Override
+    public void cambiarPassword(String username, String nuevaPassword) {
+        Usuario usuario = userRepository.findByUsername(username)
+                .orElseThrow(() ->
+                        new NotFoundEntityException("Usuario " + username + " no encontrado")
+                );
+
+        usuario.setPassword(passwordEncoder.encode(nuevaPassword));
+        userRepository.save(usuario);
     }
 }

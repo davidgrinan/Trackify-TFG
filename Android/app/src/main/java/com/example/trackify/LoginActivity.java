@@ -68,6 +68,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                 TokenManager.saveToken(LoginActivity.this, token);
+                TokenManager.saveUsername(LoginActivity.this, usuario);
 
                 Toast.makeText(LoginActivity.this, "Login correcto", Toast.LENGTH_SHORT).show();
 

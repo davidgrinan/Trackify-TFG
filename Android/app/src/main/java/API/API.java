@@ -128,4 +128,16 @@ public class API {
                 listener
         );
     }
+
+    public static void cambiarPassword(JSONObject password,
+                                       String token,
+                                       UtilREST.OnResponseListener listener) {
+        UtilREST.runQuery(
+                UtilREST.QueryType.PUT,
+                BASE_URL + "api/usuario/password",
+                password.toString(),
+                token,
+                listener
+        );
+    }
 }
