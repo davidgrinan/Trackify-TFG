@@ -2,6 +2,8 @@ package com.example.trackify;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -63,24 +65,42 @@ public class LoginActivity extends AppCompatActivity {
                 String token = UtilJSONParser.parseToken(r.content);
 
                 if (token == null || token.isEmpty()) {
-                    Toast.makeText(LoginActivity.this, "No se recibió token", Toast.LENGTH_SHORT).show();
+                    mostrarToastPersonalizado("No se recibió token");
                     return;
                 }
 
                 TokenManager.saveToken(LoginActivity.this, token);
                 TokenManager.saveUsername(LoginActivity.this, usuario);
 
-                Toast.makeText(LoginActivity.this, "Login correcto", Toast.LENGTH_SHORT).show();
+                mostrarToastPersonalizado("Login correcto");
 
-                Intent intent = new Intent(LoginActivity.this, ListadoActivity.class);
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }
 
             @Override
             public void onError(UtilREST.Response r) {
-                Toast.makeText(LoginActivity.this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
+                mostrarToastPersonalizado("Usuario o contraseña incorrectos");
             }
         });
+    }
+
+    private void mostrarToastPersonalizado(String mensaje) {
+        LayoutInflater inflater = getLayoutInflater();
+
+        View layout = inflater.inflate(
+                R.layout.toast_trackify,
+                findViewById(android.R.id.content),
+                false
+        );
+
+        TextView texto = layout.findViewById(R.id.txtToast);
+        texto.setText(mensaje);
+
+        Toast toast = new Toast(this);
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(layout);
+        toast.show();
     }
 }
