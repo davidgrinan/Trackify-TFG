@@ -16,6 +16,7 @@ import java.io.Serializable;
 @Setter
 public class ContenidoDTO implements Serializable {
     private long id;
+    private String imagenUrl;
     private String titulo;
     private Integer valoracion;
     private String descripcion;

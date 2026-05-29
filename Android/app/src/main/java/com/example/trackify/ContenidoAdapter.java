@@ -1,0 +1,78 @@
+package com.example.trackify;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+
+import java.util.List;
+
+import API.ContenidoModel;
+
+public class ContenidoAdapter extends BaseAdapter {
+
+    private Context context;
+    private List<ContenidoModel> contenidos;
+
+    public ContenidoAdapter(Context context, List<ContenidoModel> contenidos) {
+        this.context = context;
+        this.contenidos = contenidos;
+    }
+
+    @Override
+    public int getCount() {
+        return contenidos.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return contenidos.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return contenidos.get(position).getId();
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+
+        if (convertView == null) {
+            convertView = LayoutInflater.from(context)
+                    .inflate(R.layout.item_contenido, parent, false);
+        }
+
+        ImageView imgPortada = convertView.findViewById(R.id.imgPortada);
+        TextView tvTitulo = convertView.findViewById(R.id.tvTitulo);
+        TextView tvGenero = convertView.findViewById(R.id.tvGenero);
+        TextView tvValoracion = convertView.findViewById(R.id.tvValoracion);
+
+        ContenidoModel contenido = contenidos.get(position);
+
+        tvTitulo.setText(contenido.getTitulo());
+        tvGenero.setText(contenido.getGenero());
+
+        if (contenido.getValoracion() != null) {
+            tvValoracion.setText("⭐ " + contenido.getValoracion() + "/10");
+        } else {
+            tvValoracion.setText("Sin valoración");
+        }
+
+        if (contenido.getImagenUrl() != null && !contenido.getImagenUrl().isEmpty()) {
+            Glide.with(context)
+                    .load(contenido.getImagenUrl())
+                    .placeholder(R.drawable.logo_trackify)
+                    .error(R.drawable.logo_trackify)
+                    .into(imgPortada);
+        } else {
+            imgPortada.setImageResource(R.drawable.logo_trackify);
+        }
+
+        return convertView;
+    }
+}

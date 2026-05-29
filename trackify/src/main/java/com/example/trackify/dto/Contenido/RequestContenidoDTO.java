@@ -16,6 +16,8 @@ import java.io.Serializable;
 @Getter
 @Setter
 public class RequestContenidoDTO implements Serializable {
+    @NotBlank(message = "La imagen es obligatoria")
+    private String imagenUrl;
 
     @NotBlank(message = "El titulo no puede estar vacio")
     @Size(min = 2, max = 100, message = "El titulo debe tener entre 2 y 100 caracteres")

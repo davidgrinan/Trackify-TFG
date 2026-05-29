@@ -68,6 +68,16 @@
             android:padding="16dp"
             android:background="@android:drawable/editbox_background"/>
 
+        <EditText
+            android:id="@+id/etImagenUrl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="URL de la imagen"
+            android:inputType="textUri"
+            android:layout_marginTop="12dp"
+            android:padding="16dp"
+            android:background="@android:drawable/editbox_background"/>
+
         <Button
             android:id="@+id/btnGuardar"
             android:layout_width="match_parent"

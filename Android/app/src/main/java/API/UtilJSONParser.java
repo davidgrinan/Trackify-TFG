@@ -1,5 +1,7 @@
 package API;
 
+import com.example.trackify.R;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,20 +13,17 @@ public class UtilJSONParser {
 
     public static JSONObject createLogin(String nombreUsuario, String password) {
         JSONObject json = new JSONObject();
-
         try {
             json.put("nombreUsuario", nombreUsuario);
             json.put("password", password);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
         return json;
     }
 
     public static JSONObject createRegister(String nombreUsuario, String password, String email) {
         JSONObject json = new JSONObject();
-
         try {
             json.put("nombreUsuario", nombreUsuario);
             json.put("password", password);
@@ -32,27 +31,26 @@ public class UtilJSONParser {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
         return json;
     }
 
     public static JSONObject createContenido(String titulo,
-                                             String tipo,
+                                             String descripcion,
                                              String genero,
+                                             String tipo,
                                              String estado,
-                                             Integer valoracion) {
+                                             Integer valoracion,
+                                             String imagenUrl) {
         JSONObject json = new JSONObject();
 
         try {
             json.put("titulo", titulo);
-            json.put("tipo", tipo);
+            json.put("descripcion", descripcion);
             json.put("genero", genero);
+            json.put("tipo", tipo);
             json.put("estado", estado);
-
-            if (valoracion != null) {
-                json.put("valoracion", valoracion);
-            }
-
+            json.put("valoracion", valoracion);
+            json.put("imagenUrl", imagenUrl);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -71,20 +69,20 @@ public class UtilJSONParser {
     }
 
     public static List<ContenidoModel> parseArrayContenidos(String responseJson) {
-        List<ContenidoModel> contenidos = new ArrayList<>();
+        List<ContenidoModel> lista = new ArrayList<>();
 
         try {
             JSONArray array = new JSONArray(responseJson);
 
             for (int i = 0; i < array.length(); i++) {
-                contenidos.add(parseContenido(array.getJSONObject(i)));
+                lista.add(parseContenido(array.getJSONObject(i)));
             }
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        return contenidos;
+        return lista;
     }
 
     public static ContenidoModel parseContenido(String responseJson) {
@@ -98,86 +96,29 @@ public class UtilJSONParser {
 
     private static ContenidoModel parseContenido(JSONObject json) {
         long id = json.optLong("id", json.optLong("codigo", -1));
+        String imagenUrl = json.optString("imagenUrl", "");
         String titulo = json.optString("titulo", "");
         String tipo = json.optString("tipo", "");
         String genero = json.optString("genero", "");
         String estado = json.optString("estado", "");
+        String descripcion = json.optString("descripcion", "");
 
         Integer valoracion = null;
-
         if (!json.isNull("valoracion")) {
             valoracion = json.optInt("valoracion");
         }
 
-        return new ContenidoModel(id, titulo, tipo, genero, estado, valoracion);
+        return new ContenidoModel(
+                id,
+                titulo,
+                tipo,
+                genero,
+                estado,
+                descripcion,
+                valoracion,
+                imagenUrl
+        );
     }
-
-    public static List<GeneroModel> parseArrayGeneros(String responseJson) {
-        List<GeneroModel> generos = new ArrayList<>();
-
-        try {
-            JSONArray array = new JSONArray(responseJson);
-
-            for (int i = 0; i < array.length(); i++) {
-                JSONObject json = array.getJSONObject(i);
-
-                generos.add(new GeneroModel(
-                        json.optLong("id", json.optLong("codigo", -1)),
-                        json.optString("nombre", "")
-                ));
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return generos;
-    }
-
-    public static List<TipoModel> parseArrayTipos(String responseJson) {
-        List<TipoModel> tipos = new ArrayList<>();
-
-        try {
-            JSONArray array = new JSONArray(responseJson);
-
-            for (int i = 0; i < array.length(); i++) {
-                JSONObject json = array.getJSONObject(i);
-
-                tipos.add(new TipoModel(
-                        json.optLong("id", json.optLong("codigo", -1)),
-                        json.optString("nombre", "")
-                ));
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return tipos;
-    }
-
-    public static List<EstadoModel> parseArrayEstados(String responseJson) {
-        List<EstadoModel> estados = new ArrayList<>();
-
-        try {
-            JSONArray array = new JSONArray(responseJson);
-
-            for (int i = 0; i < array.length(); i++) {
-                JSONObject json = array.getJSONObject(i);
-
-                estados.add(new EstadoModel(
-                        json.optLong("id", json.optLong("codigo", -1)),
-                        json.optString("nombre", "")
-                ));
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return estados;
-    }
-
     private UtilJSONParser() {
         throw new AssertionError();
     }

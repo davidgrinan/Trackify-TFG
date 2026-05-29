@@ -7,62 +7,29 @@ public class ContenidoModel {
     private String tipo;
     private String genero;
     private String estado;
+    private String descripcion;
     private Integer valoracion;
+    private String imagenUrl;
 
-    public ContenidoModel(long id, String titulo, String tipo, String genero, String estado, Integer valoracion) {
+    public ContenidoModel(long id, String titulo, String tipo, String genero,
+                          String estado, String descripcion, Integer valoracion,
+                          String imagenUrl) {
         this.id = id;
         this.titulo = titulo;
         this.tipo = tipo;
         this.genero = genero;
         this.estado = estado;
+        this.descripcion = descripcion;
         this.valoracion = valoracion;
+        this.imagenUrl = imagenUrl;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public String getGenero() {
-        return genero;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public Integer getValoracion() {
-        return valoracion;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public void setValoracion(Integer valoracion) {
-        this.valoracion = valoracion;
-    }
+    public long getId() { return id; }
+    public String getTitulo() { return titulo; }
+    public String getTipo() { return tipo; }
+    public String getGenero() { return genero; }
+    public String getEstado() { return estado; }
+    public String getDescripcion() { return descripcion; }
+    public Integer getValoracion() { return valoracion; }
+    public String getImagenUrl() { return imagenUrl; }
 }
