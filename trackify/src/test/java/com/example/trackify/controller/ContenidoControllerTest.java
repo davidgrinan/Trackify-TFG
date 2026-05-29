@@ -49,6 +49,7 @@ class ContenidoControllerTest {
         contenidoDTO.setEstado(new EstadoDetalleDTO("Visto"));
 
         requestDTO = new RequestContenidoDTO(
+                "https://imagen.com/superman.jpg",
                 "Superman",
                 5,
                 "Película de superhéroes",

@@ -90,7 +90,8 @@ class ContenidoServiceTest {
         contenidoDTO.setValoracion(5);
         contenidoDTO.setDescripcion("Película de superhéroes");
 
-        requestDTO = new RequestContenidoDTO(
+        requestDTO = requestDTO = new RequestContenidoDTO(
+                "https://imagen.com/superman.jpg",
                 "Superman",
                 5,
                 "Película de superhéroes",

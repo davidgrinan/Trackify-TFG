@@ -12,6 +12,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Optional;
 import java.util.Set;
@@ -24,6 +25,9 @@ class UsuarioServiceTest {
 
     @Mock
     private IUsuarioRepository userRepository;
+
+    @Mock
+    private PasswordEncoder passwordEncoder;
 
     @InjectMocks
     private UsuarioService usuarioService;
@@ -46,6 +50,7 @@ class UsuarioServiceTest {
         assertEquals("password", userDetails.getPassword());
         assertTrue(userDetails.getAuthorities().stream()
                 .anyMatch(authority -> authority.getAuthority().equals("ROLE_USER")));
+
         verify(userRepository).findByUsername("david");
     }
 
@@ -53,6 +58,40 @@ class UsuarioServiceTest {
     void loadUserByUsernameDebeLanzarNotFound() {
         when(userRepository.findByUsername("inexistente")).thenReturn(Optional.empty());
 
-        assertThrows(NotFoundEntityException.class, () -> usuarioService.loadUserByUsername("inexistente"));
+        assertThrows(
+                NotFoundEntityException.class,
+                () -> usuarioService.loadUserByUsername("inexistente")
+        );
+    }
+
+    @Test
+    void cambiarPasswordDebeActualizarPassword() {
+        Usuario usuario = new Usuario();
+        usuario.setNombreUsuario("david");
+        usuario.setPassword("passwordAntigua");
+
+        when(userRepository.findByUsername("david")).thenReturn(Optional.of(usuario));
+        when(passwordEncoder.encode("NuevaPassword123")).thenReturn("passwordEncriptada");
+
+        usuarioService.cambiarPassword("david", "NuevaPassword123");
+
+        assertEquals("passwordEncriptada", usuario.getPassword());
+
+        verify(userRepository).findByUsername("david");
+        verify(passwordEncoder).encode("NuevaPassword123");
+        verify(userRepository).save(usuario);
+    }
+
+    @Test
+    void cambiarPasswordDebeLanzarNotFoundSiUsuarioNoExiste() {
+        when(userRepository.findByUsername("inexistente")).thenReturn(Optional.empty());
+
+        assertThrows(
+                NotFoundEntityException.class,
+                () -> usuarioService.cambiarPassword("inexistente", "NuevaPassword123")
+        );
+
+        verify(userRepository).findByUsername("inexistente");
+        verify(userRepository, never()).save(any());
     }
 }
