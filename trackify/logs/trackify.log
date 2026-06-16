@@ -1323,3 +1323,8 @@ Caused by: com.example.trackify.exceptions.NotFoundEntityException: Tipo {"nombr
 2026-06-16 21:21:11.591 [http-nio-8080-exec-9] INFO  c.e.t.controller.ContenidoController.eliminar - Petición para eliminar contenido 1 del usuario pepe
 2026-06-16 21:21:11.697 [http-nio-8080-exec-10] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: pepe
 2026-06-16 21:21:11.698 [http-nio-8080-exec-10] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario pepe
+2026-06-16 21:24:00.418 [SpringApplicationShutdownHook] INFO  o.s.boot.tomcat.GracefulShutdown.shutDownGracefully - Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-16 21:24:00.424 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown.doShutdown - Graceful shutdown complete
+2026-06-16 21:24:00.431 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.destroy - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-16 21:24:00.436 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-1 - Shutdown initiated...
+2026-06-16 21:24:00.439 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-1 - Shutdown completed.
