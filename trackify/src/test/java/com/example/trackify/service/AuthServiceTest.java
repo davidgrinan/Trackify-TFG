@@ -64,7 +64,7 @@ class AuthServiceTest {
         Role roleUser = new Role();
         roleUser.setRol(RoleType.USER);
 
-        when(usuarioRepository.existsByUsername("david")).thenReturn(false);
+        when(usuarioRepository.existsByNombreUsuario("david")).thenReturn(false);
         when(usuarioRepository.existsByEmail("david@gmail.com")).thenReturn(false);
         when(usuarioMapper.toUsuarioFromCreateUsuarioDTO(dto)).thenReturn(usuario);
         when(passwordEncoder.encode("David123")).thenReturn("password-encriptada");
@@ -81,7 +81,7 @@ class AuthServiceTest {
     @Test
     void registerDebeLanzarDuplicateSiUsernameExiste() {
         CrearUsuarioDTO dto = new CrearUsuarioDTO("david", "David123", "david@gmail.com");
-        when(usuarioRepository.existsByUsername("david")).thenReturn(true);
+        when(usuarioRepository.existsByNombreUsuario("david")).thenReturn(true);
 
         assertThrows(DuplicateEntityException.class, () -> authService.register(dto));
         verify(usuarioRepository, never()).save(any());

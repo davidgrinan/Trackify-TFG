@@ -103,7 +103,7 @@ class ContenidoServiceTest {
 
     @Test
     void crearDebeCrearContenidoDelUsuarioAutenticado() {
-        when(usuarioRepository.findByUsername("david")).thenReturn(Optional.of(usuario));
+        when(usuarioRepository.findByNombreUsuario("david")).thenReturn(Optional.of(usuario));
         when(contenidoMapper.toEntity(requestDTO)).thenReturn(new Contenido());
         when(generoRepository.findByNombre("Acción")).thenReturn(Optional.of(genero));
         when(tipoRepository.findByNombre("Película")).thenReturn(Optional.of(tipo));
@@ -119,7 +119,7 @@ class ContenidoServiceTest {
 
     @Test
     void obtenerPorIdDebeDevolverContenidoSiEsDelUsuario() {
-        when(usuarioRepository.findByUsername("david")).thenReturn(Optional.of(usuario));
+        when(usuarioRepository.findByNombreUsuario("david")).thenReturn(Optional.of(usuario));
         when(contenidoRepository.findById(1L)).thenReturn(Optional.of(contenido));
         when(contenidoMapper.toDTO(contenido)).thenReturn(contenidoDTO);
 
@@ -135,7 +135,7 @@ class ContenidoServiceTest {
         otroUsuario.setCodigo(2L);
         contenido.setUsuario(otroUsuario);
 
-        when(usuarioRepository.findByUsername("david")).thenReturn(Optional.of(usuario));
+        when(usuarioRepository.findByNombreUsuario("david")).thenReturn(Optional.of(usuario));
         when(contenidoRepository.findById(1L)).thenReturn(Optional.of(contenido));
 
         assertThrows(NotFoundEntityException.class, () -> contenidoService.obtenerPorId("david", 1L));
@@ -143,7 +143,7 @@ class ContenidoServiceTest {
 
     @Test
     void listarPorUsuarioDebeListarContenidosDelUsuario() {
-        when(usuarioRepository.findByUsername("david")).thenReturn(Optional.of(usuario));
+        when(usuarioRepository.findByNombreUsuario("david")).thenReturn(Optional.of(usuario));
         when(contenidoRepository.listarContenidoPorUsuario(1L)).thenReturn(List.of(contenido));
         when(contenidoMapper.toDTOList(List.of(contenido))).thenReturn(List.of(contenidoDTO));
 
@@ -155,7 +155,7 @@ class ContenidoServiceTest {
 
     @Test
     void actualizarDebeActualizarContenidoSiEsDelUsuario() {
-        when(usuarioRepository.findByUsername("david")).thenReturn(Optional.of(usuario));
+        when(usuarioRepository.findByNombreUsuario("david")).thenReturn(Optional.of(usuario));
         when(contenidoRepository.findById(1L)).thenReturn(Optional.of(contenido));
         when(generoRepository.findByNombre("Acción")).thenReturn(Optional.of(genero));
         when(tipoRepository.findByNombre("Película")).thenReturn(Optional.of(tipo));
@@ -172,7 +172,7 @@ class ContenidoServiceTest {
 
     @Test
     void eliminarDebeEliminarContenidoSiEsDelUsuario() {
-        when(usuarioRepository.findByUsername("david")).thenReturn(Optional.of(usuario));
+        when(usuarioRepository.findByNombreUsuario("david")).thenReturn(Optional.of(usuario));
         when(contenidoRepository.findById(1L)).thenReturn(Optional.of(contenido));
 
         contenidoService.eliminar("david", 1L);
@@ -182,7 +182,7 @@ class ContenidoServiceTest {
 
     @Test
     void filtrarDebeFiltrarContenidoDelUsuario() {
-        when(usuarioRepository.findByUsername("david")).thenReturn(Optional.of(usuario));
+        when(usuarioRepository.findByNombreUsuario("david")).thenReturn(Optional.of(usuario));
         when(contenidoRepository.filtrarContenido(1L, "Película", "Acción", "Visto", 5, "Super"))
                 .thenReturn(List.of(contenido));
         when(contenidoMapper.toDTOList(List.of(contenido))).thenReturn(List.of(contenidoDTO));

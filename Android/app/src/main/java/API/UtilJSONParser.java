@@ -61,7 +61,19 @@ public class UtilJSONParser {
     public static String parseToken(String responseJson) {
         try {
             JSONObject json = new JSONObject(responseJson);
-            return json.optString("data", null);
+
+            String token = json.optString("data", null);
+
+            if (token == null || token.isEmpty() || token.equals("null")) {
+                token = json.optString("message", null);
+            }
+
+            if (token == null || token.isEmpty() || token.equals("null")) {
+                token = json.optString("token", null);
+            }
+
+            return token;
+
         } catch (JSONException e) {
             e.printStackTrace();
             return null;

@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                 String token = UtilJSONParser.parseToken(r.content);
 
                 if (token == null || token.isEmpty()) {
-                    mostrarToastPersonalizado("No se recibió token");
+                    mostrarToastPersonalizado("Error al iniciar sesion");
                     return;
                 }
 

@@ -17,11 +17,11 @@ public class UsuarioService implements IUsuarioService {
     private final PasswordEncoder passwordEncoder;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String NombreUsuario) throws UsernameNotFoundException {
 
-        Usuario user = userRepository.findByUsername(username)
+        Usuario user = userRepository.findByNombreUsuario(NombreUsuario)
                 .orElseThrow(() ->
-                        new NotFoundEntityException("Usuario " + username + " no encontrado")
+                        new NotFoundEntityException("Usuario " + NombreUsuario + " no encontrado")
                 );
 
         return new org.springframework.security.core.userdetails.User(
@@ -33,10 +33,10 @@ public class UsuarioService implements IUsuarioService {
 
     }
     @Override
-    public void cambiarPassword(String username, String nuevaPassword) {
-        Usuario usuario = userRepository.findByUsername(username)
+    public void cambiarPassword(String NombreUsuario, String nuevaPassword) {
+        Usuario usuario = userRepository.findByNombreUsuario(NombreUsuario)
                 .orElseThrow(() ->
-                        new NotFoundEntityException("Usuario " + username + " no encontrado")
+                        new NotFoundEntityException("Usuario " + NombreUsuario + " no encontrado")
                 );
 
         usuario.setPassword(passwordEncoder.encode(nuevaPassword));

@@ -45,7 +45,7 @@ public class AuthService implements IAuthService {
 
         try {
 
-            if (usuarioRepository.existsByUsername(dto.getNombreUsuario())) {
+            if (usuarioRepository.existsByNombreUsuario(dto.getNombreUsuario())) {
                 throw new DuplicateEntityException("El nombre de usuario ya existe");
             }
 

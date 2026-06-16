@@ -42,7 +42,7 @@ class UsuarioServiceTest {
         usuario.setPassword("password");
         usuario.setRoles(Set.of(role));
 
-        when(userRepository.findByUsername("david")).thenReturn(Optional.of(usuario));
+        when(userRepository.findByNombreUsuario("david")).thenReturn(Optional.of(usuario));
 
         UserDetails userDetails = usuarioService.loadUserByUsername("david");
 
@@ -51,12 +51,12 @@ class UsuarioServiceTest {
         assertTrue(userDetails.getAuthorities().stream()
                 .anyMatch(authority -> authority.getAuthority().equals("ROLE_USER")));
 
-        verify(userRepository).findByUsername("david");
+        verify(userRepository).findByNombreUsuario("david");
     }
 
     @Test
     void loadUserByUsernameDebeLanzarNotFound() {
-        when(userRepository.findByUsername("inexistente")).thenReturn(Optional.empty());
+        when(userRepository.findByNombreUsuario("inexistente")).thenReturn(Optional.empty());
 
         assertThrows(
                 NotFoundEntityException.class,
@@ -70,28 +70,28 @@ class UsuarioServiceTest {
         usuario.setNombreUsuario("david");
         usuario.setPassword("passwordAntigua");
 
-        when(userRepository.findByUsername("david")).thenReturn(Optional.of(usuario));
+        when(userRepository.findByNombreUsuario("david")).thenReturn(Optional.of(usuario));
         when(passwordEncoder.encode("NuevaPassword123")).thenReturn("passwordEncriptada");
 
         usuarioService.cambiarPassword("david", "NuevaPassword123");
 
         assertEquals("passwordEncriptada", usuario.getPassword());
 
-        verify(userRepository).findByUsername("david");
+        verify(userRepository).findByNombreUsuario("david");
         verify(passwordEncoder).encode("NuevaPassword123");
         verify(userRepository).save(usuario);
     }
 
     @Test
     void cambiarPasswordDebeLanzarNotFoundSiUsuarioNoExiste() {
-        when(userRepository.findByUsername("inexistente")).thenReturn(Optional.empty());
+        when(userRepository.findByNombreUsuario("inexistente")).thenReturn(Optional.empty());
 
         assertThrows(
                 NotFoundEntityException.class,
                 () -> usuarioService.cambiarPassword("inexistente", "NuevaPassword123")
         );
 
-        verify(userRepository).findByUsername("inexistente");
+        verify(userRepository).findByNombreUsuario("inexistente");
         verify(userRepository, never()).save(any());
     }
 }
