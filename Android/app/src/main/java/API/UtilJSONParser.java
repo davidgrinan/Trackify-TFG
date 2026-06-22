@@ -106,13 +106,38 @@ public class UtilJSONParser {
         }
     }
 
+    private static String obtenerNombre(JSONObject json, String campo) {
+
+        try {
+
+            if (json.isNull(campo)) {
+                return "";
+            }
+
+            Object valor = json.get(campo);
+
+            if (valor instanceof JSONObject) {
+                JSONObject objeto = (JSONObject) valor;
+                return objeto.optString("nombre", "");
+            }
+
+            return String.valueOf(valor);
+
+        } catch (Exception e) {
+            return "";
+        }
+    }
+
     private static ContenidoModel parseContenido(JSONObject json) {
         long id = json.optLong("id", json.optLong("codigo", -1));
+
         String imagenUrl = json.optString("imagenUrl", "");
         String titulo = json.optString("titulo", "");
-        String tipo = json.optString("tipo", "");
-        String genero = json.optString("genero", "");
-        String estado = json.optString("estado", "");
+
+        String tipo = obtenerNombre(json, "tipo");
+        String genero = obtenerNombre(json, "genero");
+        String estado = obtenerNombre(json, "estado");
+
         String descripcion = json.optString("descripcion", "");
 
         Integer valoracion = null;
