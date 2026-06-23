@@ -27,8 +27,6 @@ public class ContenidoService implements IContenidoService {
     private final IEstadoRepository estadoRepository;
     private final ContenidoMapper contenidoMapper;
 
-    private final Logger logger = LoggerFactory.getLogger(ContenidoService.class);
-
     @Override
     public ContenidoDTO crear(String username, RequestContenidoDTO dto) {
         try {

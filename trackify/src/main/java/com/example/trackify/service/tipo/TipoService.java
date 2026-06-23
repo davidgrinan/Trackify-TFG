@@ -25,18 +25,15 @@ public class TipoService implements ITipoService {
 
     @Override
     public List<TipoDetalleDTO> listarTodos() {
-        logger.info("listando tipos");
         return mapper.toDetalleDTOList((List<Tipo>) tipoRepository.findAll());
     }
 
     @Override
     public TipoDetalleDTO obtenerPorId(Long id) {
-        logger.info("obteniendo tipo con id {}", id);
         Tipo tipo = tipoRepository.findById(id)
                 .orElseThrow(() ->
                         new NotFoundEntityException("Tipo con id " + id + " no encontrado")
                 );
-        logger.info("tipo obtenido correctamente");
         return mapper.toDetalleDTO(tipo);
     }
 }

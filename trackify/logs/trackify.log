@@ -131,3 +131,226 @@
 2026-06-23 11:29:39.767 [http-nio-8080-exec-5] INFO  c.e.t.controller.ContenidoController.eliminar - Petición para eliminar contenido 4 del usuario luis
 2026-06-23 11:29:39.828 [http-nio-8080-exec-6] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
 2026-06-23 11:29:39.828 [http-nio-8080-exec-6] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-23 11:52:32.548 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener.onApplicationEvent - Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2026-06-23 11:52:32.557 [Thread-1] INFO  o.s.boot.tomcat.GracefulShutdown.shutDownGracefully - Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-23 11:52:32.562 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown.doShutdown - Graceful shutdown complete
+2026-06-23 11:52:32.570 [Thread-1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.destroy - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-23 11:52:32.575 [Thread-1] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-1 - Shutdown initiated...
+2026-06-23 11:52:32.578 [Thread-1] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-1 - Shutdown completed.
+2026-06-23 11:52:32.738 [restartedMain] INFO  c.e.trackify.TrackifyApplication.logStarting - Starting TrackifyApplication v1.0.0 using Java 22.0.2 with PID 16488 (Z:\TFG\Trackify-TFG\trackify\target\classes started by admin in Z:\TFG\Trackify-TFG\trackify)
+2026-06-23 11:52:32.739 [restartedMain] INFO  c.e.trackify.TrackifyApplication.logStartupProfileInfo - The following 1 profile is active: "dev"
+2026-06-23 11:52:33.214 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-23 11:52:33.288 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Finished Spring Data repository scanning in 71 ms. Found 6 JPA repository interfaces.
+2026-06-23 11:52:33.500 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer.initialize - Tomcat initialized with port 8080 (http)
+2026-06-23 11:52:33.504 [restartedMain] INFO  o.a.catalina.core.StandardService.log - Starting service [Tomcat]
+2026-06-23 11:52:33.504 [restartedMain] INFO  o.a.catalina.core.StandardEngine.log - Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-06-23 11:52:33.550 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer.prepareWebApplicationContext - Root WebApplicationContext: initialization completed in 807 ms
+2026-06-23 11:52:33.617 [restartedMain] WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-23 11:52:33.685 [restartedMain] INFO  org.hibernate.orm.jpa.logPersistenceUnitInformation - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-23 11:52:33.742 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo.addTransformer - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-23 11:52:33.743 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource.getConnection - HikariPool-2 - Starting...
+2026-06-23 11:52:33.748 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool.checkFailFast - HikariPool-2 - Added connection org.mariadb.jdbc.Connection@74d797f7
+2026-06-23 11:52:33.748 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource.getConnection - HikariPool-2 - Start completed.
+2026-06-23 11:52:33.750 [restartedMain] INFO  o.hibernate.orm.connections.pooling.logConnectionInfo - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mariadb://localhost:3307/trackify?user=david&password=***]
+	Database driver: MariaDB Connector/J
+	Database dialect: MariaDBDialect
+	Database version: 12.2.2
+	Default catalog/schema: trackify/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-23 11:52:33.941 [restartedMain] INFO  org.hibernate.orm.core.initiateService - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-23 11:52:34.165 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-23 11:52:34.544 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure - Global AuthenticationManager configured with UserDetailsService bean with name usuarioService
+2026-06-23 11:52:34.596 [restartedMain] WARN  o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext.refresh - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'tipoController' defined in file [Z:\TFG\Trackify-TFG\trackify\target\classes\com\example\trackify\controller\TipoController.class]: Unsatisfied dependency expressed through constructor parameter 0: No qualifying bean of type 'com.example.trackify.service.tipo.ITipoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2026-06-23 11:52:34.597 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.destroy - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-23 11:52:34.599 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-2 - Shutdown initiated...
+2026-06-23 11:52:34.601 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-2 - Shutdown completed.
+2026-06-23 11:52:34.602 [restartedMain] INFO  o.a.catalina.core.StandardService.log - Stopping service [Tomcat]
+2026-06-23 11:52:34.608 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLogger.logMessage - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-06-23 11:52:34.630 [restartedMain] ERROR o.s.b.d.LoggingFailureAnalysisReporter.report - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.example.trackify.controller.TipoController required a bean of type 'com.example.trackify.service.tipo.ITipoService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.example.trackify.service.tipo.ITipoService' in your configuration.
+
+2026-06-23 11:52:36.159 [restartedMain] INFO  c.e.trackify.TrackifyApplication.logStarting - Starting TrackifyApplication v1.0.0 using Java 22.0.2 with PID 16488 (Z:\TFG\Trackify-TFG\trackify\target\classes started by admin in Z:\TFG\Trackify-TFG\trackify)
+2026-06-23 11:52:36.160 [restartedMain] INFO  c.e.trackify.TrackifyApplication.logStartupProfileInfo - The following 1 profile is active: "dev"
+2026-06-23 11:52:36.488 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-23 11:52:36.551 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Finished Spring Data repository scanning in 60 ms. Found 6 JPA repository interfaces.
+2026-06-23 11:52:36.744 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer.initialize - Tomcat initialized with port 8080 (http)
+2026-06-23 11:52:36.747 [restartedMain] INFO  o.a.catalina.core.StandardService.log - Starting service [Tomcat]
+2026-06-23 11:52:36.747 [restartedMain] INFO  o.a.catalina.core.StandardEngine.log - Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-06-23 11:52:36.816 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer.prepareWebApplicationContext - Root WebApplicationContext: initialization completed in 655 ms
+2026-06-23 11:52:36.900 [restartedMain] WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-23 11:52:36.984 [restartedMain] INFO  org.hibernate.orm.jpa.logPersistenceUnitInformation - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-23 11:52:37.031 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo.addTransformer - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-23 11:52:37.034 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource.getConnection - HikariPool-3 - Starting...
+2026-06-23 11:52:37.038 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool.checkFailFast - HikariPool-3 - Added connection org.mariadb.jdbc.Connection@54ab5497
+2026-06-23 11:52:37.039 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource.getConnection - HikariPool-3 - Start completed.
+2026-06-23 11:52:37.040 [restartedMain] INFO  o.hibernate.orm.connections.pooling.logConnectionInfo - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mariadb://localhost:3307/trackify?user=david&password=***]
+	Database driver: MariaDB Connector/J
+	Database dialect: MariaDBDialect
+	Database version: 12.2.2
+	Default catalog/schema: trackify/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-23 11:52:37.180 [restartedMain] INFO  org.hibernate.orm.core.initiateService - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-23 11:52:37.393 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-23 11:52:37.711 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure - Global AuthenticationManager configured with UserDetailsService bean with name usuarioService
+2026-06-23 11:52:37.783 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - 3 SQL migrations were detected but not run because they did not follow the filename convention.
+2026-06-23 11:52:37.783 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - Set 'validateMigrationNaming' to true to fail fast and see a list of the invalid file names.
+2026-06-23 11:52:37.784 [restartedMain] WARN  o.m.jdbc.message.server.ErrorPacket.warn - Error: 1193-HY000: Unknown system variable 'WSREP_ON'
+2026-06-23 11:52:37.798 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor.info - Database: jdbc:mariadb://localhost:3307/trackify?user=david&password=******** (MariaDB 12.2)
+2026-06-23 11:52:37.801 [restartedMain] WARN  o.f.c.i.database.base.Database.warn - Using MariaDB 12.2 which is newer than the version Flyway has been verified with. The latest verified version of MariaDB is 11.7.
+2026-06-23 11:52:37.806 [restartedMain] INFO  o.f.c.i.s.JdbcTableSchemaHistory.info - Repair of failed migration in Schema History table `trackify`.`flyway_schema_history` not necessary. No failed migration detected.
+2026-06-23 11:52:37.808 [restartedMain] INFO  o.f.core.internal.command.DbRepair.info - Successfully repaired schema history table `trackify`.`flyway_schema_history` (execution time 00:00.004s).
+2026-06-23 11:52:37.812 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - 3 SQL migrations were detected but not run because they did not follow the filename convention.
+2026-06-23 11:52:37.812 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - Set 'validateMigrationNaming' to true to fail fast and see a list of the invalid file names.
+2026-06-23 11:52:37.812 [restartedMain] WARN  o.m.jdbc.message.server.ErrorPacket.warn - Error: 1193-HY000: Unknown system variable 'WSREP_ON'
+2026-06-23 11:52:37.818 [restartedMain] WARN  o.f.c.i.database.base.Database.warn - Using MariaDB 12.2 which is newer than the version Flyway has been verified with. The latest verified version of MariaDB is 11.7.
+2026-06-23 11:52:37.823 [restartedMain] INFO  o.f.core.internal.command.DbValidate.info - Successfully validated 1 migration (execution time 00:00.002s)
+2026-06-23 11:52:37.826 [restartedMain] INFO  o.f.core.internal.command.DbMigrate.info - Current version of schema `trackify`: 1
+2026-06-23 11:52:37.826 [restartedMain] INFO  o.f.core.internal.command.DbMigrate.info - Schema `trackify` is up to date. No migration necessary.
+2026-06-23 11:52:37.829 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - 3 SQL migrations were detected but not run because they did not follow the filename convention.
+2026-06-23 11:52:37.830 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - Set 'validateMigrationNaming' to true to fail fast and see a list of the invalid file names.
+2026-06-23 11:52:37.830 [restartedMain] WARN  o.m.jdbc.message.server.ErrorPacket.warn - Error: 1193-HY000: Unknown system variable 'WSREP_ON'
+2026-06-23 11:52:37.838 [restartedMain] WARN  o.f.c.i.database.base.Database.warn - Using MariaDB 12.2 which is newer than the version Flyway has been verified with. The latest verified version of MariaDB is 11.7.
+2026-06-23 11:52:37.841 [restartedMain] INFO  o.f.core.internal.command.DbValidate.info - Successfully validated 1 migration (execution time 00:00.002s)
+2026-06-23 11:52:37.844 [restartedMain] INFO  o.f.core.internal.command.DbMigrate.info - Current version of schema `trackify`: 1
+2026-06-23 11:52:37.845 [restartedMain] INFO  o.f.core.internal.command.DbMigrate.info - Schema `trackify` is up to date. No migration necessary.
+2026-06-23 11:52:38.296 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer.start - Tomcat started on port 8080 (http) with context path '/'
+2026-06-23 11:52:38.301 [restartedMain] INFO  c.e.trackify.TrackifyApplication.logStarted - Started TrackifyApplication in 2.182 seconds (process running for 1865.094)
+2026-06-23 11:52:38.301 [restartedMain] INFO  c.e.trackify.config.DatosIniciales.run - Iniciando insercion de datos iniciales...
+2026-06-23 11:52:38.366 [restartedMain] INFO  c.e.trackify.config.DatosIniciales.run - Insercion de datos iniciales finalizada
+2026-06-23 11:52:38.368 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener.onApplicationEvent - Condition evaluation unchanged
+2026-06-23 12:01:30.360 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener.onApplicationEvent - Restarting due to 7 class path changes (0 additions, 7 deletions, 0 modifications)
+2026-06-23 12:01:30.363 [Thread-5] INFO  o.s.boot.tomcat.GracefulShutdown.shutDownGracefully - Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-23 12:01:30.368 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown.doShutdown - Graceful shutdown complete
+2026-06-23 12:01:30.373 [Thread-5] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.destroy - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-23 12:01:30.375 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-3 - Shutdown initiated...
+2026-06-23 12:01:30.377 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-3 - Shutdown completed.
+2026-06-23 12:01:30.569 [restartedMain] INFO  c.e.trackify.TrackifyApplication.logStarting - Starting TrackifyApplication v1.0.0 using Java 22.0.2 with PID 16488 (Z:\TFG\Trackify-TFG\trackify\target\classes started by admin in Z:\TFG\Trackify-TFG\trackify)
+2026-06-23 12:01:30.570 [restartedMain] INFO  c.e.trackify.TrackifyApplication.logStartupProfileInfo - The following 1 profile is active: "dev"
+2026-06-23 12:01:30.937 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-23 12:01:31.587 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Finished Spring Data repository scanning in 60 ms. Found 6 JPA repository interfaces.
+2026-06-23 12:01:31.768 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer.initialize - Tomcat initialized with port 8080 (http)
+2026-06-23 12:01:31.770 [restartedMain] INFO  o.a.catalina.core.StandardService.log - Starting service [Tomcat]
+2026-06-23 12:01:31.770 [restartedMain] INFO  o.a.catalina.core.StandardEngine.log - Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-06-23 12:01:31.813 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer.prepareWebApplicationContext - Root WebApplicationContext: initialization completed in 1241 ms
+2026-06-23 12:01:31.894 [restartedMain] WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-23 12:01:31.972 [restartedMain] INFO  org.hibernate.orm.jpa.logPersistenceUnitInformation - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-23 12:01:32.039 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo.addTransformer - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-23 12:01:32.041 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource.getConnection - HikariPool-4 - Starting...
+2026-06-23 12:01:32.048 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool.checkFailFast - HikariPool-4 - Added connection org.mariadb.jdbc.Connection@26dbdc54
+2026-06-23 12:01:32.049 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource.getConnection - HikariPool-4 - Start completed.
+2026-06-23 12:01:32.050 [restartedMain] INFO  o.hibernate.orm.connections.pooling.logConnectionInfo - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mariadb://localhost:3307/trackify?user=david&password=***]
+	Database driver: MariaDB Connector/J
+	Database dialect: MariaDBDialect
+	Database version: 12.2.2
+	Default catalog/schema: trackify/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-23 12:01:32.259 [restartedMain] INFO  org.hibernate.orm.core.initiateService - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-23 12:01:32.540 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-23 12:01:32.947 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure - Global AuthenticationManager configured with UserDetailsService bean with name usuarioService
+2026-06-23 12:01:32.965 [restartedMain] WARN  o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext.refresh - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'contenidoController' defined in file [Z:\TFG\Trackify-TFG\trackify\target\classes\com\example\trackify\controller\ContenidoController.class]: Unsatisfied dependency expressed through constructor parameter 0: No qualifying bean of type 'com.example.trackify.service.contenido.IContenidoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2026-06-23 12:01:32.966 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.destroy - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-23 12:01:32.968 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-4 - Shutdown initiated...
+2026-06-23 12:01:32.970 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-4 - Shutdown completed.
+2026-06-23 12:01:32.971 [restartedMain] INFO  o.a.catalina.core.StandardService.log - Stopping service [Tomcat]
+2026-06-23 12:01:32.974 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLogger.logMessage - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-06-23 12:01:32.982 [restartedMain] ERROR o.s.b.d.LoggingFailureAnalysisReporter.report - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.example.trackify.controller.ContenidoController required a bean of type 'com.example.trackify.service.contenido.IContenidoService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.example.trackify.service.contenido.IContenidoService' in your configuration.
+
+2026-06-23 12:01:34.508 [restartedMain] INFO  c.e.trackify.TrackifyApplication.logStarting - Starting TrackifyApplication v1.0.0 using Java 22.0.2 with PID 16488 (Z:\TFG\Trackify-TFG\trackify\target\classes started by admin in Z:\TFG\Trackify-TFG\trackify)
+2026-06-23 12:01:34.509 [restartedMain] INFO  c.e.trackify.TrackifyApplication.logStartupProfileInfo - The following 1 profile is active: "dev"
+2026-06-23 12:01:34.821 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-23 12:01:34.881 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Finished Spring Data repository scanning in 58 ms. Found 6 JPA repository interfaces.
+2026-06-23 12:01:35.029 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer.initialize - Tomcat initialized with port 8080 (http)
+2026-06-23 12:01:35.030 [restartedMain] INFO  o.a.catalina.core.StandardService.log - Starting service [Tomcat]
+2026-06-23 12:01:35.030 [restartedMain] INFO  o.a.catalina.core.StandardEngine.log - Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-06-23 12:01:35.073 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer.prepareWebApplicationContext - Root WebApplicationContext: initialization completed in 562 ms
+2026-06-23 12:01:35.126 [restartedMain] WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-23 12:01:35.180 [restartedMain] INFO  org.hibernate.orm.jpa.logPersistenceUnitInformation - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-23 12:01:35.230 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo.addTransformer - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-23 12:01:35.233 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource.getConnection - HikariPool-5 - Starting...
+2026-06-23 12:01:35.236 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool.checkFailFast - HikariPool-5 - Added connection org.mariadb.jdbc.Connection@4e588141
+2026-06-23 12:01:35.237 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource.getConnection - HikariPool-5 - Start completed.
+2026-06-23 12:01:35.238 [restartedMain] INFO  o.hibernate.orm.connections.pooling.logConnectionInfo - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mariadb://localhost:3307/trackify?user=david&password=***]
+	Database driver: MariaDB Connector/J
+	Database dialect: MariaDBDialect
+	Database version: 12.2.2
+	Default catalog/schema: trackify/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-23 12:01:35.366 [restartedMain] INFO  org.hibernate.orm.core.initiateService - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-23 12:01:35.558 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-23 12:01:35.867 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure - Global AuthenticationManager configured with UserDetailsService bean with name usuarioService
+2026-06-23 12:01:35.908 [restartedMain] WARN  o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext.refresh - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'generoController' defined in file [Z:\TFG\Trackify-TFG\trackify\target\classes\com\example\trackify\controller\GeneroController.class]: Unsatisfied dependency expressed through constructor parameter 0: No qualifying bean of type 'com.example.trackify.service.genero.IGeneroService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2026-06-23 12:01:35.908 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.destroy - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-23 12:01:35.909 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-5 - Shutdown initiated...
+2026-06-23 12:01:35.912 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-5 - Shutdown completed.
+2026-06-23 12:01:35.912 [restartedMain] INFO  o.a.catalina.core.StandardService.log - Stopping service [Tomcat]
+2026-06-23 12:01:35.916 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLogger.logMessage - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-06-23 12:01:35.921 [restartedMain] ERROR o.s.b.d.LoggingFailureAnalysisReporter.report - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.example.trackify.controller.GeneroController required a bean of type 'com.example.trackify.service.genero.IGeneroService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.example.trackify.service.genero.IGeneroService' in your configuration.
+

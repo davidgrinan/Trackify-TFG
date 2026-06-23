@@ -18,23 +18,19 @@ public class EstadoService implements IEstadoService {
 
     private final IEstadoRepository estadoRepository;
     private final EstadoMapper mapper;
-    private final Logger logger = LoggerFactory.getLogger(EstadoService.class);
 
 
     @Override
         public List<EstadoDetalleDTO> listarTodos() {
-        logger.info("listando estados");
         return mapper.toDetalleDTOList((List<Estado>) estadoRepository.findAll());
     }
 
     @Override
     public EstadoDetalleDTO obtenerPorId(Long id) {
-        logger.info("obteniendo estado con id {}", id);
         Estado estado = estadoRepository.findById(id)
                 .orElseThrow(() ->
                         new NotFoundEntityException("Estado con id " + id + " no encontrado")
                 );
-        logger.info("estado obtenido correctamente");
 
         return mapper.toDetalleDTO(estado);
     }

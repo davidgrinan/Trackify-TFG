@@ -1,13 +1,8 @@
 package com.example.trackify.controller;
 
 import com.example.trackify.dto.Estado.EstadoDetalleDTO;
-import com.example.trackify.exceptions.Response;
 import com.example.trackify.service.estado.IEstadoService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
