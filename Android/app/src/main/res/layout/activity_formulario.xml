@@ -29,14 +29,14 @@
             android:padding="16dp"
             android:background="@android:drawable/editbox_background"/>
 
-        <EditText
-            android:id="@+id/etGenero"
+        <Spinner
+            android:id="@+id/spGenero"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Género (Ej: Acción)"
+            android:layout_height="56dp"
             android:layout_marginTop="12dp"
-            android:padding="16dp"
-            android:background="@android:drawable/editbox_background"/>
+            android:entries="@array/generos_array"
+            android:background="@android:drawable/editbox_background"
+            android:padding="16dp" />
 
         <EditText
             android:id="@+id/etValoracion"
@@ -48,14 +48,14 @@
             android:padding="16dp"
             android:background="@android:drawable/editbox_background"/>
 
-        <EditText
-            android:id="@+id/etEstado"
+        <Spinner
+            android:id="@+id/spEstado"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Estado (Ej: Pendiente, Visto)"
+            android:layout_height="56dp"
             android:layout_marginTop="12dp"
-            android:padding="16dp"
-            android:background="@android:drawable/editbox_background"/>
+            android:entries="@array/estados_array"
+            android:background="@android:drawable/editbox_background"
+            android:padding="16dp" />
 
         <EditText
             android:id="@+id/etDescripcion"

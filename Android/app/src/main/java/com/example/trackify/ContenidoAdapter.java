@@ -50,12 +50,14 @@ public class ContenidoAdapter extends BaseAdapter {
         ImageView imgPortada = convertView.findViewById(R.id.imgPortada);
         TextView tvTitulo = convertView.findViewById(R.id.tvTitulo);
         TextView tvGenero = convertView.findViewById(R.id.tvGenero);
+        TextView tvEstado = convertView.findViewById(R.id.tvEstado);
         TextView tvValoracion = convertView.findViewById(R.id.tvValoracion);
 
         ContenidoModel contenido = contenidos.get(position);
 
         tvTitulo.setText(contenido.getTitulo());
         tvGenero.setText(contenido.getGenero());
+        tvEstado.setText(contenido.getEstado());
 
         if (contenido.getValoracion() != null) {
             tvValoracion.setText("⭐ " + contenido.getValoracion() + "/10");

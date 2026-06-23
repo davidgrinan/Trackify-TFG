@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Trackify</string>
+
+    <string-array name="generos_array">
+        <item>Acción</item>
+        <item>Drama</item>
+        <item>Terror</item>
+        <item>Comedia</item>
+    </string-array>
+
+    <string-array name="estados_array">
+        <item>Visto</item>
+        <item>Pendiente</item>
+        <item>No ver</item>
+    </string-array>
+
 </resources>

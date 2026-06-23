@@ -2,6 +2,7 @@ package com.example.trackify;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -24,7 +25,7 @@ public class ListadoActivity extends AppCompatActivity {
     private ImageButton btnFiltros;
     private ImageButton btnAdd;
     private ListView listViewContenido;
-
+    private Button btnVolver;
     private List<ContenidoModel> listaContenidos;
     private ContenidoAdapter adapter;
 
@@ -39,6 +40,7 @@ public class ListadoActivity extends AppCompatActivity {
         tvTituloCategoria = findViewById(R.id.tvTituloCategoria);
         btnFiltros = findViewById(R.id.btnFiltros);
         btnAdd = findViewById(R.id.btnAdd);
+        btnVolver = findViewById(R.id.btnVolver);
         listViewContenido = findViewById(R.id.listViewContenido);
 
         token = TokenManager.getToken(this);
@@ -63,6 +65,10 @@ public class ListadoActivity extends AppCompatActivity {
 
         btnFiltros.setOnClickListener(v -> {
             Toast.makeText(this, "Filtros próximamente", Toast.LENGTH_SHORT).show();
+        });
+
+        btnVolver.setOnClickListener(v -> {
+            finish();
         });
 
         listViewContenido.setOnItemClickListener((parent, view, position, id) -> {

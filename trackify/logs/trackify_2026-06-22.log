@@ -1,0 +1,616 @@
+2026-06-22 17:37:38.439 [restartedMain] INFO  c.e.trackify.TrackifyApplication.logStarting - Starting TrackifyApplication v1.0.0 using Java 22.0.2 with PID 5692 (Z:\TFG\Trackify-TFG\trackify\target\classes started by admin in Z:\TFG\Trackify-TFG\trackify)
+2026-06-22 17:37:38.447 [restartedMain] INFO  c.e.trackify.TrackifyApplication.logStartupProfileInfo - The following 1 profile is active: "dev"
+2026-06-22 17:37:38.508 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor.log - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-06-22 17:37:38.509 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor.log - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-06-22 17:37:40.199 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-22 17:37:40.328 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Finished Spring Data repository scanning in 112 ms. Found 6 JPA repository interfaces.
+2026-06-22 17:37:41.126 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer.initialize - Tomcat initialized with port 8080 (http)
+2026-06-22 17:37:41.144 [restartedMain] INFO  o.a.catalina.core.StandardService.log - Starting service [Tomcat]
+2026-06-22 17:37:41.145 [restartedMain] INFO  o.a.catalina.core.StandardEngine.log - Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-06-22 17:37:41.223 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer.prepareWebApplicationContext - Root WebApplicationContext: initialization completed in 2713 ms
+2026-06-22 17:37:41.372 [restartedMain] WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-22 17:37:41.540 [restartedMain] INFO  org.hibernate.orm.jpa.logPersistenceUnitInformation - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-22 17:37:41.628 [restartedMain] INFO  org.hibernate.orm.core.logVersion - HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-06-22 17:37:42.330 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo.addTransformer - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-22 17:37:42.380 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource.getConnection - HikariPool-1 - Starting...
+2026-06-22 17:37:42.515 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool.checkFailFast - HikariPool-1 - Added connection org.mariadb.jdbc.Connection@6d492b92
+2026-06-22 17:37:42.518 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource.getConnection - HikariPool-1 - Start completed.
+2026-06-22 17:37:42.603 [restartedMain] INFO  o.hibernate.orm.connections.pooling.logConnectionInfo - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mariadb://localhost:3307/trackify?user=david&password=***]
+	Database driver: MariaDB Connector/J
+	Database dialect: MariaDBDialect
+	Database version: 12.2.2
+	Default catalog/schema: trackify/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-22 17:37:43.936 [restartedMain] INFO  org.hibernate.orm.core.initiateService - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-22 17:37:44.450 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-22 17:37:44.747 [restartedMain] INFO  o.s.d.j.r.q.QueryEnhancerFactories.<clinit> - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-22 17:37:45.214 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure - Global AuthenticationManager configured with UserDetailsService bean with name usuarioService
+2026-06-22 17:37:46.731 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - 3 SQL migrations were detected but not run because they did not follow the filename convention.
+2026-06-22 17:37:46.731 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - Set 'validateMigrationNaming' to true to fail fast and see a list of the invalid file names.
+2026-06-22 17:37:46.737 [restartedMain] WARN  o.m.jdbc.message.server.ErrorPacket.warn - Error: 1193-HY000: Unknown system variable 'WSREP_ON'
+2026-06-22 17:37:46.754 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor.info - Database: jdbc:mariadb://localhost:3307/trackify?user=david&password=******** (MariaDB 12.2)
+2026-06-22 17:37:46.761 [restartedMain] WARN  o.f.c.i.database.base.Database.warn - Using MariaDB 12.2 which is newer than the version Flyway has been verified with. The latest verified version of MariaDB is 11.7.
+2026-06-22 17:37:46.792 [restartedMain] INFO  o.f.c.i.s.JdbcTableSchemaHistory.info - Repair of failed migration in Schema History table `trackify`.`flyway_schema_history` not necessary. No failed migration detected.
+2026-06-22 17:37:46.799 [restartedMain] INFO  o.f.core.internal.command.DbRepair.info - Successfully repaired schema history table `trackify`.`flyway_schema_history` (execution time 00:00.021s).
+2026-06-22 17:37:46.806 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - 3 SQL migrations were detected but not run because they did not follow the filename convention.
+2026-06-22 17:37:46.806 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - Set 'validateMigrationNaming' to true to fail fast and see a list of the invalid file names.
+2026-06-22 17:37:46.806 [restartedMain] WARN  o.m.jdbc.message.server.ErrorPacket.warn - Error: 1193-HY000: Unknown system variable 'WSREP_ON'
+2026-06-22 17:37:46.813 [restartedMain] WARN  o.f.c.i.database.base.Database.warn - Using MariaDB 12.2 which is newer than the version Flyway has been verified with. The latest verified version of MariaDB is 11.7.
+2026-06-22 17:37:46.822 [restartedMain] INFO  o.f.core.internal.command.DbValidate.info - Successfully validated 1 migration (execution time 00:00.003s)
+2026-06-22 17:37:46.832 [restartedMain] INFO  o.f.core.internal.command.DbMigrate.info - Current version of schema `trackify`: 1
+2026-06-22 17:37:46.836 [restartedMain] INFO  o.f.core.internal.command.DbMigrate.info - Schema `trackify` is up to date. No migration necessary.
+2026-06-22 17:37:46.842 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - 3 SQL migrations were detected but not run because they did not follow the filename convention.
+2026-06-22 17:37:46.842 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - Set 'validateMigrationNaming' to true to fail fast and see a list of the invalid file names.
+2026-06-22 17:37:46.843 [restartedMain] WARN  o.m.jdbc.message.server.ErrorPacket.warn - Error: 1193-HY000: Unknown system variable 'WSREP_ON'
+2026-06-22 17:37:46.849 [restartedMain] WARN  o.f.c.i.database.base.Database.warn - Using MariaDB 12.2 which is newer than the version Flyway has been verified with. The latest verified version of MariaDB is 11.7.
+2026-06-22 17:37:46.855 [restartedMain] INFO  o.f.core.internal.command.DbValidate.info - Successfully validated 1 migration (execution time 00:00.002s)
+2026-06-22 17:37:46.858 [restartedMain] INFO  o.f.core.internal.command.DbMigrate.info - Current version of schema `trackify`: 1
+2026-06-22 17:37:46.858 [restartedMain] INFO  o.f.core.internal.command.DbMigrate.info - Schema `trackify` is up to date. No migration necessary.
+2026-06-22 17:37:47.762 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer.start - Tomcat started on port 8080 (http) with context path '/'
+2026-06-22 17:37:47.772 [restartedMain] INFO  c.e.trackify.TrackifyApplication.logStarted - Started TrackifyApplication in 10.231 seconds (process running for 16.846)
+2026-06-22 17:37:47.776 [restartedMain] INFO  c.e.trackify.config.DatosIniciales.run - Iniciando insercion de datos iniciales...
+2026-06-22 17:37:47.951 [restartedMain] INFO  c.e.trackify.config.DatosIniciales.run - Insercion de datos iniciales finalizada
+2026-06-22 17:49:32.215 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/].log - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-22 17:49:32.216 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet.initServletBean - Initializing Servlet 'dispatcherServlet'
+2026-06-22 17:49:32.218 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet.initServletBean - Completed initialization in 2 ms
+2026-06-22 17:49:32.373 [http-nio-8080-exec-1] INFO  c.e.t.controller.AuthController.login - PETICIÓN LOGIN usuario luis
+2026-06-22 17:49:32.373 [http-nio-8080-exec-1] INFO  c.e.t.service.auth.AuthService.login - Intentando login usuario luis
+2026-06-22 17:49:32.652 [http-nio-8080-exec-1] INFO  c.e.t.c.security.JwtTokenProvider.generateToken - Generando token para usuario: luis
+2026-06-22 17:49:34.824 [http-nio-8080-exec-2] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 17:49:34.833 [http-nio-8080-exec-2] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 17:49:35.977 [http-nio-8080-exec-3] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 17:49:35.979 [http-nio-8080-exec-3] INFO  c.e.t.controller.ContenidoController.obtenerPorId - Petición para obtener contenido 4 del usuario luis
+2026-06-22 17:49:39.032 [http-nio-8080-exec-4] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 17:49:39.033 [http-nio-8080-exec-4] INFO  c.e.t.controller.ContenidoController.obtenerPorId - Petición para obtener contenido 4 del usuario luis
+2026-06-22 17:49:48.680 [http-nio-8080-exec-5] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 17:49:48.703 [http-nio-8080-exec-5] INFO  c.e.t.controller.ContenidoController.actualizar - Petición para actualizar contenido 4 del usuario luis
+2026-06-22 17:49:48.823 [http-nio-8080-exec-6] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 17:49:48.825 [http-nio-8080-exec-6] INFO  c.e.t.controller.ContenidoController.obtenerPorId - Petición para obtener contenido 4 del usuario luis
+2026-06-22 17:49:53.253 [http-nio-8080-exec-7] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 17:49:53.255 [http-nio-8080-exec-7] INFO  c.e.t.controller.ContenidoController.obtenerPorId - Petición para obtener contenido 4 del usuario luis
+2026-06-22 17:50:15.874 [http-nio-8080-exec-8] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 17:50:15.876 [http-nio-8080-exec-8] INFO  c.e.t.controller.ContenidoController.actualizar - Petición para actualizar contenido 4 del usuario luis
+2026-06-22 17:50:15.939 [http-nio-8080-exec-9] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 17:50:15.940 [http-nio-8080-exec-9] INFO  c.e.t.controller.ContenidoController.obtenerPorId - Petición para obtener contenido 4 del usuario luis
+2026-06-22 17:50:24.906 [http-nio-8080-exec-10] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 17:50:24.907 [http-nio-8080-exec-10] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 17:50:26.756 [http-nio-8080-exec-1] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 17:50:26.757 [http-nio-8080-exec-1] INFO  c.e.t.controller.ContenidoController.obtenerPorId - Petición para obtener contenido 4 del usuario luis
+2026-06-22 17:50:29.009 [http-nio-8080-exec-2] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 17:50:29.010 [http-nio-8080-exec-2] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 17:50:30.115 [http-nio-8080-exec-3] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 17:50:30.117 [http-nio-8080-exec-3] INFO  c.e.t.controller.ContenidoController.obtenerPorId - Petición para obtener contenido 4 del usuario luis
+2026-06-22 17:50:34.205 [http-nio-8080-exec-4] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 17:50:34.207 [http-nio-8080-exec-4] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 17:50:35.550 [http-nio-8080-exec-5] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 17:50:35.551 [http-nio-8080-exec-5] INFO  c.e.t.controller.ContenidoController.obtenerPorId - Petición para obtener contenido 4 del usuario luis
+2026-06-22 17:50:37.253 [http-nio-8080-exec-6] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 17:50:37.255 [http-nio-8080-exec-6] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 17:50:39.598 [http-nio-8080-exec-7] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 17:50:39.599 [http-nio-8080-exec-7] INFO  c.e.t.controller.ContenidoController.obtenerPorId - Petición para obtener contenido 4 del usuario luis
+2026-06-22 17:50:40.979 [http-nio-8080-exec-8] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 17:50:40.980 [http-nio-8080-exec-8] INFO  c.e.t.controller.ContenidoController.obtenerPorId - Petición para obtener contenido 4 del usuario luis
+2026-06-22 17:51:27.163 [http-nio-8080-exec-10] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 17:51:27.166 [http-nio-8080-exec-10] INFO  c.e.t.controller.ContenidoController.actualizar - Petición para actualizar contenido 4 del usuario luis
+2026-06-22 17:51:27.273 [http-nio-8080-exec-1] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 17:51:27.273 [http-nio-8080-exec-1] INFO  c.e.t.controller.ContenidoController.obtenerPorId - Petición para obtener contenido 4 del usuario luis
+2026-06-22 17:51:29.385 [http-nio-8080-exec-2] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 17:51:29.386 [http-nio-8080-exec-2] INFO  c.e.t.controller.ContenidoController.obtenerPorId - Petición para obtener contenido 4 del usuario luis
+2026-06-22 17:53:07.424 [http-nio-8080-exec-4] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 17:53:07.427 [http-nio-8080-exec-4] INFO  c.e.t.controller.ContenidoController.actualizar - Petición para actualizar contenido 4 del usuario luis
+2026-06-22 17:53:07.503 [http-nio-8080-exec-5] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 17:53:07.503 [http-nio-8080-exec-5] INFO  c.e.t.controller.ContenidoController.obtenerPorId - Petición para obtener contenido 4 del usuario luis
+2026-06-22 17:53:11.598 [http-nio-8080-exec-6] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 17:53:11.600 [http-nio-8080-exec-6] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 17:53:15.240 [http-nio-8080-exec-7] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 17:53:15.241 [http-nio-8080-exec-7] INFO  c.e.t.controller.ContenidoController.obtenerPorId - Petición para obtener contenido 4 del usuario luis
+2026-06-22 17:53:16.915 [http-nio-8080-exec-8] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 17:53:16.916 [http-nio-8080-exec-8] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 17:53:20.137 [http-nio-8080-exec-9] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 17:53:20.138 [http-nio-8080-exec-9] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 17:53:25.204 [http-nio-8080-exec-10] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 17:53:25.205 [http-nio-8080-exec-10] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 17:53:32.783 [http-nio-8080-exec-1] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 17:53:32.784 [http-nio-8080-exec-1] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 17:53:35.545 [http-nio-8080-exec-2] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 17:53:35.546 [http-nio-8080-exec-2] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 18:12:13.910 [SpringApplicationShutdownHook] INFO  o.s.boot.tomcat.GracefulShutdown.shutDownGracefully - Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-22 18:12:13.916 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown.doShutdown - Graceful shutdown complete
+2026-06-22 18:12:13.922 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.destroy - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-22 18:12:13.928 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-1 - Shutdown initiated...
+2026-06-22 18:12:13.931 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-1 - Shutdown completed.
+2026-06-22 19:02:02.691 [restartedMain] INFO  c.e.trackify.TrackifyApplication.logStarting - Starting TrackifyApplication v1.0.0 using Java 22.0.2 with PID 27428 (Z:\TFG\Trackify-TFG\trackify\target\classes started by admin in Z:\TFG\Trackify-TFG\trackify)
+2026-06-22 19:02:02.695 [restartedMain] INFO  c.e.trackify.TrackifyApplication.logStartupProfileInfo - The following 1 profile is active: "dev"
+2026-06-22 19:02:02.754 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor.log - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-06-22 19:02:02.755 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor.log - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-06-22 19:02:03.863 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-22 19:02:03.986 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Finished Spring Data repository scanning in 111 ms. Found 6 JPA repository interfaces.
+2026-06-22 19:02:04.763 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer.initialize - Tomcat initialized with port 8080 (http)
+2026-06-22 19:02:04.781 [restartedMain] INFO  o.a.catalina.core.StandardService.log - Starting service [Tomcat]
+2026-06-22 19:02:04.781 [restartedMain] INFO  o.a.catalina.core.StandardEngine.log - Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-06-22 19:02:04.856 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer.prepareWebApplicationContext - Root WebApplicationContext: initialization completed in 2100 ms
+2026-06-22 19:02:05.000 [restartedMain] WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-22 19:02:05.173 [restartedMain] INFO  org.hibernate.orm.jpa.logPersistenceUnitInformation - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-22 19:02:05.286 [restartedMain] INFO  org.hibernate.orm.core.logVersion - HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-06-22 19:02:05.983 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo.addTransformer - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-22 19:02:06.023 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource.getConnection - HikariPool-1 - Starting...
+2026-06-22 19:02:06.138 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool.checkFailFast - HikariPool-1 - Added connection org.mariadb.jdbc.Connection@719f2b3
+2026-06-22 19:02:06.141 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource.getConnection - HikariPool-1 - Start completed.
+2026-06-22 19:02:06.229 [restartedMain] INFO  o.hibernate.orm.connections.pooling.logConnectionInfo - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mariadb://localhost:3307/trackify?user=david&password=***]
+	Database driver: MariaDB Connector/J
+	Database dialect: MariaDBDialect
+	Database version: 12.2.2
+	Default catalog/schema: trackify/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-22 19:02:07.520 [restartedMain] INFO  org.hibernate.orm.core.initiateService - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-22 19:02:07.784 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-22 19:02:08.093 [restartedMain] INFO  o.s.d.j.r.q.QueryEnhancerFactories.<clinit> - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-22 19:02:08.587 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure - Global AuthenticationManager configured with UserDetailsService bean with name usuarioService
+2026-06-22 19:02:10.156 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - 3 SQL migrations were detected but not run because they did not follow the filename convention.
+2026-06-22 19:02:10.156 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - Set 'validateMigrationNaming' to true to fail fast and see a list of the invalid file names.
+2026-06-22 19:02:10.161 [restartedMain] WARN  o.m.jdbc.message.server.ErrorPacket.warn - Error: 1193-HY000: Unknown system variable 'WSREP_ON'
+2026-06-22 19:02:10.188 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor.info - Database: jdbc:mariadb://localhost:3307/trackify?user=david&password=******** (MariaDB 12.2)
+2026-06-22 19:02:10.194 [restartedMain] WARN  o.f.c.i.database.base.Database.warn - Using MariaDB 12.2 which is newer than the version Flyway has been verified with. The latest verified version of MariaDB is 11.7.
+2026-06-22 19:02:10.224 [restartedMain] INFO  o.f.c.i.s.JdbcTableSchemaHistory.info - Repair of failed migration in Schema History table `trackify`.`flyway_schema_history` not necessary. No failed migration detected.
+2026-06-22 19:02:10.231 [restartedMain] INFO  o.f.core.internal.command.DbRepair.info - Successfully repaired schema history table `trackify`.`flyway_schema_history` (execution time 00:00.021s).
+2026-06-22 19:02:10.241 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - 3 SQL migrations were detected but not run because they did not follow the filename convention.
+2026-06-22 19:02:10.241 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - Set 'validateMigrationNaming' to true to fail fast and see a list of the invalid file names.
+2026-06-22 19:02:10.241 [restartedMain] WARN  o.m.jdbc.message.server.ErrorPacket.warn - Error: 1193-HY000: Unknown system variable 'WSREP_ON'
+2026-06-22 19:02:10.250 [restartedMain] WARN  o.f.c.i.database.base.Database.warn - Using MariaDB 12.2 which is newer than the version Flyway has been verified with. The latest verified version of MariaDB is 11.7.
+2026-06-22 19:02:10.258 [restartedMain] INFO  o.f.core.internal.command.DbValidate.info - Successfully validated 1 migration (execution time 00:00.004s)
+2026-06-22 19:02:10.268 [restartedMain] INFO  o.f.core.internal.command.DbMigrate.info - Current version of schema `trackify`: 1
+2026-06-22 19:02:10.271 [restartedMain] INFO  o.f.core.internal.command.DbMigrate.info - Schema `trackify` is up to date. No migration necessary.
+2026-06-22 19:02:10.277 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - 3 SQL migrations were detected but not run because they did not follow the filename convention.
+2026-06-22 19:02:10.278 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - Set 'validateMigrationNaming' to true to fail fast and see a list of the invalid file names.
+2026-06-22 19:02:10.278 [restartedMain] WARN  o.m.jdbc.message.server.ErrorPacket.warn - Error: 1193-HY000: Unknown system variable 'WSREP_ON'
+2026-06-22 19:02:10.286 [restartedMain] WARN  o.f.c.i.database.base.Database.warn - Using MariaDB 12.2 which is newer than the version Flyway has been verified with. The latest verified version of MariaDB is 11.7.
+2026-06-22 19:02:10.291 [restartedMain] INFO  o.f.core.internal.command.DbValidate.info - Successfully validated 1 migration (execution time 00:00.002s)
+2026-06-22 19:02:10.296 [restartedMain] INFO  o.f.core.internal.command.DbMigrate.info - Current version of schema `trackify`: 1
+2026-06-22 19:02:10.296 [restartedMain] INFO  o.f.core.internal.command.DbMigrate.info - Schema `trackify` is up to date. No migration necessary.
+2026-06-22 19:02:11.199 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer.start - Tomcat started on port 8080 (http) with context path '/'
+2026-06-22 19:02:11.209 [restartedMain] INFO  c.e.trackify.TrackifyApplication.logStarted - Started TrackifyApplication in 9.285 seconds (process running for 10.418)
+2026-06-22 19:02:11.212 [restartedMain] INFO  c.e.trackify.config.DatosIniciales.run - Iniciando insercion de datos iniciales...
+2026-06-22 19:02:11.402 [restartedMain] INFO  c.e.trackify.config.DatosIniciales.run - Insercion de datos iniciales finalizada
+2026-06-22 19:02:22.830 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/].log - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-22 19:02:22.830 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet.initServletBean - Initializing Servlet 'dispatcherServlet'
+2026-06-22 19:02:22.832 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet.initServletBean - Completed initialization in 2 ms
+2026-06-22 19:02:23.000 [http-nio-8080-exec-1] INFO  c.e.t.controller.AuthController.login - PETICIÓN LOGIN usuario luis
+2026-06-22 19:02:23.000 [http-nio-8080-exec-1] INFO  c.e.t.service.auth.AuthService.login - Intentando login usuario luis
+2026-06-22 19:02:23.304 [http-nio-8080-exec-1] INFO  c.e.t.c.security.JwtTokenProvider.generateToken - Generando token para usuario: luis
+2026-06-22 19:02:23.565 [http-nio-8080-exec-2] INFO  c.e.t.controller.AuthController.login - PETICIÓN LOGIN usuario luis
+2026-06-22 19:02:23.565 [http-nio-8080-exec-2] INFO  c.e.t.service.auth.AuthService.login - Intentando login usuario luis
+2026-06-22 19:02:23.691 [http-nio-8080-exec-2] INFO  c.e.t.c.security.JwtTokenProvider.generateToken - Generando token para usuario: luis
+2026-06-22 19:02:27.614 [http-nio-8080-exec-3] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 19:02:27.629 [http-nio-8080-exec-3] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 19:02:33.423 [http-nio-8080-exec-5] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 19:02:33.425 [http-nio-8080-exec-5] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 19:02:43.562 [http-nio-8080-exec-7] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 19:02:43.563 [http-nio-8080-exec-7] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 19:02:48.599 [http-nio-8080-exec-9] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 19:02:48.600 [http-nio-8080-exec-9] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 19:02:52.846 [http-nio-8080-exec-1] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 19:02:52.847 [http-nio-8080-exec-1] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 19:04:07.428 [http-nio-8080-exec-3] INFO  c.e.t.controller.AuthController.login - PETICIÓN LOGIN usuario luis
+2026-06-22 19:04:07.429 [http-nio-8080-exec-3] INFO  c.e.t.service.auth.AuthService.login - Intentando login usuario luis
+2026-06-22 19:04:07.552 [http-nio-8080-exec-3] INFO  c.e.t.c.security.JwtTokenProvider.generateToken - Generando token para usuario: luis
+2026-06-22 19:04:08.985 [http-nio-8080-exec-4] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 19:04:08.986 [http-nio-8080-exec-4] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 19:05:24.930 [http-nio-8080-exec-6] INFO  c.e.t.controller.AuthController.login - PETICIÓN LOGIN usuario luis
+2026-06-22 19:05:24.931 [http-nio-8080-exec-6] INFO  c.e.t.service.auth.AuthService.login - Intentando login usuario luis
+2026-06-22 19:05:25.056 [http-nio-8080-exec-6] INFO  c.e.t.c.security.JwtTokenProvider.generateToken - Generando token para usuario: luis
+2026-06-22 19:05:26.375 [http-nio-8080-exec-7] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 19:05:26.376 [http-nio-8080-exec-7] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 19:05:29.613 [http-nio-8080-exec-8] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 19:05:29.614 [http-nio-8080-exec-8] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 19:07:41.298 [http-nio-8080-exec-10] INFO  c.e.t.controller.AuthController.login - PETICIÓN LOGIN usuario luis
+2026-06-22 19:07:41.298 [http-nio-8080-exec-10] INFO  c.e.t.service.auth.AuthService.login - Intentando login usuario luis
+2026-06-22 19:07:41.421 [http-nio-8080-exec-10] INFO  c.e.t.c.security.JwtTokenProvider.generateToken - Generando token para usuario: luis
+2026-06-22 19:07:43.000 [http-nio-8080-exec-1] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 19:07:43.001 [http-nio-8080-exec-1] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 19:07:52.911 [http-nio-8080-exec-3] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 19:07:52.911 [http-nio-8080-exec-3] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 19:07:55.791 [http-nio-8080-exec-4] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 19:07:55.793 [http-nio-8080-exec-4] INFO  c.e.t.controller.ContenidoController.obtenerPorId - Petición para obtener contenido 4 del usuario luis
+2026-06-22 19:07:58.681 [http-nio-8080-exec-5] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 19:07:58.682 [http-nio-8080-exec-5] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 19:08:14.206 [http-nio-8080-exec-7] INFO  c.e.t.controller.AuthController.login - PETICIÓN LOGIN usuario luis
+2026-06-22 19:08:14.207 [http-nio-8080-exec-7] INFO  c.e.t.service.auth.AuthService.login - Intentando login usuario luis
+2026-06-22 19:08:14.332 [http-nio-8080-exec-7] INFO  c.e.t.c.security.JwtTokenProvider.generateToken - Generando token para usuario: luis
+2026-06-22 19:08:16.061 [http-nio-8080-exec-8] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 19:08:16.063 [http-nio-8080-exec-8] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 19:10:31.483 [http-nio-8080-exec-10] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 19:10:31.484 [http-nio-8080-exec-10] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 19:10:39.698 [http-nio-8080-exec-2] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 19:10:39.699 [http-nio-8080-exec-2] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 19:10:48.525 [http-nio-8080-exec-4] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 19:10:48.526 [http-nio-8080-exec-4] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 19:10:51.774 [http-nio-8080-exec-6] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 19:10:51.775 [http-nio-8080-exec-6] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 19:10:57.598 [http-nio-8080-exec-7] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 19:10:57.599 [http-nio-8080-exec-7] INFO  c.e.t.controller.ContenidoController.obtenerPorId - Petición para obtener contenido 4 del usuario luis
+2026-06-22 19:10:59.812 [http-nio-8080-exec-8] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 19:10:59.813 [http-nio-8080-exec-8] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 19:11:01.266 [http-nio-8080-exec-9] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 19:11:01.267 [http-nio-8080-exec-9] INFO  c.e.t.controller.ContenidoController.obtenerPorId - Petición para obtener contenido 4 del usuario luis
+2026-06-22 19:11:02.106 [http-nio-8080-exec-10] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 19:11:02.107 [http-nio-8080-exec-10] INFO  c.e.t.controller.ContenidoController.obtenerPorId - Petición para obtener contenido 4 del usuario luis
+2026-06-22 19:11:03.035 [http-nio-8080-exec-2] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 19:11:03.036 [http-nio-8080-exec-2] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 19:11:04.657 [http-nio-8080-exec-3] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 19:11:04.658 [http-nio-8080-exec-3] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 19:11:05.916 [http-nio-8080-exec-4] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 19:11:05.917 [http-nio-8080-exec-4] INFO  c.e.t.controller.ContenidoController.obtenerPorId - Petición para obtener contenido 4 del usuario luis
+2026-06-22 19:11:15.483 [http-nio-8080-exec-5] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 19:11:15.485 [http-nio-8080-exec-5] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 19:11:19.617 [http-nio-8080-exec-7] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 19:11:19.618 [http-nio-8080-exec-7] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 19:11:22.565 [http-nio-8080-exec-9] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 19:11:22.566 [http-nio-8080-exec-9] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 19:11:28.776 [SpringApplicationShutdownHook] INFO  o.s.boot.tomcat.GracefulShutdown.shutDownGracefully - Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-22 19:11:28.781 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown.doShutdown - Graceful shutdown complete
+2026-06-22 19:11:28.787 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.destroy - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-22 19:11:28.792 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-1 - Shutdown initiated...
+2026-06-22 19:11:28.796 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-1 - Shutdown completed.
+2026-06-22 19:11:31.812 [restartedMain] INFO  c.e.trackify.TrackifyApplication.logStarting - Starting TrackifyApplication v1.0.0 using Java 22.0.2 with PID 28080 (Z:\TFG\Trackify-TFG\trackify\target\classes started by admin in Z:\TFG\Trackify-TFG\trackify)
+2026-06-22 19:11:31.815 [restartedMain] INFO  c.e.trackify.TrackifyApplication.logStartupProfileInfo - The following 1 profile is active: "dev"
+2026-06-22 19:11:31.870 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor.log - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-06-22 19:11:31.870 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor.log - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-06-22 19:11:32.963 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-22 19:11:33.088 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Finished Spring Data repository scanning in 114 ms. Found 6 JPA repository interfaces.
+2026-06-22 19:11:33.870 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer.initialize - Tomcat initialized with port 8080 (http)
+2026-06-22 19:11:33.888 [restartedMain] INFO  o.a.catalina.core.StandardService.log - Starting service [Tomcat]
+2026-06-22 19:11:33.889 [restartedMain] INFO  o.a.catalina.core.StandardEngine.log - Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-06-22 19:11:33.965 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer.prepareWebApplicationContext - Root WebApplicationContext: initialization completed in 2093 ms
+2026-06-22 19:11:34.110 [restartedMain] WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-22 19:11:34.276 [restartedMain] INFO  org.hibernate.orm.jpa.logPersistenceUnitInformation - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-22 19:11:34.360 [restartedMain] INFO  org.hibernate.orm.core.logVersion - HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-06-22 19:11:34.996 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo.addTransformer - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-22 19:11:35.038 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource.getConnection - HikariPool-1 - Starting...
+2026-06-22 19:11:35.157 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool.checkFailFast - HikariPool-1 - Added connection org.mariadb.jdbc.Connection@67d6e9eb
+2026-06-22 19:11:35.160 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource.getConnection - HikariPool-1 - Start completed.
+2026-06-22 19:11:35.238 [restartedMain] INFO  o.hibernate.orm.connections.pooling.logConnectionInfo - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mariadb://localhost:3307/trackify?user=david&password=***]
+	Database driver: MariaDB Connector/J
+	Database dialect: MariaDBDialect
+	Database version: 12.2.2
+	Default catalog/schema: trackify/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-22 19:11:36.530 [restartedMain] INFO  org.hibernate.orm.core.initiateService - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-22 19:11:36.778 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-22 19:11:37.093 [restartedMain] INFO  o.s.d.j.r.q.QueryEnhancerFactories.<clinit> - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-22 19:11:37.555 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure - Global AuthenticationManager configured with UserDetailsService bean with name usuarioService
+2026-06-22 19:11:39.074 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - 3 SQL migrations were detected but not run because they did not follow the filename convention.
+2026-06-22 19:11:39.074 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - Set 'validateMigrationNaming' to true to fail fast and see a list of the invalid file names.
+2026-06-22 19:11:39.081 [restartedMain] WARN  o.m.jdbc.message.server.ErrorPacket.warn - Error: 1193-HY000: Unknown system variable 'WSREP_ON'
+2026-06-22 19:11:39.096 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor.info - Database: jdbc:mariadb://localhost:3307/trackify?user=david&password=******** (MariaDB 12.2)
+2026-06-22 19:11:39.103 [restartedMain] WARN  o.f.c.i.database.base.Database.warn - Using MariaDB 12.2 which is newer than the version Flyway has been verified with. The latest verified version of MariaDB is 11.7.
+2026-06-22 19:11:39.133 [restartedMain] INFO  o.f.c.i.s.JdbcTableSchemaHistory.info - Repair of failed migration in Schema History table `trackify`.`flyway_schema_history` not necessary. No failed migration detected.
+2026-06-22 19:11:39.140 [restartedMain] INFO  o.f.core.internal.command.DbRepair.info - Successfully repaired schema history table `trackify`.`flyway_schema_history` (execution time 00:00.020s).
+2026-06-22 19:11:39.148 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - 3 SQL migrations were detected but not run because they did not follow the filename convention.
+2026-06-22 19:11:39.148 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - Set 'validateMigrationNaming' to true to fail fast and see a list of the invalid file names.
+2026-06-22 19:11:39.148 [restartedMain] WARN  o.m.jdbc.message.server.ErrorPacket.warn - Error: 1193-HY000: Unknown system variable 'WSREP_ON'
+2026-06-22 19:11:39.156 [restartedMain] WARN  o.f.c.i.database.base.Database.warn - Using MariaDB 12.2 which is newer than the version Flyway has been verified with. The latest verified version of MariaDB is 11.7.
+2026-06-22 19:11:39.163 [restartedMain] INFO  o.f.core.internal.command.DbValidate.info - Successfully validated 1 migration (execution time 00:00.003s)
+2026-06-22 19:11:39.171 [restartedMain] INFO  o.f.core.internal.command.DbMigrate.info - Current version of schema `trackify`: 1
+2026-06-22 19:11:39.176 [restartedMain] INFO  o.f.core.internal.command.DbMigrate.info - Schema `trackify` is up to date. No migration necessary.
+2026-06-22 19:11:39.181 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - 3 SQL migrations were detected but not run because they did not follow the filename convention.
+2026-06-22 19:11:39.181 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - Set 'validateMigrationNaming' to true to fail fast and see a list of the invalid file names.
+2026-06-22 19:11:39.182 [restartedMain] WARN  o.m.jdbc.message.server.ErrorPacket.warn - Error: 1193-HY000: Unknown system variable 'WSREP_ON'
+2026-06-22 19:11:39.188 [restartedMain] WARN  o.f.c.i.database.base.Database.warn - Using MariaDB 12.2 which is newer than the version Flyway has been verified with. The latest verified version of MariaDB is 11.7.
+2026-06-22 19:11:39.193 [restartedMain] INFO  o.f.core.internal.command.DbValidate.info - Successfully validated 1 migration (execution time 00:00.002s)
+2026-06-22 19:11:39.198 [restartedMain] INFO  o.f.core.internal.command.DbMigrate.info - Current version of schema `trackify`: 1
+2026-06-22 19:11:39.198 [restartedMain] INFO  o.f.core.internal.command.DbMigrate.info - Schema `trackify` is up to date. No migration necessary.
+2026-06-22 19:11:40.090 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer.start - Tomcat started on port 8080 (http) with context path '/'
+2026-06-22 19:11:40.099 [restartedMain] INFO  c.e.trackify.TrackifyApplication.logStarted - Started TrackifyApplication in 9.049 seconds (process running for 10.078)
+2026-06-22 19:11:40.102 [restartedMain] INFO  c.e.trackify.config.DatosIniciales.run - Iniciando insercion de datos iniciales...
+2026-06-22 19:11:40.280 [restartedMain] INFO  c.e.trackify.config.DatosIniciales.run - Insercion de datos iniciales finalizada
+2026-06-22 19:12:20.914 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/].log - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-22 19:12:20.915 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet.initServletBean - Initializing Servlet 'dispatcherServlet'
+2026-06-22 19:12:20.917 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet.initServletBean - Completed initialization in 2 ms
+2026-06-22 19:12:21.086 [http-nio-8080-exec-1] INFO  c.e.t.controller.AuthController.login - PETICIÓN LOGIN usuario luis
+2026-06-22 19:12:21.086 [http-nio-8080-exec-1] INFO  c.e.t.service.auth.AuthService.login - Intentando login usuario luis
+2026-06-22 19:12:21.386 [http-nio-8080-exec-1] INFO  c.e.t.c.security.JwtTokenProvider.generateToken - Generando token para usuario: luis
+2026-06-22 19:12:23.290 [http-nio-8080-exec-2] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 19:12:23.299 [http-nio-8080-exec-2] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 19:12:26.587 [http-nio-8080-exec-4] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 19:12:26.589 [http-nio-8080-exec-4] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 19:13:02.146 [SpringApplicationShutdownHook] INFO  o.s.boot.tomcat.GracefulShutdown.shutDownGracefully - Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-22 19:13:02.150 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown.doShutdown - Graceful shutdown complete
+2026-06-22 19:13:02.158 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.destroy - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-22 19:13:02.162 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-1 - Shutdown initiated...
+2026-06-22 19:13:02.166 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-1 - Shutdown completed.
+2026-06-22 19:33:41.558 [restartedMain] INFO  c.e.trackify.TrackifyApplication.logStarting - Starting TrackifyApplication v1.0.0 using Java 22.0.2 with PID 20508 (Z:\TFG\Trackify-TFG\trackify\target\classes started by admin in Z:\TFG\Trackify-TFG\trackify)
+2026-06-22 19:33:41.563 [restartedMain] INFO  c.e.trackify.TrackifyApplication.logStartupProfileInfo - The following 1 profile is active: "dev"
+2026-06-22 19:33:41.633 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor.log - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-06-22 19:33:41.633 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor.log - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-06-22 19:33:42.867 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-22 19:33:43.001 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Finished Spring Data repository scanning in 123 ms. Found 6 JPA repository interfaces.
+2026-06-22 19:33:43.960 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer.initialize - Tomcat initialized with port 8080 (http)
+2026-06-22 19:33:43.983 [restartedMain] INFO  o.a.catalina.core.StandardService.log - Starting service [Tomcat]
+2026-06-22 19:33:43.983 [restartedMain] INFO  o.a.catalina.core.StandardEngine.log - Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-06-22 19:33:44.071 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer.prepareWebApplicationContext - Root WebApplicationContext: initialization completed in 2436 ms
+2026-06-22 19:33:44.232 [restartedMain] WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-22 19:33:44.414 [restartedMain] INFO  org.hibernate.orm.jpa.logPersistenceUnitInformation - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-22 19:33:44.505 [restartedMain] INFO  org.hibernate.orm.core.logVersion - HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-06-22 19:33:45.270 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo.addTransformer - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-22 19:33:45.323 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource.getConnection - HikariPool-1 - Starting...
+2026-06-22 19:33:45.458 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool.checkFailFast - HikariPool-1 - Added connection org.mariadb.jdbc.Connection@1e6eb1ea
+2026-06-22 19:33:45.463 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource.getConnection - HikariPool-1 - Start completed.
+2026-06-22 19:33:45.592 [restartedMain] INFO  o.hibernate.orm.connections.pooling.logConnectionInfo - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mariadb://localhost:3307/trackify?user=david&password=***]
+	Database driver: MariaDB Connector/J
+	Database dialect: MariaDBDialect
+	Database version: 12.2.2
+	Default catalog/schema: trackify/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-22 19:33:47.137 [restartedMain] INFO  org.hibernate.orm.core.initiateService - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-22 19:33:47.416 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-22 19:33:47.767 [restartedMain] INFO  o.s.d.j.r.q.QueryEnhancerFactories.<clinit> - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-22 19:33:48.330 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure - Global AuthenticationManager configured with UserDetailsService bean with name usuarioService
+2026-06-22 19:33:50.190 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - 3 SQL migrations were detected but not run because they did not follow the filename convention.
+2026-06-22 19:33:50.190 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - Set 'validateMigrationNaming' to true to fail fast and see a list of the invalid file names.
+2026-06-22 19:33:50.196 [restartedMain] WARN  o.m.jdbc.message.server.ErrorPacket.warn - Error: 1193-HY000: Unknown system variable 'WSREP_ON'
+2026-06-22 19:33:50.215 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor.info - Database: jdbc:mariadb://localhost:3307/trackify?user=david&password=******** (MariaDB 12.2)
+2026-06-22 19:33:50.225 [restartedMain] WARN  o.f.c.i.database.base.Database.warn - Using MariaDB 12.2 which is newer than the version Flyway has been verified with. The latest verified version of MariaDB is 11.7.
+2026-06-22 19:33:50.266 [restartedMain] INFO  o.f.c.i.s.JdbcTableSchemaHistory.info - Repair of failed migration in Schema History table `trackify`.`flyway_schema_history` not necessary. No failed migration detected.
+2026-06-22 19:33:50.275 [restartedMain] INFO  o.f.core.internal.command.DbRepair.info - Successfully repaired schema history table `trackify`.`flyway_schema_history` (execution time 00:00.025s).
+2026-06-22 19:33:50.286 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - 3 SQL migrations were detected but not run because they did not follow the filename convention.
+2026-06-22 19:33:50.286 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - Set 'validateMigrationNaming' to true to fail fast and see a list of the invalid file names.
+2026-06-22 19:33:50.286 [restartedMain] WARN  o.m.jdbc.message.server.ErrorPacket.warn - Error: 1193-HY000: Unknown system variable 'WSREP_ON'
+2026-06-22 19:33:50.293 [restartedMain] WARN  o.f.c.i.database.base.Database.warn - Using MariaDB 12.2 which is newer than the version Flyway has been verified with. The latest verified version of MariaDB is 11.7.
+2026-06-22 19:33:50.304 [restartedMain] INFO  o.f.core.internal.command.DbValidate.info - Successfully validated 1 migration (execution time 00:00.004s)
+2026-06-22 19:33:50.317 [restartedMain] INFO  o.f.core.internal.command.DbMigrate.info - Current version of schema `trackify`: 1
+2026-06-22 19:33:50.322 [restartedMain] INFO  o.f.core.internal.command.DbMigrate.info - Schema `trackify` is up to date. No migration necessary.
+2026-06-22 19:33:50.330 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - 3 SQL migrations were detected but not run because they did not follow the filename convention.
+2026-06-22 19:33:50.330 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - Set 'validateMigrationNaming' to true to fail fast and see a list of the invalid file names.
+2026-06-22 19:33:50.330 [restartedMain] WARN  o.m.jdbc.message.server.ErrorPacket.warn - Error: 1193-HY000: Unknown system variable 'WSREP_ON'
+2026-06-22 19:33:50.338 [restartedMain] WARN  o.f.c.i.database.base.Database.warn - Using MariaDB 12.2 which is newer than the version Flyway has been verified with. The latest verified version of MariaDB is 11.7.
+2026-06-22 19:33:50.345 [restartedMain] INFO  o.f.core.internal.command.DbValidate.info - Successfully validated 1 migration (execution time 00:00.004s)
+2026-06-22 19:33:50.350 [restartedMain] INFO  o.f.core.internal.command.DbMigrate.info - Current version of schema `trackify`: 1
+2026-06-22 19:33:50.352 [restartedMain] INFO  o.f.core.internal.command.DbMigrate.info - Schema `trackify` is up to date. No migration necessary.
+2026-06-22 19:33:51.431 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer.start - Tomcat started on port 8080 (http) with context path '/'
+2026-06-22 19:33:51.441 [restartedMain] INFO  c.e.trackify.TrackifyApplication.logStarted - Started TrackifyApplication in 10.668 seconds (process running for 11.844)
+2026-06-22 19:33:51.448 [restartedMain] INFO  c.e.trackify.config.DatosIniciales.run - Iniciando insercion de datos iniciales...
+2026-06-22 19:33:51.668 [restartedMain] INFO  c.e.trackify.config.DatosIniciales.run - Insercion de datos iniciales finalizada
+2026-06-22 19:34:56.347 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/].log - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-22 19:34:56.348 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet.initServletBean - Initializing Servlet 'dispatcherServlet'
+2026-06-22 19:34:56.349 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet.initServletBean - Completed initialization in 1 ms
+2026-06-22 19:34:56.519 [http-nio-8080-exec-1] INFO  c.e.t.controller.AuthController.login - PETICIÓN LOGIN usuario luis
+2026-06-22 19:34:56.519 [http-nio-8080-exec-1] INFO  c.e.t.service.auth.AuthService.login - Intentando login usuario luis
+2026-06-22 19:34:56.825 [http-nio-8080-exec-1] INFO  c.e.t.c.security.JwtTokenProvider.generateToken - Generando token para usuario: luis
+2026-06-22 19:34:58.831 [http-nio-8080-exec-2] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 19:34:58.839 [http-nio-8080-exec-2] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 19:40:18.518 [http-nio-8080-exec-4] INFO  c.e.t.controller.AuthController.login - PETICIÓN LOGIN usuario lucas
+2026-06-22 19:40:18.518 [http-nio-8080-exec-4] INFO  c.e.t.service.auth.AuthService.login - Intentando login usuario lucas
+2026-06-22 19:40:18.522 [http-nio-8080-exec-4] ERROR c.e.t.service.auth.AuthService.login - Error login usuario lucas
+org.springframework.security.authentication.InternalAuthenticationServiceException: Usuario lucas no encontrado
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:121)
+	at org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider.authenticate(AbstractUserDetailsAuthenticationProvider.java:145)
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:183)
+	at com.example.trackify.service.auth.AuthService.login(AuthService.java:91)
+	at com.example.trackify.controller.AuthController.login(AuthController.java:77)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:252)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:184)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:934)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:853)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:86)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:866)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1000)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:649)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:874)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:128)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:235)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:376)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:132)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:86)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:181)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at com.example.trackify.config.security.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:44)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:96)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:237)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:195)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:317)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:355)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:272)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:199)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:77)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1801)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:946)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:480)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:57)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: com.example.trackify.exceptions.NotFoundEntityException: Usuario lucas no encontrado
+	at com.example.trackify.service.usuario.UsuarioService.lambda$loadUserByUsername$0(UsuarioService.java:24)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at com.example.trackify.service.usuario.UsuarioService.loadUserByUsername(UsuarioService.java:23)
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:106)
+	... 95 common frames omitted
+2026-06-22 19:40:18.530 [http-nio-8080-exec-4] ERROR c.e.t.e.ControllerExceptionHandler.unauthorizedException - Usuario o contraseña incorrectos
+com.example.trackify.exceptions.UnauthorizedException: Usuario o contraseña incorrectos
+	at com.example.trackify.service.auth.AuthService.login(AuthService.java:104)
+	at com.example.trackify.controller.AuthController.login(AuthController.java:77)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:252)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:184)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:934)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:853)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:86)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:866)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1000)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:649)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:874)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:128)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:235)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:376)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:132)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:86)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:181)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at com.example.trackify.config.security.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:44)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:96)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:237)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:195)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:317)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:355)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:272)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:199)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:77)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1801)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:946)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:480)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:57)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+2026-06-22 19:40:18.534 [http-nio-8080-exec-4] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.logException - Resolved [com.example.trackify.exceptions.UnauthorizedException: Usuario o contraseña incorrectos]
+2026-06-22 19:40:24.675 [http-nio-8080-exec-5] INFO  c.e.t.controller.AuthController.login - PETICIÓN LOGIN usuario luis
+2026-06-22 19:40:24.676 [http-nio-8080-exec-5] INFO  c.e.t.service.auth.AuthService.login - Intentando login usuario luis
+2026-06-22 19:40:24.807 [http-nio-8080-exec-5] INFO  c.e.t.c.security.JwtTokenProvider.generateToken - Generando token para usuario: luis
+2026-06-22 19:40:26.629 [http-nio-8080-exec-6] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: luis
+2026-06-22 19:40:26.630 [http-nio-8080-exec-6] INFO  c.e.t.controller.ContenidoController.filtrar - Petición de filtrado para usuario luis
+2026-06-22 20:34:37.458 [SpringApplicationShutdownHook] INFO  o.s.boot.tomcat.GracefulShutdown.shutDownGracefully - Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-22 20:34:37.464 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown.doShutdown - Graceful shutdown complete
+2026-06-22 20:34:37.473 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.destroy - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-22 20:34:37.477 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-1 - Shutdown initiated...
+2026-06-22 20:34:37.481 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-1 - Shutdown completed.

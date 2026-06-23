@@ -1,8 +1,10 @@
 package com.example.trackify;
 
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,11 +17,14 @@ import API.UtilREST;
 
 import org.json.JSONObject;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class FormularioActivity extends AppCompatActivity {
 
     private EditText etTitulo;
-    private EditText etGenero;
-    private EditText etEstado;
+    private Spinner spGenero;
+    private Spinner spEstado;
     private EditText etValoracion;
     private EditText etDescripcion;
     private EditText etImagenUrl;
@@ -36,14 +41,16 @@ public class FormularioActivity extends AppCompatActivity {
         setContentView(R.layout.activity_formulario);
 
         etTitulo = findViewById(R.id.etTitulo);
-        etGenero = findViewById(R.id.etGenero);
-        etEstado = findViewById(R.id.etEstado);
+        spGenero = findViewById(R.id.spGenero);
+        spEstado = findViewById(R.id.spEstado);
         etValoracion = findViewById(R.id.etValoracion);
         etDescripcion = findViewById(R.id.etDescripcion);
         etImagenUrl = findViewById(R.id.etImagenUrl);
         btnGuardar = findViewById(R.id.btnGuardar);
 
         token = TokenManager.getToken(this);
+
+        configurarSpinners();
 
         modo = getIntent().getStringExtra("modo");
 
@@ -76,6 +83,34 @@ public class FormularioActivity extends AppCompatActivity {
         btnGuardar.setOnClickListener(v -> guardar());
     }
 
+    private void configurarSpinners() {
+        ArrayAdapter<CharSequence> adapterGeneros =
+                ArrayAdapter.createFromResource(
+                        this,
+                        R.array.generos_array,
+                        android.R.layout.simple_spinner_item
+                );
+
+        adapterGeneros.setDropDownViewResource(
+                android.R.layout.simple_spinner_dropdown_item
+        );
+
+        spGenero.setAdapter(adapterGeneros);
+
+        ArrayAdapter<CharSequence> adapterEstados =
+                ArrayAdapter.createFromResource(
+                        this,
+                        R.array.estados_array,
+                        android.R.layout.simple_spinner_item
+                );
+
+        adapterEstados.setDropDownViewResource(
+                android.R.layout.simple_spinner_dropdown_item
+        );
+
+        spEstado.setAdapter(adapterEstados);
+    }
+
     private void cargarContenido() {
         API.obtenerContenido(contenidoId, token, new UtilREST.OnResponseListener() {
             @Override
@@ -89,10 +124,11 @@ public class FormularioActivity extends AppCompatActivity {
                 }
 
                 etTitulo.setText(contenido.getTitulo());
-                etGenero.setText(contenido.getGenero());
-                etEstado.setText(contenido.getEstado());
                 etDescripcion.setText(contenido.getDescripcion());
                 etImagenUrl.setText(contenido.getImagenUrl());
+
+                seleccionarSpinner(spGenero, contenido.getGenero());
+                seleccionarSpinner(spEstado, contenido.getEstado());
 
                 if (contenido.getValoracion() != null) {
                     etValoracion.setText(String.valueOf(contenido.getValoracion()));
@@ -107,6 +143,19 @@ public class FormularioActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private void seleccionarSpinner(Spinner spinner, String valor) {
+        if (valor == null) {
+            return;
+        }
+
+        for (int i = 0; i < spinner.getCount(); i++) {
+            if (spinner.getItemAtPosition(i).toString().equalsIgnoreCase(valor)) {
+                spinner.setSelection(i);
+                return;
+            }
+        }
     }
 
     private void guardar() {
@@ -125,22 +174,10 @@ public class FormularioActivity extends AppCompatActivity {
 
     private boolean validarFormulario() {
         String titulo = etTitulo.getText().toString().trim();
-        String genero = etGenero.getText().toString().trim();
-        String estado = etEstado.getText().toString().trim();
         String valoracionTexto = etValoracion.getText().toString().trim();
 
         if (titulo.isEmpty()) {
             etTitulo.setError("Introduce un título");
-            return false;
-        }
-
-        if (genero.isEmpty()) {
-            etGenero.setError("Introduce un género");
-            return false;
-        }
-
-        if (estado.isEmpty()) {
-            etEstado.setError("Introduce un estado");
             return false;
         }
 
@@ -168,8 +205,8 @@ public class FormularioActivity extends AppCompatActivity {
 
     private JSONObject crearJsonDesdeFormulario() {
         String titulo = etTitulo.getText().toString().trim();
-        String genero = etGenero.getText().toString().trim();
-        String estado = etEstado.getText().toString().trim();
+        String genero = spGenero.getSelectedItem().toString();
+        String estado = spEstado.getSelectedItem().toString();
         String descripcion = etDescripcion.getText().toString().trim();
         String imagenUrl = etImagenUrl.getText().toString().trim();
         int valoracion = Integer.parseInt(etValoracion.getText().toString().trim());
