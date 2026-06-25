@@ -82,21 +82,40 @@ public class API {
                                         String token,
                                         UtilREST.OnResponseListener listener) {
 
-        StringBuilder url = new StringBuilder(BASE_URL + "api/contenido/filtros?");
+        try {
+            StringBuilder url = new StringBuilder(BASE_URL + "api/contenido/filtros?");
 
-        if (tipo != null && !tipo.isEmpty()) url.append("tipo=").append(tipo).append("&");
-        if (genero != null && !genero.isEmpty()) url.append("genero=").append(genero).append("&");
-        if (estado != null && !estado.isEmpty()) url.append("estado=").append(estado).append("&");
-        if (valoracion != null) url.append("valoracion=").append(valoracion).append("&");
-        if (titulo != null && !titulo.isEmpty()) url.append("titulo=").append(titulo).append("&");
+            if (tipo != null && !tipo.isEmpty()) {
+                url.append("tipo=").append(java.net.URLEncoder.encode(tipo, "UTF-8")).append("&");
+            }
 
-        UtilREST.runQuery(
-                UtilREST.QueryType.GET,
-                url.toString(),
-                null,
-                token,
-                listener
-        );
+            if (genero != null && !genero.isEmpty()) {
+                url.append("genero=").append(java.net.URLEncoder.encode(genero, "UTF-8")).append("&");
+            }
+
+            if (estado != null && !estado.isEmpty()) {
+                url.append("estado=").append(java.net.URLEncoder.encode(estado, "UTF-8")).append("&");
+            }
+
+            if (valoracion != null) {
+                url.append("valoracion=").append(valoracion).append("&");
+            }
+
+            if (titulo != null && !titulo.isEmpty()) {
+                url.append("titulo=").append(java.net.URLEncoder.encode(titulo, "UTF-8")).append("&");
+            }
+
+            UtilREST.runQuery(
+                    UtilREST.QueryType.GET,
+                    url.toString(),
+                    null,
+                    token,
+                    listener
+            );
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void listarGeneros(String token, UtilREST.OnResponseListener listener) {
