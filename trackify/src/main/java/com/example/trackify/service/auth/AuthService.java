@@ -40,11 +40,7 @@ public class AuthService implements IAuthService {
 
     @Override
     public void register(CrearUsuarioDTO dto) {
-
-        logger.info("Registrando usuario {}", dto.getNombreUsuario());
-
         try {
-
             if (usuarioRepository.existsByNombreUsuario(dto.getNombreUsuario())) {
                 throw new DuplicateEntityException("El nombre de usuario ya existe");
             }

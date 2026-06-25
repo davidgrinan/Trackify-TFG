@@ -41,7 +41,7 @@ public class ListadoActivity extends AppCompatActivity {
         btnFiltros = findViewById(R.id.btnFiltros);
         btnAdd = findViewById(R.id.btnAdd);
         btnVolver = findViewById(R.id.btnVolver);
-        listViewContenido = findViewById(R.id.listViewContenido);
+        listViewContenido = findViewById(R.id.listViewContenidos);
 
         token = TokenManager.getToken(this);
         tipoSeleccionado = getIntent().getStringExtra("tipo");

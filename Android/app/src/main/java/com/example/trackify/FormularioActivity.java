@@ -195,8 +195,8 @@ public class FormularioActivity extends AppCompatActivity {
             return false;
         }
 
-        if (valoracion < 1 || valoracion > 10) {
-            etValoracion.setError("La valoración debe estar entre 1 y 10");
+        if (valoracion < 1 || valoracion > 5) {
+            etValoracion.setError("La valoración debe estar entre 1 y 5");
             return false;
         }
 
