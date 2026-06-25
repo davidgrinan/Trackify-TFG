@@ -58,44 +58,21 @@ public class perfilUsuarioActivity extends AppCompatActivity {
         crearCanalNotificaciones();
 
         tvEditarPerfil.setOnClickListener(v ->
-                mostrarToastPersonalizado(
+                ToastTrackify.mostrar(
+                        this,
                         "Funcionalidad disponible próximamente"
                 )
         );
 
         tvCambiarPassword.setOnClickListener(v -> mostrarDialogoCambiarPassword());
 
-        tvAjustes.setOnClickListener(v ->
-               mostrarToastPersonalizado(
-                       "Funcionalidad disponible proximamente"
-               )
-        );
+        tvAjustes.setOnClickListener(v -> {
+            Intent intent = new Intent(perfilUsuarioActivity.this, AjustesActivity.class);
+            startActivity(intent);
+        });
 
         tvCerrarSesion.setOnClickListener(v -> confirmarCerrarSesion());
     }
-
-    private void mostrarToastPersonalizado(String mensaje) {
-
-        LayoutInflater inflater = getLayoutInflater();
-
-        View layout =
-                inflater.inflate(
-                        R.layout.toast_trackify,
-                        findViewById(android.R.id.content),
-                        false
-                );
-
-        TextView texto =
-                layout.findViewById(R.id.txtToast);
-
-        texto.setText(mensaje);
-
-        Toast toast = new Toast(this);
-        toast.setDuration(Toast.LENGTH_SHORT);
-        toast.setView(layout);
-        toast.show();
-    }
-
     private void mostrarDialogoCambiarPassword() {
         EditText inputPassword = new EditText(this);
         inputPassword.setHint("Nueva contraseña");
@@ -108,7 +85,7 @@ public class perfilUsuarioActivity extends AppCompatActivity {
                     String nuevaPassword = inputPassword.getText().toString().trim();
 
                     if (nuevaPassword.isEmpty()) {
-                        Toast.makeText(this, "Introduce una contraseña", Toast.LENGTH_SHORT).show();
+                        ToastTrackify.mostrar(perfilUsuarioActivity.this, "Introduce una contraseña");
                         return;
                     }
 
@@ -124,22 +101,20 @@ public class perfilUsuarioActivity extends AppCompatActivity {
         API.cambiarPassword(json, token, new UtilREST.OnResponseListener() {
             @Override
             public void onSuccess(UtilREST.Response r) {
-                Toast.makeText(
+                ToastTrackify.mostrar(
                         perfilUsuarioActivity.this,
-                        "Contraseña cambiada correctamente",
-                        Toast.LENGTH_SHORT
-                ).show();
+                        "Contraseña cambiada correctamente"
+                );
 
                 mostrarNotificacionCambioPassword();
             }
 
             @Override
             public void onError(UtilREST.Response r) {
-                Toast.makeText(
+                ToastTrackify.mostrar(
                         perfilUsuarioActivity.this,
-                        "Error cambiando contraseña",
-                        Toast.LENGTH_SHORT
-                ).show();
+                        "Error cambiando contraseña"
+                );
             }
         });
     }
@@ -197,7 +172,7 @@ public class perfilUsuarioActivity extends AppCompatActivity {
     private void cerrarSesion() {
         TokenManager.clearToken(this);
 
-        Toast.makeText(this, "Sesión cerrada", Toast.LENGTH_SHORT).show();
+        ToastTrackify.mostrar(perfilUsuarioActivity.this, "Sesión cerrada");
 
         Intent intent = new Intent(perfilUsuarioActivity.this, LoginActivity.class);
         startActivity(intent);

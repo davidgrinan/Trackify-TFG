@@ -2,10 +2,7 @@ package com.example.trackify;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -65,14 +62,14 @@ public class LoginActivity extends AppCompatActivity {
                 String token = UtilJSONParser.parseToken(r.content);
 
                 if (token == null || token.isEmpty()) {
-                    mostrarToastPersonalizado("Error al iniciar sesion");
+                    ToastTrackify.mostrar(LoginActivity.this, "Error al iniciar sesión");
                     return;
                 }
 
                 TokenManager.saveToken(LoginActivity.this, token);
                 TokenManager.saveUsername(LoginActivity.this, usuario);
 
-                mostrarToastPersonalizado("Login correcto");
+                ToastTrackify.mostrar(LoginActivity.this, "Login correcto");
 
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
@@ -81,26 +78,10 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onError(UtilREST.Response r) {
-                mostrarToastPersonalizado("Usuario o contraseña incorrectos");
+                ToastTrackify.mostrar(LoginActivity.this, "Usuario o contraseña incorrectos");
             }
         });
     }
 
-    private void mostrarToastPersonalizado(String mensaje) {
-        LayoutInflater inflater = getLayoutInflater();
 
-        View layout = inflater.inflate(
-                R.layout.toast_trackify,
-                findViewById(android.R.id.content),
-                false
-        );
-
-        TextView texto = layout.findViewById(R.id.txtToast);
-        texto.setText(mensaje);
-
-        Toast toast = new Toast(this);
-        toast.setDuration(Toast.LENGTH_SHORT);
-        toast.setView(layout);
-        toast.show();
-    }
 }

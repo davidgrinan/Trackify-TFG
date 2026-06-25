@@ -2,10 +2,7 @@ package com.example.trackify;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -74,7 +71,7 @@ public class RegistroActivity extends AppCompatActivity {
         API.register(jsonRegistro, new UtilREST.OnResponseListener() {
             @Override
             public void onSuccess(UtilREST.Response r) {
-                mostrarToastPersonalizado("Usuario registrado");
+                ToastTrackify.mostrar(RegistroActivity.this, "Usuario registrado");
 
                 Intent intent = new Intent(RegistroActivity.this, LoginActivity.class);
                 startActivity(intent);
@@ -83,26 +80,8 @@ public class RegistroActivity extends AppCompatActivity {
 
             @Override
             public void onError(UtilREST.Response r) {
-                mostrarToastPersonalizado("Error registrando usuario");
+                ToastTrackify.mostrar(RegistroActivity.this, "Error registrando usuario");
             }
         });
-    }
-
-    private void mostrarToastPersonalizado(String mensaje) {
-        LayoutInflater inflater = getLayoutInflater();
-
-        View layout = inflater.inflate(
-                R.layout.toast_trackify,
-                findViewById(android.R.id.content),
-                false
-        );
-
-        TextView texto = layout.findViewById(R.id.txtToast);
-        texto.setText(mensaje);
-
-        Toast toast = new Toast(this);
-        toast.setDuration(Toast.LENGTH_SHORT);
-        toast.setView(layout);
-        toast.show();
     }
 }

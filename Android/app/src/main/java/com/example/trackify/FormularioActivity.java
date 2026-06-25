@@ -118,7 +118,7 @@ public class FormularioActivity extends AppCompatActivity {
                 ContenidoModel contenido = UtilJSONParser.parseContenido(r.content);
 
                 if (contenido == null) {
-                    Toast.makeText(FormularioActivity.this, "Error leyendo contenido", Toast.LENGTH_SHORT).show();
+                    ToastTrackify.mostrar(FormularioActivity.this, "Error leyendo contenido");
                     finish();
                     return;
                 }
@@ -139,7 +139,7 @@ public class FormularioActivity extends AppCompatActivity {
 
             @Override
             public void onError(UtilREST.Response r) {
-                Toast.makeText(FormularioActivity.this, "Error cargando contenido", Toast.LENGTH_SHORT).show();
+                ToastTrackify.mostrar(FormularioActivity.this, "Error cargando contenido");
                 finish();
             }
         });
@@ -226,13 +226,13 @@ public class FormularioActivity extends AppCompatActivity {
         API.crearContenido(json, token, new UtilREST.OnResponseListener() {
             @Override
             public void onSuccess(UtilREST.Response r) {
-                Toast.makeText(FormularioActivity.this, "Contenido creado correctamente", Toast.LENGTH_SHORT).show();
+                ToastTrackify.mostrar(FormularioActivity.this, "Contenido creado correctamente");
                 finish();
             }
 
             @Override
             public void onError(UtilREST.Response r) {
-                Toast.makeText(FormularioActivity.this, "Error creando contenido", Toast.LENGTH_SHORT).show();
+                ToastTrackify.mostrar(FormularioActivity.this, "Error creando contenido");
             }
         });
     }
@@ -241,13 +241,13 @@ public class FormularioActivity extends AppCompatActivity {
         API.actualizarContenido(contenidoId, json, token, new UtilREST.OnResponseListener() {
             @Override
             public void onSuccess(UtilREST.Response r) {
-                Toast.makeText(FormularioActivity.this, "Contenido actualizado correctamente", Toast.LENGTH_SHORT).show();
+                ToastTrackify.mostrar(FormularioActivity.this, "Contenido actualizado correctamente");
                 finish();
             }
 
             @Override
             public void onError(UtilREST.Response r) {
-                Toast.makeText(FormularioActivity.this, "Error actualizando contenido", Toast.LENGTH_SHORT).show();
+                ToastTrackify.mostrar(FormularioActivity.this, "Error actualizando contenido");
             }
         });
     }

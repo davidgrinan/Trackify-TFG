@@ -4,11 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
-import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-
 import API.TokenManager;
 
 public class MainActivity extends AppCompatActivity {
@@ -59,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     private void cerrarSesion() {
         TokenManager.clearToken(this);
 
-        Toast.makeText(this, "Sesión cerrada", Toast.LENGTH_SHORT).show();
+        ToastTrackify.mostrar(this, "Sesión cerrada");
 
         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(intent);
@@ -78,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
             String opcion = item.getTitle().toString();
 
             if (opcion.equals("Inicio")) {
-                Toast.makeText(this, "Ya estás en inicio", Toast.LENGTH_SHORT).show();
+                ToastTrackify.mostrar(this, "Ya estás en inicio");
                 return true;
             }
 

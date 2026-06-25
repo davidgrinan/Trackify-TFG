@@ -60,7 +60,23 @@ public class ContenidoAdapter extends BaseAdapter {
         tvEstado.setText(contenido.getEstado());
 
         if (contenido.getValoracion() != null) {
-            tvValoracion.setText("⭐ " + contenido.getValoracion() + "/10");
+            android.content.SharedPreferences preferences =
+                    context.getSharedPreferences(AjustesActivity.PREFS_NAME, Context.MODE_PRIVATE);
+
+            String valoracionMaxima =
+                    preferences.getString(AjustesActivity.KEY_VALORACION_MAXIMA, "5");
+
+            if (contenido.getValoracion() != null) {
+                int valoracion = contenido.getValoracion();
+
+                if (valoracionMaxima.equals("10")) {
+                    tvValoracion.setText("⭐ " + (valoracion * 2) + "/10");
+                } else {
+                    tvValoracion.setText("⭐ " + valoracion + "/5");
+                }
+            } else {
+                tvValoracion.setText("Sin valoración");
+            }
         } else {
             tvValoracion.setText("Sin valoración");
         }

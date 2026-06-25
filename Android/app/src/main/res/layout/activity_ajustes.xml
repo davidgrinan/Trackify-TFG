@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ajustes"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="#333333"
+            android:layout_marginBottom="24dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Idioma de la aplicación"
+            android:textStyle="bold"
+            android:textSize="17sp" />
+
+        <Spinner
+            android:id="@+id/spIdioma"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginBottom="18dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tema visual"
+            android:textStyle="bold"
+            android:textSize="17sp" />
+
+        <Spinner
+            android:id="@+id/spTema"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginBottom="18dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Orden por defecto del listado"
+            android:textStyle="bold"
+            android:textSize="17sp" />
+
+        <Spinner
+            android:id="@+id/spOrdenListado"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginBottom="18dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Valoración máxima"
+            android:textStyle="bold"
+            android:textSize="17sp" />
+
+        <Spinner
+            android:id="@+id/spValoracionMaxima"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginBottom="28dp" />
+
+        <Button
+            android:id="@+id/btnGuardarAjustes"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="GUARDAR AJUSTES"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#6200EA"
+            android:layout_marginTop="10dp" />
+
+        <Button
+            android:id="@+id/btnRestablecerAjustes"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="RESTABLECER AJUSTES"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#9E9E9E"
+            android:layout_marginTop="12dp" />
+
+        <Button
+            android:id="@+id/btnVolver"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="VOLVER"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#333333"
+            android:layout_marginTop="12dp" />
+
+    </LinearLayout>
+
+</ScrollView>

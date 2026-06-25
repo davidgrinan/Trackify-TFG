@@ -17,6 +17,9 @@ import API.ContenidoModel;
 import API.TokenManager;
 import API.UtilJSONParser;
 import API.UtilREST;
+import android.net.Uri;
+import android.view.Menu;
+import android.view.MenuItem;
 
 public class DetalleActivity extends AppCompatActivity {
 
@@ -53,7 +56,7 @@ public class DetalleActivity extends AppCompatActivity {
         contenidoId = getIntent().getLongExtra("contenidoId", -1);
 
         if (contenidoId == -1) {
-            Toast.makeText(this, "Contenido no válido", Toast.LENGTH_SHORT).show();
+            ToastTrackify.mostrar(this, "Contenido no válido");
             finish();
             return;
         }
@@ -75,7 +78,7 @@ public class DetalleActivity extends AppCompatActivity {
                 contenidoActual = UtilJSONParser.parseContenido(r.content);
 
                 if (contenidoActual == null) {
-                    Toast.makeText(DetalleActivity.this, "Error leyendo contenido", Toast.LENGTH_SHORT).show();
+                    ToastTrackify.mostrar(DetalleActivity.this, "Error leyendo contenido");
                     finish();
                     return;
                 }
@@ -85,7 +88,7 @@ public class DetalleActivity extends AppCompatActivity {
 
             @Override
             public void onError(UtilREST.Response r) {
-                Toast.makeText(DetalleActivity.this, "Error cargando detalle", Toast.LENGTH_SHORT).show();
+                ToastTrackify.mostrar(DetalleActivity.this, "Error al cargar contenido");
 
                 if (r.responseCode == 401) {
                     TokenManager.clearToken(DetalleActivity.this);
@@ -105,7 +108,7 @@ public class DetalleActivity extends AppCompatActivity {
         tvDescripcionDetalle.setText(contenidoActual.getDescripcion());
 
         if (contenidoActual.getValoracion() != null) {
-            tvValoracionDetalle.setText("⭐ Valoración: " + contenidoActual.getValoracion() + "/10");
+            tvValoracionDetalle.setText("⭐ Valoración: " + contenidoActual.getValoracion() + "/5");
         } else {
             tvValoracionDetalle.setText("⭐ Sin valoración");
         }
@@ -141,14 +144,110 @@ public class DetalleActivity extends AppCompatActivity {
         API.eliminarContenido(contenidoId, token, new UtilREST.OnResponseListener() {
             @Override
             public void onSuccess(UtilREST.Response r) {
-                Toast.makeText(DetalleActivity.this, "Contenido eliminado", Toast.LENGTH_SHORT).show();
+                ToastTrackify.mostrar(DetalleActivity.this, "Contenido eliminado");
                 finish();
             }
 
             @Override
             public void onError(UtilREST.Response r) {
-                Toast.makeText(DetalleActivity.this, "Error eliminando contenido", Toast.LENGTH_SHORT).show();
+                ToastTrackify.mostrar(DetalleActivity.this, "Error eliminando contenido");
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_detalle, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (contenidoActual == null) {
+            ToastTrackify.mostrar(DetalleActivity.this, "Contenido no cargado");
+            return true;
+        }
+
+        int id = item.getItemId();
+
+        if (id == R.id.menuCompartir) {
+            compartirContenido();
+            return true;
+        }
+
+        if (id == R.id.menuAbrirWeb) {
+            abrirWebContenido();
+            return true;
+        }
+
+        if (id == R.id.menuEnviarEmail) {
+            enviarPorEmail();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void compartirContenido() {
+        String texto = "Te recomiendo este contenido de Trackify:\n\n"
+                + contenidoActual.getTitulo()
+                + "\nTipo: " + contenidoActual.getTipo()
+                + "\nGénero: " + contenidoActual.getGenero()
+                + "\nEstado: " + contenidoActual.getEstado()
+                + "\nValoración: " + contenidoActual.getValoracion() + "/5";
+
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT, texto);
+
+        startActivity(Intent.createChooser(intent, "Compartir con"));
+    }
+
+    private void abrirWebContenido() {
+        String titulo = contenidoActual.getTitulo();
+        String tipo = contenidoActual.getTipo();
+
+        if (titulo == null || titulo.isEmpty()) {
+            ToastTrackify.mostrar(DetalleActivity.this, "Este contenido no tiene título");
+            return;
+        }
+
+        String tituloCodificado = Uri.encode(titulo);
+        String url;
+
+        if (tipo != null && (tipo.equalsIgnoreCase("Película") || tipo.equalsIgnoreCase("Pelicula"))) {
+            url = "https://www.imdb.com/find/?q=" + tituloCodificado + "&s=tt";
+
+        } else if (tipo != null && tipo.equalsIgnoreCase("Serie")) {
+            url = "https://www.imdb.com/find/?q=" + tituloCodificado + "&s=tt";
+
+        } else if (tipo != null && tipo.equalsIgnoreCase("Videojuego")) {
+            url = "https://www.metacritic.com/search/" + tituloCodificado + "/";
+
+        } else {
+            url = "https://www.google.com/search?q=" + Uri.encode(titulo + " " + tipo);
+        }
+
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        startActivity(intent);
+    }
+
+    private void enviarPorEmail() {
+        String asunto = "Contenido recomendado: " + contenidoActual.getTitulo();
+
+        String cuerpo = "Hola,\n\nTe recomiendo este contenido:\n\n"
+                + "Título: " + contenidoActual.getTitulo()
+                + "\nTipo: " + contenidoActual.getTipo()
+                + "\nGénero: " + contenidoActual.getGenero()
+                + "\nEstado: " + contenidoActual.getEstado()
+                + "\nValoración: " + contenidoActual.getValoracion() + "/5"
+                + "\n\nEnviado desde Trackify.";
+
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:"));
+        intent.putExtra(Intent.EXTRA_SUBJECT, asunto);
+        intent.putExtra(Intent.EXTRA_TEXT, cuerpo);
+
+        startActivity(Intent.createChooser(intent, "Enviar email"));
     }
 }

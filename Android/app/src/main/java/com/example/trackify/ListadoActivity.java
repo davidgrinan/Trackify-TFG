@@ -22,6 +22,7 @@ import API.UtilJSONParser;
 import API.UtilREST;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ListadoActivity extends AppCompatActivity {
@@ -155,7 +156,6 @@ public class ListadoActivity extends AppCompatActivity {
                                          String estado,
                                          Integer valoracion,
                                          String titulo) {
-
         API.filtrarContenido(
                 tipoSeleccionado,
                 genero,
@@ -166,29 +166,26 @@ public class ListadoActivity extends AppCompatActivity {
                 new UtilREST.OnResponseListener() {
                     @Override
                     public void onSuccess(UtilREST.Response r) {
-                        List<ContenidoModel> contenidos =
-                                UtilJSONParser.parseArrayContenidos(r.content);
+                        List<ContenidoModel> contenidos = UtilJSONParser.parseArrayContenidos(r.content);
 
                         listaContenidos.clear();
                         listaContenidos.addAll(contenidos);
                         adapter.notifyDataSetChanged();
 
                         if (listaContenidos.isEmpty()) {
-                            Toast.makeText(
+                            ToastTrackify.mostrar(
                                     ListadoActivity.this,
-                                    "No hay resultados con esos filtros",
-                                    Toast.LENGTH_SHORT
-                            ).show();
+                                    "No hay resultados con esos filtros"
+                            );
                         }
                     }
 
                     @Override
                     public void onError(UtilREST.Response r) {
-                        Toast.makeText(
-                                ListadoActivity.this,
-                                "Error aplicando filtros",
-                                Toast.LENGTH_SHORT
-                        ).show();
+                       ToastTrackify.mostrar(
+                               ListadoActivity.this,
+                               "No se han podido aplicar los filtros"
+                       );
                     }
                 }
         );
@@ -203,7 +200,7 @@ public class ListadoActivity extends AppCompatActivity {
 
     private void cargarContenido() {
         if (token == null || token.isEmpty()) {
-            Toast.makeText(this, "Sesión caducada", Toast.LENGTH_SHORT).show();
+            ToastTrackify.mostrar(this, "Sesión caducada");
             volverLogin();
             return;
         }
@@ -223,24 +220,23 @@ public class ListadoActivity extends AppCompatActivity {
 
                         listaContenidos.clear();
                         listaContenidos.addAll(contenidos);
+                        aplicarOrdenPreferido();
                         adapter.notifyDataSetChanged();
 
                         if (listaContenidos.isEmpty()) {
-                            Toast.makeText(
+                            ToastTrackify.mostrar(
                                     ListadoActivity.this,
-                                    "No hay contenido de tipo " + tipoSeleccionado,
-                                    Toast.LENGTH_SHORT
-                            ).show();
+                                    "No hay contenido de tipo " + tipoSeleccionado
+                            );
                         }
                     }
 
                     @Override
                     public void onError(UtilREST.Response r) {
-                        Toast.makeText(
+                        ToastTrackify.mostrar(
                                 ListadoActivity.this,
-                                "Error cargando contenido",
-                                Toast.LENGTH_SHORT
-                        ).show();
+                                "No se ha podido cargar el contenido"
+                        );
 
                         if (r.responseCode == 401) {
                             TokenManager.clearToken(ListadoActivity.this);
@@ -250,7 +246,34 @@ public class ListadoActivity extends AppCompatActivity {
                 }
         );
     }
+    private void aplicarOrdenPreferido() {
+        android.content.SharedPreferences preferences =
+                getSharedPreferences(AjustesActivity.PREFS_NAME, MODE_PRIVATE);
 
+        String orden =
+                preferences.getString(AjustesActivity.KEY_ORDEN_LISTADO, "Título");
+
+        if (orden.equals("Título")) {
+            Collections.sort(listaContenidos, (c1, c2) ->
+                    c1.getTitulo().compareToIgnoreCase(c2.getTitulo())
+            );
+        }
+
+        if (orden.equals("Valoración")) {
+            Collections.sort(listaContenidos, (c1, c2) -> {
+                int v1 = c1.getValoracion() == null ? 0 : c1.getValoracion();
+                int v2 = c2.getValoracion() == null ? 0 : c2.getValoracion();
+
+                return Integer.compare(v2, v1);
+            });
+        }
+
+        if (orden.equals("Estado")) {
+            Collections.sort(listaContenidos, (c1, c2) ->
+                    c1.getEstado().compareToIgnoreCase(c2.getEstado())
+            );
+        }
+    }
     private void volverLogin() {
         Intent intent = new Intent(ListadoActivity.this, LoginActivity.class);
         startActivity(intent);
