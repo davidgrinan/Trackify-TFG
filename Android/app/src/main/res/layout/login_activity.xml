@@ -18,7 +18,7 @@
             android:id="@+id/logo_icon"
             android:layout_width="172dp"
             android:layout_height="150dp"
-            android:contentDescription="Logo Trackify"
+            android:contentDescription="@string/logo_trackify"
             android:src="@drawable/logo_trackify" />
 
         <LinearLayout
@@ -30,7 +30,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Track"
+                android:text="@string/track_text"
                 android:textColor="#00BFA5"
                 android:textSize="40sp"
                 android:textStyle="bold" />
@@ -38,7 +38,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ify"
+                android:text="@string/ify_text"
                 android:textColor="#6200EA"
                 android:textSize="40sp"
                 android:textStyle="bold" />
@@ -47,7 +47,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Inicia sesión en tu cuenta"
+            android:text="@string/login_subtitulo"
             android:textSize="16sp"
             android:textColor="#757575"
             android:layout_marginTop="8dp"
@@ -71,7 +71,7 @@
                 android:id="@+id/etUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Usuario"
+                android:hint="@string/usuario"
                 android:textColor="#212121"
                 android:inputType="textEmailAddress"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -96,7 +96,7 @@
                 android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Contraseña"
+                android:hint="@string/password"
                 android:textColor="#212121"
                 android:inputType="textPassword"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -105,7 +105,7 @@
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:text="INICIAR SESIÓN"
+            android:text="@string/iniciar_sesion_mayus"
             android:textSize="15sp"
             android:textStyle="bold"
             app:cornerRadius="14dp"
@@ -120,7 +120,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="¿No tienes cuenta? "
+                android:text="@string/no_tienes_cuenta"
                 android:textColor="#757575"
                 android:textSize="18sp" />
 
@@ -130,7 +130,7 @@
             android:id="@+id/tvRegistrate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Regístrate"
+            android:text="@string/registrate"
             android:textColor="#6200EA"
             android:textSize="18sp"
             android:textStyle="bold" />

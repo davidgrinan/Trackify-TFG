@@ -32,7 +32,7 @@
             android:id="@+id/tvTituloDetalle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="The Batman"
+            android:text="@string/titulo_ejemplo_detalle"
             android:textSize="28sp"
             android:textStyle="bold"
             android:textColor="#212121"
@@ -44,16 +44,16 @@
             android:columnCount="2"
             android:useDefaultMargins="true">
 
-            <TextView android:id="@+id/tvTipoDetalle" android:text="Tipo: Película" android:textColor="#6200EA" android:textStyle="bold"/>
-            <TextView android:id="@+id/tvGeneroDetalle" android:text="Género: Acción" android:textColor="#777777"/>
-            <TextView android:id="@+id/tvValoracionDetalle" android:text="⭐ Valoración: 5/5" android:textColor="#FFB300" android:textStyle="bold"/>
-            <TextView android:id="@+id/tvEstadoDetalle" android:text="Estado: Pendiente" android:textColor="#FF3D57" android:textStyle="bold"/>
+            <TextView android:id="@+id/tvTipoDetalle" android:text="@string/tipo_ejemplo_detalle" android:textColor="#6200EA" android:textStyle="bold"/>
+            <TextView android:id="@+id/tvGeneroDetalle" android:text="@string/genero_ejemplo_detalle" android:textColor="#777777"/>
+            <TextView android:id="@+id/tvValoracionDetalle" android:text="@string/valoracion_ejemplo_detalle" android:textColor="#FFB300" android:textStyle="bold"/>
+            <TextView android:id="@+id/tvEstadoDetalle" android:text="@string/estado_ejemplo_detalle" android:textColor="#FF3D57" android:textStyle="bold"/>
         </GridLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Descripción"
+            android:text="@string/descripcion"
             android:textStyle="bold"
             android:layout_marginTop="20dp"
             android:textColor="#212121"/>
@@ -62,7 +62,7 @@
             android:id="@+id/tvDescripcionDetalle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Aquí aparecerá toda la descripción detallada del contenido..."
+            android:text="@string/descripcion_ejemplo_detalle"
             android:layout_marginTop="8dp"
             android:lineSpacingExtra="4dp"/>
 
@@ -82,7 +82,7 @@
                 android:layout_width="0dp"
                 android:layout_height="55dp"
                 android:layout_weight="1"
-                android:text="EDITAR"
+                android:text="@string/editar_mayus"
                 app:backgroundTint="#5B2EFF"
                 android:textColor="#FFFFFF"
                 app:cornerRadius="12dp"/>
@@ -92,7 +92,7 @@
                 android:layout_width="0dp"
                 android:layout_height="55dp"
                 android:layout_weight="1"
-                android:text="ELIMINAR"
+                android:text="@string/eliminar_mayus"
                 app:backgroundTint="#FF3D57"
                 android:textColor="#FFFFFF"
                 android:layout_marginStart="16dp"

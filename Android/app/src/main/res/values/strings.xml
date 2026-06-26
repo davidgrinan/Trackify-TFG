@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Trackify</string>
+    <string name="track_text">Track</string>
+    <string name="ify_text">ify</string>
+    <string name="logo_trackify">Logo Trackify</string>
 
     <string-array name="generos_array">
         <item>Acción</item>
@@ -13,7 +16,6 @@
         <item>Pendiente</item>
         <item>No ver</item>
     </string-array>
-
 
     <string-array name="generos_filtro_array">
         <item>Todos</item>
@@ -30,4 +32,159 @@
         <item>No ver</item>
     </string-array>
 
+    <string name="volver">VOLVER</string>
+    <string name="guardar">GUARDAR</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="eliminar_mayus">ELIMINAR</string>
+    <string name="editar_mayus">EDITAR</string>
+    <string name="si">Sí</string>
+    <string name="no">No</string>
+
+    <string name="login_subtitulo">Inicia sesión en tu cuenta</string>
+    <string name="iniciar_sesion_mayus">INICIAR SESIÓN</string>
+    <string name="inicia_sesion">Inicia sesión</string>
+    <string name="no_tienes_cuenta">¿No tienes cuenta? </string>
+    <string name="registrate">Regístrate</string>
+    <string name="crear_cuenta_subtitulo">Crea una cuenta para empezar</string>
+    <string name="registrarse_mayus">REGISTRARSE</string>
+    <string name="ya_tienes_cuenta">¿Ya tienes cuenta? </string>
+    <string name="usuario">Usuario</string>
+    <string name="nombre_usuario">Nombre de usuario</string>
+    <string name="correo_electronico">Correo electrónico</string>
+    <string name="password">Contraseña</string>
+    <string name="repetir_password">Repetir contraseña</string>
+    <string name="login_correcto">Login correcto</string>
+    <string name="error_login">Usuario o contraseña incorrectos</string>
+    <string name="error_iniciar_sesion">Error al iniciar sesión</string>
+    <string name="usuario_registrado">Usuario registrado</string>
+    <string name="error_registro">Error registrando usuario</string>
+
+    <string name="inicio">Inicio</string>
+    <string name="perfil">Perfil</string>
+    <string name="acerca_de">Acerca de</string>
+    <string name="cerrar_sesion">Cerrar sesión</string>
+    <string name="ya_estas_inicio">Ya estás en inicio</string>
+    <string name="sesion_cerrada">Sesión cerrada</string>
+    <string name="peliculas">Películas</string>
+    <string name="series">Series</string>
+    <string name="videojuegos">Videojuegos</string>
+    <string name="salir">Salir</string>
+
+    <string name="contenido_no_valido">Contenido no válido</string>
+    <string name="contenido_no_cargado">Contenido no cargado</string>
+    <string name="error_leyendo_contenido">Error leyendo contenido</string>
+    <string name="error_cargando_detalle">Error cargando detalle</string>
+    <string name="contenido_eliminado">Contenido eliminado</string>
+    <string name="error_eliminando_contenido">Error eliminando contenido</string>
+    <string name="contenido_creado">Contenido creado correctamente</string>
+    <string name="contenido_actualizado">Contenido actualizado correctamente</string>
+    <string name="error_creando_contenido">Error creando contenido</string>
+    <string name="error_actualizando_contenido">Error actualizando contenido</string>
+    <string name="informacion_contenido">Información del Contenido</string>
+    <string name="guardar_cambios">GUARDAR CAMBIOS</string>
+    <string name="titulo">Título</string>
+    <string name="valoracion_1_5">Valoración (1-5)</string>
+    <string name="descripcion">Descripción</string>
+    <string name="descripcion_completa_hint">Descripción completa...</string>
+    <string name="url_imagen">URL de la imagen</string>
+    <string name="categoria">Categoría</string>
+    <string name="volver_menu">VOLVER AL MENÚ</string>
+
+    <string name="titulo_ejemplo_detalle">The Batman</string>
+    <string name="tipo_ejemplo_detalle">Tipo: Película</string>
+    <string name="genero_ejemplo_detalle">Género: Acción</string>
+    <string name="valoracion_ejemplo_detalle">⭐ Valoración: 5/5</string>
+    <string name="estado_ejemplo_detalle">Estado: Pendiente</string>
+    <string name="descripcion_ejemplo_detalle">Aquí aparecerá toda la descripción detallada del contenido...</string>
+    <string name="item_titulo_ejemplo">Interstellar</string>
+    <string name="item_genero_ejemplo">Drama</string>
+    <string name="item_estado_ejemplo">Visto</string>
+    <string name="item_valoracion_ejemplo">⭐ 5/5</string>
+
+    <string name="filtrar_contenidos">Filtrar contenidos</string>
+    <string name="filtrar">Filtrar</string>
+    <string name="quitar_filtros">Quitar filtros</string>
+    <string name="valoracion_no_valida">Valoración no válida</string>
+    <string name="sin_resultados_filtros">No hay resultados con esos filtros</string>
+    <string name="error_filtros">No se han podido aplicar los filtros</string>
+    <string name="valoracion_minima">Valoración mínima</string>
+    <string name="buscar_titulo">Buscar por título</string>
+
+    <string name="compartir">Compartir</string>
+    <string name="abrir_web">Abrir web</string>
+    <string name="enviar_email">Enviar por email</string>
+    <string name="compartir_con">Compartir con</string>
+    <string name="titulo_vacio">Este contenido no tiene título</string>
+
+    <string name="ajustes">Ajustes</string>
+    <string name="idioma_aplicacion">Idioma de la aplicación</string>
+    <string name="tema_visual">Tema visual</string>
+    <string name="orden_defecto">Orden por defecto del listado</string>
+    <string name="valoracion_maxima">Valoración máxima</string>
+    <string name="guardar_ajustes">GUARDAR AJUSTES</string>
+    <string name="restablecer_ajustes">RESTABLECER AJUSTES</string>
+    <string name="ajustes_guardados">Ajustes guardados correctamente</string>
+    <string name="ajustes_restablecidos">Ajustes restablecidos</string>
+
+    <string name="editar_perfil_opcion">Editar Perfil &gt;</string>
+    <string name="cambiar_password_opcion">Cambiar Contraseña &gt;</string>
+    <string name="ajustes_opcion">Ajustes &gt;</string>
+    <string name="funcionalidad_proximamente">Funcionalidad disponible próximamente</string>
+    <string name="cambiar_password">Cambiar contraseña</string>
+    <string name="nueva_password">Nueva contraseña</string>
+    <string name="introduce_password">Introduce una contraseña</string>
+    <string name="password_cambiada">Contraseña cambiada correctamente</string>
+    <string name="error_password">Error cambiando contraseña</string>
+    <string name="confirmar_cerrar_sesion">¿Seguro que quieres cerrar sesión?</string>
+
+    <string name="about_description">Trackify es una aplicación para gestionar y hacer seguimiento de contenido multimedia como películas, series y videojuegos.</string>
+    <string name="contenido_multimedia">Contenido multimedia</string>
+    <string name="autor">Autor</string>
+    <string name="autor_nombre">David Griñán Ortigosa</string>
+    <string name="proyecto_dam_pmdm">Proyecto DAM - PMDM</string>
+
+    <string name="introduce_usuario">Introduce el usuario</string>
+    <string name="introduce_email">Introduce el email</string>
+    <string name="introduce_contrasena">Introduce la contraseña</string>
+    <string name="passwords_no_coinciden">Las contraseñas no coinciden</string>
+    <string name="introduce_titulo">Introduce un título</string>
+    <string name="introduce_valoracion">Introduce una valoración</string>
+    <string name="valoracion_debe_numero">La valoración debe ser un número</string>
+    <string name="valoracion_entre_1_5">La valoración debe estar entre 1 y 5</string>
+    <string name="actualizar_contenido_mayus">ACTUALIZAR CONTENIDO</string>
+    <string name="guardar_contenido_mayus">GUARDAR CONTENIDO</string>
+    <string name="error_cargando_contenido">Error cargando contenido</string>
+    <string name="no_se_pudo_cargar_contenido">No se ha podido cargar el contenido</string>
+    <string name="sesion_caducada">Sesión caducada</string>
+    <string name="no_hay_contenido_tipo">No hay contenido de tipo %1$s</string>
+    <string name="tipo_formato">Tipo: %1$s</string>
+    <string name="genero_formato">Género: %1$s</string>
+    <string name="estado_formato">Estado: %1$s</string>
+    <string name="valoracion_formato">⭐ Valoración: %1$s/5</string>
+    <string name="sin_valoracion">⭐ Sin valoración</string>
+    <string name="eliminar_contenido">Eliminar contenido</string>
+    <string name="confirmar_eliminar_contenido">¿Seguro que quieres eliminar este contenido?</string>
+    <string name="texto_compartir_contenido">Te recomiendo este contenido de Trackify:
+
+%1$s
+Tipo: %2$s
+Género: %3$s
+Estado: %4$s
+Valoración: %5$s/5</string>
+    <string name="asunto_email_contenido">Contenido recomendado: %1$s</string>
+    <string name="cuerpo_email_contenido">Hola,
+
+Te recomiendo este contenido:
+
+Título: %1$s
+Tipo: %2$s
+Género: %3$s
+Estado: %4$s
+Valoración: %5$s/5
+
+Enviado desde Trackify.</string>
+    <string name="enviar_email_chooser">Enviar email</string>
+    <string name="notificacion_cambio_password_titulo">Cambio de contraseña</string>
+    <string name="notificacion_cambio_password_texto">La contraseña de usuario %1$s se ha cambiado correctamente</string>
 </resources>

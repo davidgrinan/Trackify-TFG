@@ -4,17 +4,16 @@
 
     <item
         android:id="@+id/menuCompartir"
-        android:title="Compartir"
+        android:title="@string/compartir"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/menuAbrirWeb"
-        android:title="Abrir web"
+        android:title="@string/abrir_web"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/menuEnviarEmail"
-        android:title="Enviar por email"
+        android:title="@string/enviar_email"
         app:showAsAction="never" />
-
 </menu>

@@ -17,7 +17,7 @@
         android:id="@+id/tvNombreUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Usuario"
+        android:text="@string/usuario"
         android:layout_gravity="center"
         android:textStyle="bold"
         android:textSize="20sp"
@@ -31,22 +31,22 @@
 
         <TextView
             android:id="@+id/tvEditarPerfil"
-            android:text="Editar Perfil >"
+            android:text="@string/editar_perfil_opcion"
             style="@style/PerfilOptionStyle"/>
 
         <TextView
             android:id="@+id/tvCambiarPassword"
-            android:text="Cambiar Contraseña >"
+            android:text="@string/cambiar_password_opcion"
             style="@style/PerfilOptionStyle"/>
 
         <TextView
             android:id="@+id/tvAjustes"
-            android:text="Ajustes >"
+            android:text="@string/ajustes_opcion"
             style="@style/PerfilOptionStyle"/>
 
         <TextView
             android:id="@+id/tvCerrarSesion"
-            android:text="Cerrar Sesión"
+            android:text="@string/cerrar_sesion"
             android:textColor="#FF3D57"
             style="@style/PerfilOptionStyle"/>
     </LinearLayout>

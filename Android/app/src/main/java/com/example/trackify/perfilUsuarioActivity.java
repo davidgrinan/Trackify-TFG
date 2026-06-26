@@ -7,11 +7,8 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -60,7 +57,7 @@ public class perfilUsuarioActivity extends AppCompatActivity {
         tvEditarPerfil.setOnClickListener(v ->
                 ToastTrackify.mostrar(
                         this,
-                        "Funcionalidad disponible próximamente"
+                        getString(R.string.funcionalidad_proximamente)
                 )
         );
 
@@ -75,23 +72,23 @@ public class perfilUsuarioActivity extends AppCompatActivity {
     }
     private void mostrarDialogoCambiarPassword() {
         EditText inputPassword = new EditText(this);
-        inputPassword.setHint("Nueva contraseña");
+        inputPassword.setHint(getString(R.string.nueva_password));
         inputPassword.setPadding(40, 20, 40, 20);
 
         new AlertDialog.Builder(this)
-                .setTitle("Cambiar contraseña")
+                .setTitle(getString(R.string.cambiar_password))
                 .setView(inputPassword)
-                .setPositiveButton("Guardar", (dialog, which) -> {
+                .setPositiveButton(getString(R.string.guardar), (dialog, which) -> {
                     String nuevaPassword = inputPassword.getText().toString().trim();
 
                     if (nuevaPassword.isEmpty()) {
-                        ToastTrackify.mostrar(perfilUsuarioActivity.this, "Introduce una contraseña");
+                        ToastTrackify.mostrar(perfilUsuarioActivity.this, getString(R.string.introduce_password));
                         return;
                     }
 
                     cambiarPassword(nuevaPassword);
                 })
-                .setNegativeButton("Cancelar", null)
+                .setNegativeButton(getString(R.string.cancelar), null)
                 .show();
     }
 
@@ -103,7 +100,7 @@ public class perfilUsuarioActivity extends AppCompatActivity {
             public void onSuccess(UtilREST.Response r) {
                 ToastTrackify.mostrar(
                         perfilUsuarioActivity.this,
-                        "Contraseña cambiada correctamente"
+                        getString(R.string.password_cambiada)
                 );
 
                 mostrarNotificacionCambioPassword();
@@ -113,7 +110,7 @@ public class perfilUsuarioActivity extends AppCompatActivity {
             public void onError(UtilREST.Response r) {
                 ToastTrackify.mostrar(
                         perfilUsuarioActivity.this,
-                        "Error cambiando contraseña"
+                        getString(R.string.error_password)
                 );
             }
         });
@@ -123,8 +120,8 @@ public class perfilUsuarioActivity extends AppCompatActivity {
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(this, CHANNEL_ID)
                         .setSmallIcon(R.drawable.logo_trackify)
-                        .setContentTitle("Cambio de contraseña")
-                        .setContentText("La contraseña de usuario " + username + " se ha cambiado correctamente")
+                        .setContentTitle(getString(R.string.notificacion_cambio_password_titulo))
+                        .setContentText(getString(R.string.notificacion_cambio_password_texto, username))
                         .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                         .setAutoCancel(true);
 
@@ -162,17 +159,17 @@ public class perfilUsuarioActivity extends AppCompatActivity {
 
     private void confirmarCerrarSesion() {
         new AlertDialog.Builder(this)
-                .setTitle("Cerrar sesión")
-                .setMessage("¿Seguro que quieres cerrar sesión?")
-                .setPositiveButton("Sí", (dialog, which) -> cerrarSesion())
-                .setNegativeButton("Cancelar", null)
+                .setTitle(getString(R.string.cerrar_sesion))
+                .setMessage(getString(R.string.confirmar_cerrar_sesion))
+                .setPositiveButton(getString(R.string.si), (dialog, which) -> cerrarSesion())
+                .setNegativeButton(getString(R.string.cancelar), null)
                 .show();
     }
 
     private void cerrarSesion() {
         TokenManager.clearToken(this);
 
-        ToastTrackify.mostrar(perfilUsuarioActivity.this, "Sesión cerrada");
+        ToastTrackify.mostrar(perfilUsuarioActivity.this, getString(R.string.sesion_cerrada));
 
         Intent intent = new Intent(perfilUsuarioActivity.this, LoginActivity.class);
         startActivity(intent);

@@ -10,7 +10,6 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -113,9 +112,9 @@ public class ListadoActivity extends AppCompatActivity {
         spFiltroEstado.setAdapter(adapterEstados);
 
         new AlertDialog.Builder(this)
-                .setTitle("Filtrar contenidos")
+                .setTitle(getString(R.string.filtrar_contenidos))
                 .setView(view)
-                .setPositiveButton("Filtrar", (dialog, which) -> {
+                .setPositiveButton(getString(R.string.filtrar), (dialog, which) -> {
                     String genero = spFiltroGenero.getSelectedItem().toString();
                     String estado = spFiltroEstado.getSelectedItem().toString();
                     String titulo = etFiltroTitulo.getText().toString().trim();
@@ -128,7 +127,7 @@ public class ListadoActivity extends AppCompatActivity {
                         try {
                             valoracion = Integer.parseInt(valoracionTexto);
                         } catch (NumberFormatException e) {
-                            Toast.makeText(this, "Valoración no válida", Toast.LENGTH_SHORT).show();
+                            ToastTrackify.mostrar(ListadoActivity.this, getString(R.string.valoracion_no_valida));
                             return;
                         }
                     }
@@ -147,8 +146,8 @@ public class ListadoActivity extends AppCompatActivity {
 
                     cargarContenidoFiltrado(genero, estado, valoracion, titulo);
                 })
-                .setNegativeButton("Cancelar", null)
-                .setNeutralButton("Quitar filtros", (dialog, which) -> cargarContenido())
+                .setNegativeButton(getString(R.string.cancelar), null)
+                .setNeutralButton(getString(R.string.quitar_filtros), (dialog, which) -> cargarContenido())
                 .show();
     }
 
@@ -175,7 +174,7 @@ public class ListadoActivity extends AppCompatActivity {
                         if (listaContenidos.isEmpty()) {
                             ToastTrackify.mostrar(
                                     ListadoActivity.this,
-                                    "No hay resultados con esos filtros"
+                                    getString(R.string.sin_resultados_filtros)
                             );
                         }
                     }
@@ -184,7 +183,7 @@ public class ListadoActivity extends AppCompatActivity {
                     public void onError(UtilREST.Response r) {
                        ToastTrackify.mostrar(
                                ListadoActivity.this,
-                               "No se han podido aplicar los filtros"
+                               getString(R.string.error_filtros)
                        );
                     }
                 }
@@ -200,7 +199,7 @@ public class ListadoActivity extends AppCompatActivity {
 
     private void cargarContenido() {
         if (token == null || token.isEmpty()) {
-            ToastTrackify.mostrar(this, "Sesión caducada");
+            ToastTrackify.mostrar(this, getString(R.string.sesion_caducada));
             volverLogin();
             return;
         }
@@ -226,7 +225,7 @@ public class ListadoActivity extends AppCompatActivity {
                         if (listaContenidos.isEmpty()) {
                             ToastTrackify.mostrar(
                                     ListadoActivity.this,
-                                    "No hay contenido de tipo " + tipoSeleccionado
+                                    getString(R.string.no_hay_contenido_tipo, tipoSeleccionado)
                             );
                         }
                     }
@@ -235,7 +234,7 @@ public class ListadoActivity extends AppCompatActivity {
                     public void onError(UtilREST.Response r) {
                         ToastTrackify.mostrar(
                                 ListadoActivity.this,
-                                "No se ha podido cargar el contenido"
+                                getString(R.string.no_se_pudo_cargar_contenido)
                         );
 
                         if (r.responseCode == 401) {

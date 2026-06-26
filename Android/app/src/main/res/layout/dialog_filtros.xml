@@ -22,7 +22,7 @@
         android:id="@+id/etFiltroValoracion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Valoración mínima"
+        android:hint="@string/valoracion_minima"
         android:inputType="number"
         android:layout_marginTop="12dp" />
 
@@ -30,7 +30,7 @@
         android:id="@+id/etFiltroTitulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Buscar por título"
+        android:hint="@string/buscar_titulo"
         android:inputType="text"
         android:layout_marginTop="12dp" />
 

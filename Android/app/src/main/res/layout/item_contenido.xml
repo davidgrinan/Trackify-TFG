@@ -32,7 +32,7 @@
                 android:id="@+id/tvTitulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Interstellar"
+                android:text="@string/item_titulo_ejemplo"
                 android:textStyle="bold"
                 android:textSize="20sp"/>
 
@@ -40,7 +40,7 @@
                 android:id="@+id/tvGenero"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Drama"
+                android:text="@string/item_genero_ejemplo"
                 android:textColor="#777777" />
 
             <TextView
@@ -48,14 +48,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="Visto"
+                android:text="@string/item_estado_ejemplo"
                 android:textColor="#777777" />
 
             <TextView
                 android:id="@+id/tvValoracion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="⭐ 5/5"
+                android:text="@string/item_valoracion_ejemplo"
                 android:layout_marginTop="8dp"/>
         </LinearLayout>
     </LinearLayout>

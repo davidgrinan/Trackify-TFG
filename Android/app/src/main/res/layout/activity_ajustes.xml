@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ajustes"
+            android:text="@string/ajustes"
             android:textSize="32sp"
             android:textStyle="bold"
             android:textColor="#333333"
@@ -23,7 +23,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Idioma de la aplicación"
+            android:text="@string/idioma_aplicacion"
             android:textStyle="bold"
             android:textSize="17sp" />
 
@@ -36,20 +36,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tema visual"
-            android:textStyle="bold"
-            android:textSize="17sp" />
-
-        <Spinner
-            android:id="@+id/spTema"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginBottom="18dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Orden por defecto del listado"
+            android:text="@string/tema_visual"
             android:textStyle="bold"
             android:textSize="17sp" />
 
@@ -62,7 +49,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Valoración máxima"
+            android:text="@string/valoracion_maxima"
             android:textStyle="bold"
             android:textSize="17sp" />
 
@@ -76,7 +63,7 @@
             android:id="@+id/btnGuardarAjustes"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:text="GUARDAR AJUSTES"
+            android:text="@string/guardar_ajustes"
             android:textColor="#FFFFFF"
             android:backgroundTint="#6200EA"
             android:layout_marginTop="10dp" />
@@ -85,7 +72,7 @@
             android:id="@+id/btnRestablecerAjustes"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:text="RESTABLECER AJUSTES"
+            android:text="@string/restablecer_ajustes"
             android:textColor="#FFFFFF"
             android:backgroundTint="#9E9E9E"
             android:layout_marginTop="12dp" />
@@ -94,7 +81,7 @@
             android:id="@+id/btnVolver"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:text="VOLVER"
+            android:text="@string/volver"
             android:textColor="#FFFFFF"
             android:backgroundTint="#333333"
             android:layout_marginTop="12dp" />

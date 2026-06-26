@@ -47,22 +47,22 @@ public class RegistroActivity extends AppCompatActivity {
         String passwordConfirm = etRegistroPasswordConfirm.getText().toString().trim();
 
         if (usuario.isEmpty()) {
-            etRegistroUsuario.setError("Introduce el usuario");
+            etRegistroUsuario.setError(getString(R.string.introduce_usuario));
             return;
         }
 
         if (email.isEmpty()) {
-            etRegistroEmail.setError("Introduce el email");
+            etRegistroEmail.setError(getString(R.string.introduce_email));
             return;
         }
 
         if (password.isEmpty()) {
-            etRegistroPassword.setError("Introduce la contraseña");
+            etRegistroPassword.setError(getString(R.string.introduce_contrasena));
             return;
         }
 
         if (!password.equals(passwordConfirm)) {
-            etRegistroPasswordConfirm.setError("Las contraseñas no coinciden");
+            etRegistroPasswordConfirm.setError(getString(R.string.passwords_no_coinciden));
             return;
         }
 
@@ -71,7 +71,7 @@ public class RegistroActivity extends AppCompatActivity {
         API.register(jsonRegistro, new UtilREST.OnResponseListener() {
             @Override
             public void onSuccess(UtilREST.Response r) {
-                ToastTrackify.mostrar(RegistroActivity.this, "Usuario registrado");
+                ToastTrackify.mostrar(RegistroActivity.this, getString(R.string.usuario_registrado));
 
                 Intent intent = new Intent(RegistroActivity.this, LoginActivity.class);
                 startActivity(intent);
@@ -80,7 +80,7 @@ public class RegistroActivity extends AppCompatActivity {
 
             @Override
             public void onError(UtilREST.Response r) {
-                ToastTrackify.mostrar(RegistroActivity.this, "Error registrando usuario");
+                ToastTrackify.mostrar(RegistroActivity.this, getString(R.string.error_registro));
             }
         });
     }

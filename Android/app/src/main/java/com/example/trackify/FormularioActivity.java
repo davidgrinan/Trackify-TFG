@@ -5,7 +5,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,9 +15,6 @@ import API.UtilJSONParser;
 import API.UtilREST;
 
 import org.json.JSONObject;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class FormularioActivity extends AppCompatActivity {
 
@@ -62,12 +58,12 @@ public class FormularioActivity extends AppCompatActivity {
             contenidoId = getIntent().getLongExtra("contenidoId", -1);
 
             if (contenidoId == -1) {
-                Toast.makeText(this, "Contenido no válido", Toast.LENGTH_SHORT).show();
+                ToastTrackify.mostrar(this, getString(R.string.contenido_no_valido));
                 finish();
                 return;
             }
 
-            btnGuardar.setText("ACTUALIZAR CONTENIDO");
+            btnGuardar.setText(getString(R.string.actualizar_contenido_mayus));
             cargarContenido();
 
         } else {
@@ -77,7 +73,7 @@ public class FormularioActivity extends AppCompatActivity {
                 tipoSeleccionado = "Pelicula";
             }
 
-            btnGuardar.setText("GUARDAR CONTENIDO");
+            btnGuardar.setText(getString(R.string.guardar_contenido_mayus));
         }
 
         btnGuardar.setOnClickListener(v -> guardar());
@@ -118,7 +114,7 @@ public class FormularioActivity extends AppCompatActivity {
                 ContenidoModel contenido = UtilJSONParser.parseContenido(r.content);
 
                 if (contenido == null) {
-                    ToastTrackify.mostrar(FormularioActivity.this, "Error leyendo contenido");
+                    ToastTrackify.mostrar(FormularioActivity.this, getString(R.string.error_leyendo_contenido));
                     finish();
                     return;
                 }
@@ -139,7 +135,7 @@ public class FormularioActivity extends AppCompatActivity {
 
             @Override
             public void onError(UtilREST.Response r) {
-                ToastTrackify.mostrar(FormularioActivity.this, "Error cargando contenido");
+                ToastTrackify.mostrar(FormularioActivity.this, getString(R.string.error_cargando_contenido));
                 finish();
             }
         });
@@ -177,12 +173,12 @@ public class FormularioActivity extends AppCompatActivity {
         String valoracionTexto = etValoracion.getText().toString().trim();
 
         if (titulo.isEmpty()) {
-            etTitulo.setError("Introduce un título");
+            etTitulo.setError(getString(R.string.introduce_titulo));
             return false;
         }
 
         if (valoracionTexto.isEmpty()) {
-            etValoracion.setError("Introduce una valoración");
+            etValoracion.setError(getString(R.string.introduce_valoracion));
             return false;
         }
 
@@ -191,12 +187,12 @@ public class FormularioActivity extends AppCompatActivity {
         try {
             valoracion = Integer.parseInt(valoracionTexto);
         } catch (NumberFormatException ex) {
-            etValoracion.setError("La valoración debe ser un número");
+            etValoracion.setError(getString(R.string.valoracion_debe_numero));
             return false;
         }
 
         if (valoracion < 1 || valoracion > 5) {
-            etValoracion.setError("La valoración debe estar entre 1 y 5");
+            etValoracion.setError(getString(R.string.valoracion_entre_1_5));
             return false;
         }
 
@@ -226,13 +222,13 @@ public class FormularioActivity extends AppCompatActivity {
         API.crearContenido(json, token, new UtilREST.OnResponseListener() {
             @Override
             public void onSuccess(UtilREST.Response r) {
-                ToastTrackify.mostrar(FormularioActivity.this, "Contenido creado correctamente");
+                ToastTrackify.mostrar(FormularioActivity.this, getString(R.string.contenido_creado));
                 finish();
             }
 
             @Override
             public void onError(UtilREST.Response r) {
-                ToastTrackify.mostrar(FormularioActivity.this, "Error creando contenido");
+                ToastTrackify.mostrar(FormularioActivity.this, getString(R.string.error_creando_contenido));
             }
         });
     }
@@ -241,13 +237,13 @@ public class FormularioActivity extends AppCompatActivity {
         API.actualizarContenido(contenidoId, json, token, new UtilREST.OnResponseListener() {
             @Override
             public void onSuccess(UtilREST.Response r) {
-                ToastTrackify.mostrar(FormularioActivity.this, "Contenido actualizado correctamente");
+                ToastTrackify.mostrar(FormularioActivity.this, getString(R.string.contenido_actualizado));
                 finish();
             }
 
             @Override
             public void onError(UtilREST.Response r) {
-                ToastTrackify.mostrar(FormularioActivity.this, "Error actualizando contenido");
+                ToastTrackify.mostrar(FormularioActivity.this, getString(R.string.error_actualizando_contenido));
             }
         });
     }

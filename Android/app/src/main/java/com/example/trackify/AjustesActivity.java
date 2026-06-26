@@ -5,10 +5,10 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toast;
-
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.os.LocaleListCompat;
 
 public class AjustesActivity extends AppCompatActivity {
 
@@ -36,7 +36,6 @@ public class AjustesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ajustes);
 
         spIdioma = findViewById(R.id.spIdioma);
-        spTema = findViewById(R.id.spTema);
         spOrdenListado = findViewById(R.id.spOrdenListado);
         spValoracionMaxima = findViewById(R.id.spValoracionMaxima);
 
@@ -91,16 +90,22 @@ public class AjustesActivity extends AppCompatActivity {
     }
 
     private void guardarPreferencias() {
+        String idiomaSeleccionado = spIdioma.getSelectedItem().toString();
+        String temaSeleccionado = spTema.getSelectedItem().toString();
+
         preferences.edit()
-                .putString(KEY_IDIOMA, spIdioma.getSelectedItem().toString())
-                .putString(KEY_TEMA, spTema.getSelectedItem().toString())
+                .putString(KEY_IDIOMA, idiomaSeleccionado)
+                .putString(KEY_TEMA, temaSeleccionado)
                 .putString(KEY_ORDEN_LISTADO, spOrdenListado.getSelectedItem().toString())
                 .putString(KEY_VALORACION_MAXIMA, spValoracionMaxima.getSelectedItem().toString())
                 .apply();
 
+        aplicarIdioma(idiomaSeleccionado);
+        aplicarTema(temaSeleccionado);
+
         ToastTrackify.mostrar(
-                AjustesActivity.this,
-                "Ajustes guardados correctamente"
+                this,
+                getString(R.string.ajustes_guardados)
         );
     }
 
@@ -114,9 +119,34 @@ public class AjustesActivity extends AppCompatActivity {
 
         cargarPreferencias();
 
+        aplicarIdioma("Español");
+        aplicarTema("Claro");
+
         ToastTrackify.mostrar(
                 AjustesActivity.this,
-                "Ajustes restablecidos"
+                getString(R.string.ajustes_restablecidos)
         );
+    }
+
+    private void aplicarIdioma(String idioma) {
+        String codigoIdioma;
+
+        if (idioma.equals("English")) {
+            codigoIdioma = "en";
+        } else {
+            codigoIdioma = "es";
+        }
+
+        AppCompatDelegate.setApplicationLocales(
+                LocaleListCompat.forLanguageTags(codigoIdioma)
+        );
+    }
+
+    private void aplicarTema(String tema) {
+        if (tema.equals("Oscuro")) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
     }
 }

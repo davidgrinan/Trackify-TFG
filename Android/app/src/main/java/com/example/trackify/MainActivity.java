@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     private void cerrarSesion() {
         TokenManager.clearToken(this);
 
-        ToastTrackify.mostrar(this, "Sesión cerrada");
+        ToastTrackify.mostrar(this, getString(R.string.sesion_cerrada));
 
         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(intent);
@@ -66,30 +66,30 @@ public class MainActivity extends AppCompatActivity {
     private void mostrarMenu() {
         PopupMenu popupMenu = new PopupMenu(this, btnMenu);
 
-        popupMenu.getMenu().add("Inicio");
-        popupMenu.getMenu().add("Perfil");
-        popupMenu.getMenu().add("Acerca de");
-        popupMenu.getMenu().add("Cerrar sesión");
+        popupMenu.getMenu().add(getString(R.string.inicio));
+        popupMenu.getMenu().add(getString(R.string.perfil));
+        popupMenu.getMenu().add(getString(R.string.acerca_de));
+        popupMenu.getMenu().add(getString(R.string.cerrar_sesion));
 
         popupMenu.setOnMenuItemClickListener(item -> {
             String opcion = item.getTitle().toString();
 
-            if (opcion.equals("Inicio")) {
-                ToastTrackify.mostrar(this, "Ya estás en inicio");
+            if (opcion.equals(getString(R.string.inicio))) {
+                ToastTrackify.mostrar(this, getString(R.string.ya_estas_inicio));
                 return true;
             }
 
-            if (opcion.equals("Perfil")) {
+            if (opcion.equals(getString(R.string.perfil))) {
                 startActivity(new Intent(this, perfilUsuarioActivity.class));
                 return true;
             }
 
-            if (opcion.equals("Acerca de")) {
+            if (opcion.equals(getString(R.string.acerca_de))) {
                 startActivity(new Intent(this, AcercaDeActivity.class));
                 return true;
             }
 
-            if (opcion.equals("Cerrar sesión")) {
+            if (opcion.equals(getString(R.string.cerrar_sesion))) {
                 cerrarSesion();
                 return true;
             }

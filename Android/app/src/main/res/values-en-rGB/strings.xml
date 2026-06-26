@@ -1,0 +1,146 @@
+<resources>
+    <string name="app_name">Trackify</string>
+    <string name="track_text">Track</string>
+    <string name="ify_text">ify</string>
+    <string name="logo_trackify">Trackify logo</string>
+
+    <string-array name="generos_array">
+        <item>Action</item>
+        <item>Drama</item>
+        <item>Horror</item>
+        <item>Comedy</item>
+    </string-array>
+
+    <string-array name="estados_array">
+        <item>Watched</item>
+        <item>Pending</item>
+        <item>Do not watch</item>
+    </string-array>
+
+    <string-array name="generos_filtro_array">
+        <item>All</item>
+        <item>Action</item>
+        <item>Drama</item>
+        <item>Horror</item>
+        <item>Comedy</item>
+    </string-array>
+
+    <string-array name="estados_filtro_array">
+        <item>All</item>
+        <item>Watched</item>
+        <item>Pending</item>
+        <item>Skip</item>
+    </string-array>
+
+    <string name="volver">BACK</string>
+    <string name="guardar">SAVE</string>
+    <string name="cancelar">Cancel</string>
+    <string name="eliminar">Delete</string>
+    <string name="eliminar_mayus">DELETE</string>
+    <string name="editar_mayus">EDIT</string>
+    <string name="si">Yes</string>
+    <string name="no">No</string>
+
+    <string name="login_subtitulo">Sign in to your account</string>
+    <string name="iniciar_sesion_mayus">SIGN IN</string>
+    <string name="inicia_sesion">Sign in</string>
+    <string name="no_tienes_cuenta">Do not have an account? </string>
+    <string name="registrate">Sign up</string>
+    <string name="crear_cuenta_subtitulo">Create an account to get started</string>
+    <string name="registrarse_mayus">SIGN UP</string>
+    <string name="ya_tienes_cuenta">Already have an account? </string>
+    <string name="usuario">User</string>
+    <string name="nombre_usuario">Username</string>
+    <string name="correo_electronico">Email</string>
+    <string name="password">Password</string>
+    <string name="repetir_password">Repeat password</string>
+    <string name="login_correcto">Login successful</string>
+    <string name="error_login">Wrong username or password</string>
+    <string name="error_iniciar_sesion">Error signing in</string>
+    <string name="usuario_registrado">User registered</string>
+    <string name="error_registro">Error registering user</string>
+
+    <string name="inicio">Home</string>
+    <string name="perfil">Profile</string>
+    <string name="acerca_de">About</string>
+    <string name="cerrar_sesion">Log out</string>
+    <string name="ya_estas_inicio">You are already on home</string>
+    <string name="sesion_cerrada">Session closed</string>
+    <string name="peliculas">Movies</string>
+    <string name="series">Series</string>
+    <string name="videojuegos">Video games</string>
+    <string name="salir">Exit</string>
+
+    <string name="contenido_no_valido">Invalid content</string>
+    <string name="contenido_no_cargado">Content not loaded</string>
+    <string name="error_leyendo_contenido">Error reading content</string>
+    <string name="error_cargando_detalle">Error loading details</string>
+    <string name="contenido_eliminado">Content deleted</string>
+    <string name="error_eliminando_contenido">Error deleting content</string>
+    <string name="contenido_creado">Content created successfully</string>
+    <string name="contenido_actualizado">Content updated successfully</string>
+    <string name="error_creando_contenido">Error creating content</string>
+    <string name="error_actualizando_contenido">Error updating content</string>
+    <string name="informacion_contenido">Content information</string>
+    <string name="guardar_cambios">SAVE CHANGES</string>
+    <string name="titulo">Title</string>
+    <string name="valoracion_1_5">Rating (1-5)</string>
+    <string name="descripcion">Description</string>
+    <string name="descripcion_completa_hint">Full description...</string>
+    <string name="url_imagen">Image URL</string>
+    <string name="categoria">Category</string>
+    <string name="volver_menu">BACK TO MENU</string>
+
+    <string name="titulo_ejemplo_detalle">The Batman</string>
+    <string name="tipo_ejemplo_detalle">Type: Movie</string>
+    <string name="genero_ejemplo_detalle">Genre: Action</string>
+    <string name="valoracion_ejemplo_detalle">⭐ Rating: 5/5</string>
+    <string name="estado_ejemplo_detalle">Status: Pending</string>
+    <string name="descripcion_ejemplo_detalle">The full detailed content description will appear here...</string>
+    <string name="item_titulo_ejemplo">Interstellar</string>
+    <string name="item_genero_ejemplo">Drama</string>
+    <string name="item_estado_ejemplo">Watched</string>
+    <string name="item_valoracion_ejemplo">⭐ 5/5</string>
+
+    <string name="filtrar_contenidos">Filter contents</string>
+    <string name="filtrar">Filter</string>
+    <string name="quitar_filtros">Clear filters</string>
+    <string name="valoracion_no_valida">Invalid rating</string>
+    <string name="sin_resultados_filtros">No results with these filters</string>
+    <string name="error_filtros">Filters could not be applied</string>
+    <string name="valoracion_minima">Minimum rating</string>
+    <string name="buscar_titulo">Search by title</string>
+
+    <string name="compartir">Share</string>
+    <string name="abrir_web">Open website</string>
+    <string name="enviar_email">Send by email</string>
+    <string name="compartir_con">Share with</string>
+    <string name="titulo_vacio">This content has no title</string>
+
+    <string name="ajustes">Settings</string>
+    <string name="idioma_aplicacion">Application language</string>
+    <string name="tema_visual">Visual theme</string>
+    <string name="orden_defecto">Default list order</string>
+    <string name="valoracion_maxima">Maximum rating</string>
+    <string name="guardar_ajustes">SAVE SETTINGS</string>
+    <string name="restablecer_ajustes">RESET SETTINGS</string>
+    <string name="ajustes_guardados">Settings saved successfully</string>
+    <string name="ajustes_restablecidos">Settings reset</string>
+
+    <string name="editar_perfil_opcion">Edit Profile &gt;</string>
+    <string name="cambiar_password_opcion">Change Password &gt;</string>
+    <string name="ajustes_opcion">Settings &gt;</string>
+    <string name="funcionalidad_proximamente">Feature coming soon</string>
+    <string name="cambiar_password">Change password</string>
+    <string name="nueva_password">New password</string>
+    <string name="introduce_password">Enter a password</string>
+    <string name="password_cambiada">Password changed successfully</string>
+    <string name="error_password">Error changing password</string>
+    <string name="confirmar_cerrar_sesion">Are you sure you want to log out?</string>
+
+    <string name="about_description">Trackify is an application for managing and tracking multimedia content such as movies, series and video games.</string>
+    <string name="contenido_multimedia">Multimedia content</string>
+    <string name="autor">Author</string>
+    <string name="autor_nombre">David Griñán Ortigosa</string>
+    <string name="proyecto_dam_pmdm">DAM Project - PMDM</string>
+</resources>

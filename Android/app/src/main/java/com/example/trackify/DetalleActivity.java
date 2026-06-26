@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -56,7 +55,7 @@ public class DetalleActivity extends AppCompatActivity {
         contenidoId = getIntent().getLongExtra("contenidoId", -1);
 
         if (contenidoId == -1) {
-            ToastTrackify.mostrar(this, "Contenido no válido");
+            ToastTrackify.mostrar(this, getString(R.string.contenido_no_valido));
             finish();
             return;
         }
@@ -78,7 +77,7 @@ public class DetalleActivity extends AppCompatActivity {
                 contenidoActual = UtilJSONParser.parseContenido(r.content);
 
                 if (contenidoActual == null) {
-                    ToastTrackify.mostrar(DetalleActivity.this, "Error leyendo contenido");
+                    ToastTrackify.mostrar(DetalleActivity.this, getString(R.string.error_leyendo_contenido));
                     finish();
                     return;
                 }
@@ -88,7 +87,7 @@ public class DetalleActivity extends AppCompatActivity {
 
             @Override
             public void onError(UtilREST.Response r) {
-                ToastTrackify.mostrar(DetalleActivity.this, "Error al cargar contenido");
+                ToastTrackify.mostrar(DetalleActivity.this, getString(R.string.error_cargando_contenido));
 
                 if (r.responseCode == 401) {
                     TokenManager.clearToken(DetalleActivity.this);
@@ -102,15 +101,15 @@ public class DetalleActivity extends AppCompatActivity {
 
     private void pintarDatos() {
         tvTituloDetalle.setText(contenidoActual.getTitulo());
-        tvTipoDetalle.setText("Tipo: " + contenidoActual.getTipo());
-        tvGeneroDetalle.setText("Género: " + contenidoActual.getGenero());
-        tvEstadoDetalle.setText("Estado: " + contenidoActual.getEstado());
+        tvTipoDetalle.setText(getString(R.string.tipo_formato, contenidoActual.getTipo()));
+        tvGeneroDetalle.setText(getString(R.string.genero_formato, contenidoActual.getGenero()));
+        tvEstadoDetalle.setText(getString(R.string.estado_formato, contenidoActual.getEstado()));
         tvDescripcionDetalle.setText(contenidoActual.getDescripcion());
 
         if (contenidoActual.getValoracion() != null) {
-            tvValoracionDetalle.setText("⭐ Valoración: " + contenidoActual.getValoracion() + "/5");
+            tvValoracionDetalle.setText(getString(R.string.valoracion_formato, String.valueOf(contenidoActual.getValoracion())));
         } else {
-            tvValoracionDetalle.setText("⭐ Sin valoración");
+            tvValoracionDetalle.setText(getString(R.string.sin_valoracion));
         }
 
         if (contenidoActual.getImagenUrl() != null && !contenidoActual.getImagenUrl().isEmpty()) {
@@ -133,10 +132,10 @@ public class DetalleActivity extends AppCompatActivity {
 
     private void confirmarEliminar() {
         new AlertDialog.Builder(this)
-                .setTitle("Eliminar contenido")
-                .setMessage("¿Seguro que quieres eliminar este contenido?")
-                .setPositiveButton("Eliminar", (dialog, which) -> eliminarContenido())
-                .setNegativeButton("Cancelar", null)
+                .setTitle(getString(R.string.eliminar_contenido))
+                .setMessage(getString(R.string.confirmar_eliminar_contenido))
+                .setPositiveButton(getString(R.string.eliminar), (dialog, which) -> eliminarContenido())
+                .setNegativeButton(getString(R.string.cancelar), null)
                 .show();
     }
 
@@ -144,13 +143,13 @@ public class DetalleActivity extends AppCompatActivity {
         API.eliminarContenido(contenidoId, token, new UtilREST.OnResponseListener() {
             @Override
             public void onSuccess(UtilREST.Response r) {
-                ToastTrackify.mostrar(DetalleActivity.this, "Contenido eliminado");
+                ToastTrackify.mostrar(DetalleActivity.this, getString(R.string.contenido_eliminado));
                 finish();
             }
 
             @Override
             public void onError(UtilREST.Response r) {
-                ToastTrackify.mostrar(DetalleActivity.this, "Error eliminando contenido");
+                ToastTrackify.mostrar(DetalleActivity.this, getString(R.string.error_eliminando_contenido));
             }
         });
     }
@@ -164,7 +163,7 @@ public class DetalleActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (contenidoActual == null) {
-            ToastTrackify.mostrar(DetalleActivity.this, "Contenido no cargado");
+            ToastTrackify.mostrar(DetalleActivity.this, getString(R.string.contenido_no_cargado));
             return true;
         }
 
@@ -189,18 +188,20 @@ public class DetalleActivity extends AppCompatActivity {
     }
 
     private void compartirContenido() {
-        String texto = "Te recomiendo este contenido de Trackify:\n\n"
-                + contenidoActual.getTitulo()
-                + "\nTipo: " + contenidoActual.getTipo()
-                + "\nGénero: " + contenidoActual.getGenero()
-                + "\nEstado: " + contenidoActual.getEstado()
-                + "\nValoración: " + contenidoActual.getValoracion() + "/5";
+        String texto = getString(
+                R.string.texto_compartir_contenido,
+                contenidoActual.getTitulo(),
+                contenidoActual.getTipo(),
+                contenidoActual.getGenero(),
+                contenidoActual.getEstado(),
+                String.valueOf(contenidoActual.getValoracion())
+        );
 
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_TEXT, texto);
 
-        startActivity(Intent.createChooser(intent, "Compartir con"));
+        startActivity(Intent.createChooser(intent, getString(R.string.compartir_con)));
     }
 
     private void abrirWebContenido() {
@@ -208,7 +209,7 @@ public class DetalleActivity extends AppCompatActivity {
         String tipo = contenidoActual.getTipo();
 
         if (titulo == null || titulo.isEmpty()) {
-            ToastTrackify.mostrar(DetalleActivity.this, "Este contenido no tiene título");
+            ToastTrackify.mostrar(DetalleActivity.this, getString(R.string.titulo_vacio));
             return;
         }
 
@@ -233,21 +234,25 @@ public class DetalleActivity extends AppCompatActivity {
     }
 
     private void enviarPorEmail() {
-        String asunto = "Contenido recomendado: " + contenidoActual.getTitulo();
+        String asunto = getString(
+                R.string.asunto_email_contenido,
+                contenidoActual.getTitulo()
+        );
 
-        String cuerpo = "Hola,\n\nTe recomiendo este contenido:\n\n"
-                + "Título: " + contenidoActual.getTitulo()
-                + "\nTipo: " + contenidoActual.getTipo()
-                + "\nGénero: " + contenidoActual.getGenero()
-                + "\nEstado: " + contenidoActual.getEstado()
-                + "\nValoración: " + contenidoActual.getValoracion() + "/5"
-                + "\n\nEnviado desde Trackify.";
+        String cuerpo = getString(
+                R.string.cuerpo_email_contenido,
+                contenidoActual.getTitulo(),
+                contenidoActual.getTipo(),
+                contenidoActual.getGenero(),
+                contenidoActual.getEstado(),
+                String.valueOf(contenidoActual.getValoracion())
+        );
 
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("mailto:"));
         intent.putExtra(Intent.EXTRA_SUBJECT, asunto);
         intent.putExtra(Intent.EXTRA_TEXT, cuerpo);
 
-        startActivity(Intent.createChooser(intent, "Enviar email"));
+        startActivity(Intent.createChooser(intent, getString(R.string.enviar_email_chooser)));
     }
 }

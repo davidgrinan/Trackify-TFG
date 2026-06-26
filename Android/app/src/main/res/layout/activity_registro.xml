@@ -24,7 +24,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/logo_trackify"
-            android:contentDescription="Logo Trackify" />
+            android:contentDescription="@string/logo_trackify" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -35,7 +35,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Track"
+                android:text="@string/track_text"
                 android:textColor="#00BFA5"
                 android:textSize="30sp"
                 android:textStyle="bold" />
@@ -43,7 +43,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ify"
+                android:text="@string/ify_text"
                 android:textColor="#6200EA"
                 android:textSize="30sp"
                 android:textStyle="bold" />
@@ -52,9 +52,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Crea una cuenta para empezar"
-            android:textSize="14sp
-"
+            android:text="@string/crear_cuenta_subtitulo"
+            android:textSize="14sp"
             android:textColor="#757575"
             android:layout_marginTop="4dp"
             android:layout_marginBottom="32dp"/>
@@ -76,7 +75,7 @@
                 android:id="@+id/etRegistroUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Nombre de usuario"
+                android:hint="@string/nombre_usuario"
                 android:inputType="textPersonName"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -97,7 +96,7 @@
                 android:id="@+id/etRegistroEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Correo electrónico"
+                android:hint="@string/correo_electronico"
                 android:inputType="textEmailAddress"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -119,7 +118,7 @@
                 android:id="@+id/etRegistroPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Contraseña"
+                android:hint="@string/password"
                 android:inputType="textPassword"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -141,7 +140,7 @@
                 android:id="@+id/etRegistroPasswordConfirm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Repetir contraseña"
+                android:hint="@string/repetir_password"
                 android:inputType="textPassword"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -149,7 +148,7 @@
             android:id="@+id/btnRegistrar"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:text="REGISTRARSE"
+            android:text="@string/registrarse_mayus"
             android:textSize="15sp"
             android:textStyle="bold"
             app:cornerRadius="14dp"
@@ -164,7 +163,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="¿Ya tienes cuenta? "
+                android:text="@string/ya_tienes_cuenta"
                 android:textColor="#757575"
                 android:textSize="16sp" />
 
@@ -174,7 +173,7 @@
             android:id="@+id/tvVolverLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Inicia sesión"
+            android:text="@string/inicia_sesion"
             android:textColor="#6200EA"
             android:textSize="16sp"
             android:textStyle="bold" />

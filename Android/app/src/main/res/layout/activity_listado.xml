@@ -17,7 +17,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Categoria"
+            android:text="@string/categoria"
             android:textSize="26sp"
             android:textStyle="bold"/>
 
@@ -50,7 +50,7 @@
         android:layout_height="48dp"
         android:layout_margin="16dp"
         android:backgroundTint="#9E9E9E"
-        android:text="VOLVER AL MENÚ"
+        android:text="@string/volver_menu"
         android:textColor="#FFFFFF" />
 
 </LinearLayout>

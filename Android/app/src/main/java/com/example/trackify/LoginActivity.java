@@ -45,12 +45,12 @@ public class LoginActivity extends AppCompatActivity {
         String password = etPassword.getText().toString().trim();
 
         if (usuario.isEmpty()) {
-            etUsuario.setError("Introduce el usuario");
+            etUsuario.setError(getString(R.string.introduce_usuario));
             return;
         }
 
         if (password.isEmpty()) {
-            etPassword.setError("Introduce la contraseña");
+            etPassword.setError(getString(R.string.introduce_contrasena));
             return;
         }
 
@@ -62,14 +62,14 @@ public class LoginActivity extends AppCompatActivity {
                 String token = UtilJSONParser.parseToken(r.content);
 
                 if (token == null || token.isEmpty()) {
-                    ToastTrackify.mostrar(LoginActivity.this, "Error al iniciar sesión");
+                    ToastTrackify.mostrar(LoginActivity.this, getString(R.string.error_iniciar_sesion));
                     return;
                 }
 
                 TokenManager.saveToken(LoginActivity.this, token);
                 TokenManager.saveUsername(LoginActivity.this, usuario);
 
-                ToastTrackify.mostrar(LoginActivity.this, "Login correcto");
+                ToastTrackify.mostrar(LoginActivity.this, getString(R.string.login_correcto));
 
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
@@ -78,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onError(UtilREST.Response r) {
-                ToastTrackify.mostrar(LoginActivity.this, "Usuario o contraseña incorrectos");
+                ToastTrackify.mostrar(LoginActivity.this, getString(R.string.error_login));
             }
         });
     }
