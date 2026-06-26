@@ -8,10 +8,12 @@ import com.example.trackify.entity.Role;
 import com.example.trackify.entity.Usuario;
 import com.example.trackify.exceptions.CreateEntityException;
 import com.example.trackify.exceptions.DuplicateEntityException;
+import com.example.trackify.exceptions.ErrorGenericoException;
 import com.example.trackify.exceptions.UnauthorizedException;
 import com.example.trackify.mapper.UsuarioMapper;
 import com.example.trackify.repository.Usuario.IUsuarioRepository;
 import com.example.trackify.service.role.IRoleService;
+import com.example.trackify.service.usuario.IUsuarioService;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +31,7 @@ import java.util.Set;
 public class AuthService implements IAuthService {
 
     private final IUsuarioRepository usuarioRepository;
+    private final IUsuarioService usuarioService;
     private final IRoleService roleService;
     private final UsuarioMapper usuarioMapper;
 
@@ -49,6 +52,8 @@ public class AuthService implements IAuthService {
                 throw new DuplicateEntityException("El email ya existe");
             }
 
+            usuarioService.validarPassword(dto.getPassword());
+
             Usuario usuario = usuarioMapper.toUsuarioFromCreateUsuarioDTO(dto);
 
             usuario.setPassword(passwordEncoder.encode(dto.getPassword()));
@@ -59,15 +64,13 @@ public class AuthService implements IAuthService {
 
             usuarioRepository.save(usuario);
 
-            logger.info("Usuario registrado correctamente {}", usuario.getNombreUsuario());
-
         } catch (DuplicateEntityException ex) {
             throw ex;
 
+        } catch (ErrorGenericoException ex) {
+            throw ex;
+
         } catch (Exception ex) {
-
-            logger.error("Error registrando usuario {}", dto.getNombreUsuario(), ex);
-
             throw new CreateEntityException(
                     Usuario.class.getSimpleName(),
                     dto,
@@ -78,11 +81,9 @@ public class AuthService implements IAuthService {
 
     @Override
     public String login(LoginUsuarioDTO dto) {
-
-        logger.info("Intentando login usuario {}", dto.getNombreUsuario());
+        usuarioService.validarPassword(dto.getPassword());
 
         try {
-
             Authentication authentication =
                     authenticationManager.authenticate(
                             new UsernamePasswordAuthenticationToken(
@@ -94,9 +95,6 @@ public class AuthService implements IAuthService {
             return jwtTokenProvider.generateToken(authentication);
 
         } catch (Exception ex) {
-
-            logger.error("Error login usuario {}", dto.getNombreUsuario(), ex);
-
             throw new UnauthorizedException("Usuario o contraseña incorrectos");
         }
     }

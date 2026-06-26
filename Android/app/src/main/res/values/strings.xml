@@ -202,4 +202,12 @@ Enviado desde Trackify.</string>
     <string name="enviar_email_chooser">Enviar email</string>
     <string name="notificacion_cambio_password_titulo">Cambio de contraseña</string>
     <string name="notificacion_cambio_password_texto">La contraseña de usuario %1$s se ha cambiado correctamente</string>
+
+    <string name="permiso_notificaciones_aceptado">Permiso de notificaciones aceptado</string>
+    <string name="permiso_notificaciones_denegado">Permiso de notificaciones denegado</string>
+
+    <string name="portada_contenido">Portada del contenido</string>
+
+    <string name="password_igual_actual">La nueva contraseña no puede ser igual a la actual</string>
+    <string name="password_minimo_8">La contraseña debe tener al menos 8 caracteres</string>
 </resources>

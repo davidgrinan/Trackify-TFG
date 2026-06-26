@@ -1,6 +1,7 @@
 package com.example.trackify;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -16,9 +17,6 @@ import API.ContenidoModel;
 import API.TokenManager;
 import API.UtilJSONParser;
 import API.UtilREST;
-import android.net.Uri;
-import android.view.Menu;
-import android.view.MenuItem;
 
 public class DetalleActivity extends AppCompatActivity {
 
@@ -29,8 +27,10 @@ public class DetalleActivity extends AppCompatActivity {
     private TextView tvValoracionDetalle;
     private TextView tvEstadoDetalle;
     private TextView tvDescripcionDetalle;
+
     private Button btnEditar;
     private Button btnEliminar;
+    private Button btnVolver;
 
     private long contenidoId;
     private String token;
@@ -48,8 +48,10 @@ public class DetalleActivity extends AppCompatActivity {
         tvValoracionDetalle = findViewById(R.id.tvValoracionDetalle);
         tvEstadoDetalle = findViewById(R.id.tvEstadoDetalle);
         tvDescripcionDetalle = findViewById(R.id.tvDescripcionDetalle);
+
         btnEditar = findViewById(R.id.btnEditar);
         btnEliminar = findViewById(R.id.btnEliminar);
+        btnVolver = findViewById(R.id.btnVolverDetalle);
 
         token = TokenManager.getToken(this);
         contenidoId = getIntent().getLongExtra("contenidoId", -1);
@@ -62,6 +64,7 @@ public class DetalleActivity extends AppCompatActivity {
 
         btnEditar.setOnClickListener(v -> abrirEditar());
         btnEliminar.setOnClickListener(v -> confirmarEliminar());
+        btnVolver.setOnClickListener(v -> finish());
     }
 
     @Override
@@ -77,7 +80,10 @@ public class DetalleActivity extends AppCompatActivity {
                 contenidoActual = UtilJSONParser.parseContenido(r.content);
 
                 if (contenidoActual == null) {
-                    ToastTrackify.mostrar(DetalleActivity.this, getString(R.string.error_leyendo_contenido));
+                    ToastTrackify.mostrar(
+                            DetalleActivity.this,
+                            getString(R.string.error_leyendo_contenido)
+                    );
                     finish();
                     return;
                 }
@@ -87,7 +93,10 @@ public class DetalleActivity extends AppCompatActivity {
 
             @Override
             public void onError(UtilREST.Response r) {
-                ToastTrackify.mostrar(DetalleActivity.this, getString(R.string.error_cargando_contenido));
+                ToastTrackify.mostrar(
+                        DetalleActivity.this,
+                        getString(R.string.error_cargando_contenido)
+                );
 
                 if (r.responseCode == 401) {
                     TokenManager.clearToken(DetalleActivity.this);
@@ -106,7 +115,7 @@ public class DetalleActivity extends AppCompatActivity {
         tvEstadoDetalle.setText(getString(R.string.estado_formato, contenidoActual.getEstado()));
         tvDescripcionDetalle.setText(contenidoActual.getDescripcion());
 
-        android.content.SharedPreferences preferences =
+        SharedPreferences preferences =
                 getSharedPreferences(AjustesActivity.PREFS_NAME, MODE_PRIVATE);
 
         String valoracionMaxima =
@@ -127,6 +136,7 @@ public class DetalleActivity extends AppCompatActivity {
                         getString(R.string.valoracion_formato, String.valueOf(valoracion)) + "/5"
                 );
             }
+
         } else {
             tvValoracionDetalle.setText(getString(R.string.sin_valoracion));
         }
@@ -162,116 +172,20 @@ public class DetalleActivity extends AppCompatActivity {
         API.eliminarContenido(contenidoId, token, new UtilREST.OnResponseListener() {
             @Override
             public void onSuccess(UtilREST.Response r) {
-                ToastTrackify.mostrar(DetalleActivity.this, getString(R.string.contenido_eliminado));
+                ToastTrackify.mostrar(
+                        DetalleActivity.this,
+                        getString(R.string.contenido_eliminado)
+                );
                 finish();
             }
 
             @Override
             public void onError(UtilREST.Response r) {
-                ToastTrackify.mostrar(DetalleActivity.this, getString(R.string.error_eliminando_contenido));
+                ToastTrackify.mostrar(
+                        DetalleActivity.this,
+                        getString(R.string.error_eliminando_contenido)
+                );
             }
         });
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_detalle, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (contenidoActual == null) {
-            ToastTrackify.mostrar(DetalleActivity.this, getString(R.string.contenido_no_cargado));
-            return true;
-        }
-
-        int id = item.getItemId();
-
-        if (id == R.id.menuCompartir) {
-            compartirContenido();
-            return true;
-        }
-
-        if (id == R.id.menuAbrirWeb) {
-            abrirWebContenido();
-            return true;
-        }
-
-        if (id == R.id.menuEnviarEmail) {
-            enviarPorEmail();
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    private void compartirContenido() {
-        String texto = getString(
-                R.string.texto_compartir_contenido,
-                contenidoActual.getTitulo(),
-                contenidoActual.getTipo(),
-                contenidoActual.getGenero(),
-                contenidoActual.getEstado(),
-                String.valueOf(contenidoActual.getValoracion())
-        );
-
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_TEXT, texto);
-
-        startActivity(Intent.createChooser(intent, getString(R.string.compartir_con)));
-    }
-
-    private void abrirWebContenido() {
-        String titulo = contenidoActual.getTitulo();
-        String tipo = contenidoActual.getTipo();
-
-        if (titulo == null || titulo.isEmpty()) {
-            ToastTrackify.mostrar(DetalleActivity.this, getString(R.string.titulo_vacio));
-            return;
-        }
-
-        String tituloCodificado = Uri.encode(titulo);
-        String url;
-
-        if (tipo != null && (tipo.equalsIgnoreCase("Película") || tipo.equalsIgnoreCase("Pelicula"))) {
-            url = "https://www.imdb.com/find/?q=" + tituloCodificado + "&s=tt";
-
-        } else if (tipo != null && tipo.equalsIgnoreCase("Serie")) {
-            url = "https://www.imdb.com/find/?q=" + tituloCodificado + "&s=tt";
-
-        } else if (tipo != null && tipo.equalsIgnoreCase("Videojuego")) {
-            url = "https://www.metacritic.com/search/" + tituloCodificado + "/";
-
-        } else {
-            url = "https://www.google.com/search?q=" + Uri.encode(titulo + " " + tipo);
-        }
-
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-        startActivity(intent);
-    }
-
-    private void enviarPorEmail() {
-        String asunto = getString(
-                R.string.asunto_email_contenido,
-                contenidoActual.getTitulo()
-        );
-
-        String cuerpo = getString(
-                R.string.cuerpo_email_contenido,
-                contenidoActual.getTitulo(),
-                contenidoActual.getTipo(),
-                contenidoActual.getGenero(),
-                contenidoActual.getEstado(),
-                String.valueOf(contenidoActual.getValoracion())
-        );
-
-        Intent intent = new Intent(Intent.ACTION_SENDTO);
-        intent.setData(Uri.parse("mailto:"));
-        intent.putExtra(Intent.EXTRA_SUBJECT, asunto);
-        intent.putExtra(Intent.EXTRA_TEXT, cuerpo);
-
-        startActivity(Intent.createChooser(intent, getString(R.string.enviar_email_chooser)));
     }
 }

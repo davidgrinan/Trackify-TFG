@@ -1,8 +1,12 @@
 package com.example.trackify;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,6 +35,7 @@ public class ListadoActivity extends AppCompatActivity {
     private ImageButton btnAdd;
     private ListView listViewContenido;
     private Button btnVolver;
+
     private List<ContenidoModel> listaContenidos;
     private ContenidoAdapter adapter;
 
@@ -61,6 +66,8 @@ public class ListadoActivity extends AppCompatActivity {
         adapter = new ContenidoAdapter(this, listaContenidos);
         listViewContenido.setAdapter(adapter);
 
+        registerForContextMenu(listViewContenido);
+
         btnAdd.setOnClickListener(v -> {
             Intent intent = new Intent(ListadoActivity.this, FormularioActivity.class);
             intent.putExtra("modo", "crear");
@@ -70,9 +77,7 @@ public class ListadoActivity extends AppCompatActivity {
 
         btnFiltros.setOnClickListener(v -> mostrarDialogoFiltros());
 
-        btnVolver.setOnClickListener(v -> {
-            finish();
-        });
+        btnVolver.setOnClickListener(v -> finish());
 
         listViewContenido.setOnItemClickListener((parent, view, position, id) -> {
             ContenidoModel contenido = listaContenidos.get(position);
@@ -81,6 +86,48 @@ public class ListadoActivity extends AppCompatActivity {
             intent.putExtra("contenidoId", contenido.getId());
             startActivity(intent);
         });
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu,
+                                    View v,
+                                    ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+
+        if (v.getId() == R.id.listViewContenidos) {
+            getMenuInflater().inflate(R.menu.menu_detalle, menu);
+        }
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info =
+                (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+
+        if (info == null) {
+            return super.onContextItemSelected(item);
+        }
+
+        ContenidoModel contenido = listaContenidos.get(info.position);
+
+        int id = item.getItemId();
+
+        if (id == R.id.menuCompartir) {
+            compartirContenido(contenido);
+            return true;
+        }
+
+        if (id == R.id.menuAbrirWeb) {
+            abrirWebContenido(contenido);
+            return true;
+        }
+
+        if (id == R.id.menuEnviarEmail) {
+            enviarPorEmail(contenido);
+            return true;
+        }
+
+        return super.onContextItemSelected(item);
     }
 
     private void mostrarDialogoFiltros() {
@@ -98,7 +145,10 @@ public class ListadoActivity extends AppCompatActivity {
                         android.R.layout.simple_spinner_item
                 );
 
-        adapterGeneros.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapterGeneros.setDropDownViewResource(
+                android.R.layout.simple_spinner_dropdown_item
+        );
+
         spFiltroGenero.setAdapter(adapterGeneros);
 
         ArrayAdapter<CharSequence> adapterEstados =
@@ -108,7 +158,10 @@ public class ListadoActivity extends AppCompatActivity {
                         android.R.layout.simple_spinner_item
                 );
 
-        adapterEstados.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapterEstados.setDropDownViewResource(
+                android.R.layout.simple_spinner_dropdown_item
+        );
+
         spFiltroEstado.setAdapter(adapterEstados);
 
         new AlertDialog.Builder(this)
@@ -127,7 +180,10 @@ public class ListadoActivity extends AppCompatActivity {
                         try {
                             valoracion = Integer.parseInt(valoracionTexto);
                         } catch (NumberFormatException e) {
-                            ToastTrackify.mostrar(ListadoActivity.this, getString(R.string.valoracion_no_valida));
+                            ToastTrackify.mostrar(
+                                    ListadoActivity.this,
+                                    getString(R.string.valoracion_no_valida)
+                            );
                             return;
                         }
                     }
@@ -165,10 +221,12 @@ public class ListadoActivity extends AppCompatActivity {
                 new UtilREST.OnResponseListener() {
                     @Override
                     public void onSuccess(UtilREST.Response r) {
-                        List<ContenidoModel> contenidos = UtilJSONParser.parseArrayContenidos(r.content);
+                        List<ContenidoModel> contenidos =
+                                UtilJSONParser.parseArrayContenidos(r.content);
 
                         listaContenidos.clear();
                         listaContenidos.addAll(contenidos);
+                        aplicarOrdenPreferido();
                         adapter.notifyDataSetChanged();
 
                         if (listaContenidos.isEmpty()) {
@@ -181,15 +239,14 @@ public class ListadoActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(UtilREST.Response r) {
-                       ToastTrackify.mostrar(
-                               ListadoActivity.this,
-                               getString(R.string.error_filtros)
-                       );
+                        ToastTrackify.mostrar(
+                                ListadoActivity.this,
+                                getString(R.string.error_filtros)
+                        );
                     }
                 }
         );
     }
-
 
     @Override
     protected void onResume() {
@@ -245,6 +302,7 @@ public class ListadoActivity extends AppCompatActivity {
                 }
         );
     }
+
     private void aplicarOrdenPreferido() {
         android.content.SharedPreferences preferences =
                 getSharedPreferences(AjustesActivity.PREFS_NAME, MODE_PRIVATE);
@@ -291,6 +349,82 @@ public class ListadoActivity extends AppCompatActivity {
 
             tvTituloCategoria.setText(getString(R.string.videojuegos));
         }
+    }
+
+    private void compartirContenido(ContenidoModel contenido) {
+        String texto = getString(
+                R.string.texto_compartir_contenido,
+                contenido.getTitulo(),
+                contenido.getTipo(),
+                contenido.getGenero(),
+                contenido.getEstado(),
+                String.valueOf(contenido.getValoracion())
+        );
+
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT, texto);
+
+        startActivity(Intent.createChooser(intent, getString(R.string.compartir_con)));
+    }
+
+    private void abrirWebContenido(ContenidoModel contenido) {
+        String titulo = contenido.getTitulo();
+        String tipo = contenido.getTipo();
+
+        if (titulo == null || titulo.isEmpty()) {
+            ToastTrackify.mostrar(
+                    ListadoActivity.this,
+                    getString(R.string.titulo_vacio)
+            );
+            return;
+        }
+
+        String tituloCodificado = Uri.encode(titulo);
+        String url;
+
+        if (tipo != null && (tipo.equalsIgnoreCase("Película")
+                || tipo.equalsIgnoreCase("Pelicula"))) {
+
+            url = "https://www.imdb.com/find/?q=" + tituloCodificado + "&s=tt";
+
+        } else if (tipo != null && tipo.equalsIgnoreCase("Serie")) {
+
+            url = "https://www.imdb.com/find/?q=" + tituloCodificado + "&s=tt";
+
+        } else if (tipo != null && tipo.equalsIgnoreCase("Videojuego")) {
+
+            url = "https://www.metacritic.com/search/" + tituloCodificado + "/";
+
+        } else {
+            url = "https://www.google.com/search?q=" + Uri.encode(titulo + " " + tipo);
+        }
+
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        startActivity(intent);
+    }
+
+    private void enviarPorEmail(ContenidoModel contenido) {
+        String asunto = getString(
+                R.string.asunto_email_contenido,
+                contenido.getTitulo()
+        );
+
+        String cuerpo = getString(
+                R.string.cuerpo_email_contenido,
+                contenido.getTitulo(),
+                contenido.getTipo(),
+                contenido.getGenero(),
+                contenido.getEstado(),
+                String.valueOf(contenido.getValoracion())
+        );
+
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:"));
+        intent.putExtra(Intent.EXTRA_SUBJECT, asunto);
+        intent.putExtra(Intent.EXTRA_TEXT, cuerpo);
+
+        startActivity(Intent.createChooser(intent, getString(R.string.enviar_email_chooser)));
     }
 
     private void volverLogin() {

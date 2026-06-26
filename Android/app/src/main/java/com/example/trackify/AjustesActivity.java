@@ -28,7 +28,7 @@ public class AjustesActivity extends AppCompatActivity {
     public static final String KEY_VALORACION_MAXIMA = "valoracion_maxima";
 
     public static final String IDIOMA_ES = "es";
-    public static final String IDIOMA_EN = "en-rGB";
+    public static final String IDIOMA_EN = "en-GB";
 
     public static final String ORDEN_TITULO = "titulo";
     public static final String ORDEN_VALORACION = "valoracion";
@@ -64,9 +64,19 @@ public class AjustesActivity extends AppCompatActivity {
         String ordenGuardado = preferences.getString(KEY_ORDEN_LISTADO, ORDEN_TITULO);
         String valoracionGuardada = preferences.getString(KEY_VALORACION_MAXIMA, VALORACION_5);
 
+        idiomaGuardado = normalizarIdioma(idiomaGuardado);
+
         seleccionarIdioma(idiomaGuardado);
         seleccionarOrden(ordenGuardado);
         seleccionarValoracion(valoracionGuardada);
+    }
+
+    private String normalizarIdioma(String idioma) {
+        if (idioma.equals("en-rGB") || idioma.equals("en") || idioma.equals(IDIOMA_EN)) {
+            return IDIOMA_EN;
+        }
+
+        return IDIOMA_ES;
     }
 
     private void seleccionarIdioma(String idioma) {
@@ -106,12 +116,12 @@ public class AjustesActivity extends AppCompatActivity {
                 .putString(KEY_VALORACION_MAXIMA, valoracionSeleccionada)
                 .apply();
 
-        aplicarIdioma(idiomaSeleccionado);
-
         ToastTrackify.mostrar(
                 AjustesActivity.this,
                 getString(R.string.ajustes_guardados)
         );
+
+        aplicarIdioma(idiomaSeleccionado);
     }
 
     private void restablecerPreferencias() {
@@ -123,12 +133,12 @@ public class AjustesActivity extends AppCompatActivity {
 
         cargarPreferencias();
 
-        aplicarIdioma(IDIOMA_ES);
-
         ToastTrackify.mostrar(
                 AjustesActivity.this,
                 getString(R.string.ajustes_restablecidos)
         );
+
+        aplicarIdioma(IDIOMA_ES);
     }
 
     private String obtenerIdiomaSeleccionado() {

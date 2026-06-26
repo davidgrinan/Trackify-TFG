@@ -130,4 +130,12 @@
     <string name="autor">Author</string>
     <string name="autor_nombre">David Griñán Ortigosa</string>
     <string name="proyecto_dam_pmdm">DAM Project - PMDM</string>
+
+    <string name="permiso_notificaciones_aceptado">Notification permission accepted</string>
+    <string name="permiso_notificaciones_denegado">Notification permission denied</string>
+
+    <string name="portada_contenido">Content cover</string>
+
+    <string name="password_igual_actual">The new password cannot be the same as the current one</string>
+    <string name="password_minimo_8">The password must be at least 8 characters long</string>
 </resources>

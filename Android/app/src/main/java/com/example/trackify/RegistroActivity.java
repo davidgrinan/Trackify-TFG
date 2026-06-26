@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import API.API;
 import API.UtilJSONParser;
 import API.UtilREST;
+
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -43,8 +44,8 @@ public class RegistroActivity extends AppCompatActivity {
     private void registrar() {
         String usuario = etRegistroUsuario.getText().toString().trim();
         String email = etRegistroEmail.getText().toString().trim();
-        String password = etRegistroPassword.getText().toString().trim();
-        String passwordConfirm = etRegistroPasswordConfirm.getText().toString().trim();
+        String password = etRegistroPassword.getText().toString();
+        String passwordConfirm = etRegistroPasswordConfirm.getText().toString();
 
         if (usuario.isEmpty()) {
             etRegistroUsuario.setError(getString(R.string.introduce_usuario));
@@ -56,8 +57,12 @@ public class RegistroActivity extends AppCompatActivity {
             return;
         }
 
-        if (password.isEmpty()) {
-            etRegistroPassword.setError(getString(R.string.introduce_contrasena));
+        if (!validarPasswordAndroid(password)) {
+            return;
+        }
+
+        if (passwordConfirm.trim().isEmpty()) {
+            etRegistroPasswordConfirm.setError(getString(R.string.introduce_contrasena));
             return;
         }
 
@@ -71,7 +76,10 @@ public class RegistroActivity extends AppCompatActivity {
         API.register(jsonRegistro, new UtilREST.OnResponseListener() {
             @Override
             public void onSuccess(UtilREST.Response r) {
-                ToastTrackify.mostrar(RegistroActivity.this, getString(R.string.usuario_registrado));
+                ToastTrackify.mostrar(
+                        RegistroActivity.this,
+                        getString(R.string.usuario_registrado)
+                );
 
                 Intent intent = new Intent(RegistroActivity.this, LoginActivity.class);
                 startActivity(intent);
@@ -80,8 +88,33 @@ public class RegistroActivity extends AppCompatActivity {
 
             @Override
             public void onError(UtilREST.Response r) {
-                ToastTrackify.mostrar(RegistroActivity.this, getString(R.string.error_registro));
+                ToastTrackify.mostrar(
+                        RegistroActivity.this,
+                        obtenerMensajeErrorAPI(r, getString(R.string.error_registro))
+                );
             }
         });
+    }
+
+    private boolean validarPasswordAndroid(String password) {
+        if (password == null || password.trim().isEmpty()) {
+            etRegistroPassword.setError(getString(R.string.introduce_contrasena));
+            return false;
+        }
+
+        if (password.length() < 8) {
+            etRegistroPassword.setError(getString(R.string.password_minimo_8));
+            return false;
+        }
+
+        return true;
+    }
+
+    private String obtenerMensajeErrorAPI(UtilREST.Response r, String mensajePorDefecto) {
+        if (r != null && r.content != null && !r.content.trim().isEmpty()) {
+            return r.content;
+        }
+
+        return mensajePorDefecto;
     }
 }
