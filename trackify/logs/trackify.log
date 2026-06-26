@@ -2797,3 +2797,79 @@ com.example.trackify.exceptions.UnauthorizedException: Usuario o contraseña inc
 2026-06-26 19:55:02.938 [http-nio-8080-exec-5] INFO  c.e.t.c.s.JwtAuthenticationFilter.doFilterInternal - Usuario autenticado correctamente: david123
 2026-06-26 19:55:02.940 [http-nio-8080-exec-5] INFO  c.e.t.controller.UsuarioController.cambiarPassword - Petición para cambiar contraseña del usuario david123
 2026-06-26 19:55:03.185 [http-nio-8080-exec-5] INFO  c.e.t.controller.UsuarioController.cambiarPassword - Contraseña actualizada correctamente para el usuario david123
+2026-06-26 20:00:49.639 [SpringApplicationShutdownHook] INFO  o.s.boot.tomcat.GracefulShutdown.shutDownGracefully - Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-26 20:00:49.644 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown.doShutdown - Graceful shutdown complete
+2026-06-26 20:00:49.651 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.destroy - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-26 20:00:49.656 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-1 - Shutdown initiated...
+2026-06-26 20:00:49.659 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-1 - Shutdown completed.
+2026-06-26 21:41:44.007 [restartedMain] INFO  c.e.trackify.TrackifyApplication.logStarting - Starting TrackifyApplication v1.0.0 using Java 22.0.2 with PID 2116 (Z:\TFG\Trackify-TFG\trackify\target\classes started by admin in Z:\TFG\Trackify-TFG\trackify)
+2026-06-26 21:41:44.011 [restartedMain] INFO  c.e.trackify.TrackifyApplication.logStartupProfileInfo - The following 1 profile is active: "prod"
+2026-06-26 21:41:44.069 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor.log - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-06-26 21:41:44.069 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor.log - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-06-26 21:41:45.171 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-26 21:41:45.297 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Finished Spring Data repository scanning in 115 ms. Found 6 JPA repository interfaces.
+2026-06-26 21:41:46.061 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer.initialize - Tomcat initialized with port 5000 (http)
+2026-06-26 21:41:46.077 [restartedMain] INFO  o.a.catalina.core.StandardService.log - Starting service [Tomcat]
+2026-06-26 21:41:46.077 [restartedMain] INFO  o.a.catalina.core.StandardEngine.log - Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-06-26 21:41:46.157 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer.prepareWebApplicationContext - Root WebApplicationContext: initialization completed in 2087 ms
+2026-06-26 21:41:46.302 [restartedMain] WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-26 21:41:46.464 [restartedMain] INFO  org.hibernate.orm.jpa.logPersistenceUnitInformation - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-26 21:41:46.535 [restartedMain] INFO  org.hibernate.orm.core.logVersion - HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-06-26 21:41:47.188 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo.addTransformer - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-26 21:41:47.228 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource.getConnection - HikariPool-1 - Starting...
+2026-06-26 21:41:47.929 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool.checkFailFast - HikariPool-1 - Added connection org.mariadb.jdbc.Connection@1b252c8b
+2026-06-26 21:41:47.931 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource.getConnection - HikariPool-1 - Start completed.
+2026-06-26 21:41:48.304 [restartedMain] INFO  o.hibernate.orm.connections.pooling.logConnectionInfo - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mariadb://50.19.152.62/trackify?user=david&password=***]
+	Database driver: MariaDB Connector/J
+	Database dialect: MariaDBDialect
+	Database version: 11.8.6
+	Default catalog/schema: trackify/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-26 21:41:49.582 [restartedMain] INFO  org.hibernate.orm.core.initiateService - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-26 21:41:52.234 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-26 21:41:52.530 [restartedMain] INFO  o.s.d.j.r.q.QueryEnhancerFactories.<clinit> - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-26 21:41:52.990 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure - Global AuthenticationManager configured with UserDetailsService bean with name usuarioService
+2026-06-26 21:41:54.622 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - 3 SQL migrations were detected but not run because they did not follow the filename convention.
+2026-06-26 21:41:54.623 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - Set 'validateMigrationNaming' to true to fail fast and see a list of the invalid file names.
+2026-06-26 21:41:54.825 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor.info - Database: jdbc:mariadb://50.19.152.62/trackify?user=david&password=******** (MariaDB 11.8)
+2026-06-26 21:41:55.712 [restartedMain] WARN  o.f.c.i.database.base.Database.warn - Using MariaDB 11.8 which is newer than the version Flyway has been verified with. The latest verified version of MariaDB is 11.7.
+2026-06-26 21:41:56.226 [restartedMain] INFO  o.f.c.i.s.JdbcTableSchemaHistory.info - Schema history table `trackify`.`flyway_schema_history` does not exist yet
+2026-06-26 21:41:56.326 [restartedMain] INFO  o.f.core.internal.command.DbValidate.info - Successfully validated 0 migrations (execution time 00:00.501s)
+2026-06-26 21:41:56.327 [restartedMain] WARN  o.f.core.internal.command.DbValidate.warn - No migrations found. Are your locations set up correctly?
+2026-06-26 21:41:57.806 [restartedMain] INFO  o.f.c.i.s.JdbcTableSchemaHistory.info - Creating Schema History table `trackify`.`flyway_schema_history` with baseline ...
+2026-06-26 21:41:58.755 [restartedMain] INFO  o.f.core.internal.command.DbBaseline.info - Successfully baselined schema with version: 1
+2026-06-26 21:41:59.950 [restartedMain] INFO  o.f.core.internal.command.DbMigrate.info - Current version of schema `trackify`: 1
+2026-06-26 21:42:00.053 [restartedMain] INFO  o.f.core.internal.command.DbMigrate.info - Schema `trackify` is up to date. No migration necessary.
+2026-06-26 21:42:00.454 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - 3 SQL migrations were detected but not run because they did not follow the filename convention.
+2026-06-26 21:42:00.454 [restartedMain] INFO  o.f.c.i.r.ResourceNameValidator.info - Set 'validateMigrationNaming' to true to fail fast and see a list of the invalid file names.
+2026-06-26 21:42:01.534 [restartedMain] WARN  o.f.c.i.database.base.Database.warn - Using MariaDB 11.8 which is newer than the version Flyway has been verified with. The latest verified version of MariaDB is 11.7.
+2026-06-26 21:42:02.323 [restartedMain] INFO  o.f.core.internal.command.DbValidate.info - Successfully validated 1 migration (execution time 00:00.689s)
+2026-06-26 21:42:03.597 [restartedMain] INFO  o.f.core.internal.command.DbMigrate.info - Current version of schema `trackify`: 1
+2026-06-26 21:42:03.695 [restartedMain] INFO  o.f.core.internal.command.DbMigrate.info - Schema `trackify` is up to date. No migration necessary.
+2026-06-26 21:42:04.997 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer.start - Tomcat started on port 5000 (http) with context path '/'
+2026-06-26 21:42:05.005 [restartedMain] INFO  c.e.trackify.TrackifyApplication.logStarted - Started TrackifyApplication in 21.765 seconds (process running for 28.063)
+2026-06-26 21:42:05.010 [restartedMain] INFO  c.e.trackify.config.DatosIniciales.run - Iniciando insercion de datos iniciales...
+2026-06-26 21:42:05.867 [restartedMain] INFO  c.e.trackify.config.DatosIniciales.crearGeneroSiNoExiste - Género añadido: Acción
+2026-06-26 21:42:06.367 [restartedMain] INFO  c.e.trackify.config.DatosIniciales.crearGeneroSiNoExiste - Género añadido: Drama
+2026-06-26 21:42:06.867 [restartedMain] INFO  c.e.trackify.config.DatosIniciales.crearGeneroSiNoExiste - Género añadido: Terror
+2026-06-26 21:42:07.366 [restartedMain] INFO  c.e.trackify.config.DatosIniciales.crearGeneroSiNoExiste - Género añadido: Comedia
+2026-06-26 21:42:07.867 [restartedMain] INFO  c.e.trackify.config.DatosIniciales.crearTipoSiNoExiste - Tipo añadido: Película
+2026-06-26 21:42:08.366 [restartedMain] INFO  c.e.trackify.config.DatosIniciales.crearTipoSiNoExiste - Tipo añadido: Serie
+2026-06-26 21:42:08.866 [restartedMain] INFO  c.e.trackify.config.DatosIniciales.crearTipoSiNoExiste - Tipo añadido: Videojuego
+2026-06-26 21:42:09.369 [restartedMain] INFO  c.e.trackify.config.DatosIniciales.crearEstadoSiNoExiste - Estado añadido: Visto
+2026-06-26 21:42:09.866 [restartedMain] INFO  c.e.trackify.config.DatosIniciales.crearEstadoSiNoExiste - Estado añadido: Pendiente
+2026-06-26 21:42:10.366 [restartedMain] INFO  c.e.trackify.config.DatosIniciales.crearEstadoSiNoExiste - Estado añadido: No ver
+2026-06-26 21:42:10.867 [restartedMain] INFO  c.e.trackify.config.DatosIniciales.crearRoleSiNoExiste - Role añadido: ADMIN
+2026-06-26 21:42:11.366 [restartedMain] INFO  c.e.trackify.config.DatosIniciales.crearRoleSiNoExiste - Role añadido: USER
+2026-06-26 21:42:11.366 [restartedMain] INFO  c.e.trackify.config.DatosIniciales.run - Insercion de datos iniciales finalizada
+2026-06-26 21:47:24.151 [SpringApplicationShutdownHook] INFO  o.s.boot.tomcat.GracefulShutdown.shutDownGracefully - Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-26 21:47:24.156 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown.doShutdown - Graceful shutdown complete
+2026-06-26 21:47:24.163 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.destroy - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-26 21:47:24.167 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-1 - Shutdown initiated...
+2026-06-26 21:47:24.320 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-1 - Shutdown completed.
