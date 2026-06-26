@@ -16,6 +16,12 @@
         android:theme="@style/Theme.Trackify"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".EditarPerfilUsuarioActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditarPerfilActivity"
+            android:exported="false" />
+        <activity
             android:name=".AjustesActivity"
             android:exported="false" />
         <activity

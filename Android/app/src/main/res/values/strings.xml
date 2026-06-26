@@ -32,6 +32,22 @@
         <item>No ver</item>
     </string-array>
 
+    <string-array name="idioma_array">
+        <item>Español</item>
+        <item>English</item>
+    </string-array>
+
+    <string-array name="orden_listado_array">
+        <item>Título</item>
+        <item>Valoración</item>
+        <item>Estado</item>
+    </string-array>
+
+    <string-array name="valoracion_maxima_array">
+        <item>5</item>
+        <item>10</item>
+    </string-array>
+
     <string name="volver">VOLVER</string>
     <string name="guardar">GUARDAR</string>
     <string name="cancelar">Cancelar</string>
@@ -130,7 +146,6 @@
     <string name="editar_perfil_opcion">Editar Perfil &gt;</string>
     <string name="cambiar_password_opcion">Cambiar Contraseña &gt;</string>
     <string name="ajustes_opcion">Ajustes &gt;</string>
-    <string name="funcionalidad_proximamente">Funcionalidad disponible próximamente</string>
     <string name="cambiar_password">Cambiar contraseña</string>
     <string name="nueva_password">Nueva contraseña</string>
     <string name="introduce_password">Introduce una contraseña</string>

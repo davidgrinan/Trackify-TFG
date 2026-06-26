@@ -2,7 +2,6 @@ package com.example.trackify;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
@@ -13,7 +12,6 @@ import androidx.core.os.LocaleListCompat;
 public class AjustesActivity extends AppCompatActivity {
 
     private Spinner spIdioma;
-    private Spinner spTema;
     private Spinner spOrdenListado;
     private Spinner spValoracionMaxima;
 
@@ -26,9 +24,18 @@ public class AjustesActivity extends AppCompatActivity {
     public static final String PREFS_NAME = "trackify_ajustes";
 
     public static final String KEY_IDIOMA = "idioma";
-    public static final String KEY_TEMA = "tema";
     public static final String KEY_ORDEN_LISTADO = "orden_listado";
     public static final String KEY_VALORACION_MAXIMA = "valoracion_maxima";
+
+    private static final String IDIOMA_ES = "Español";
+    private static final String IDIOMA_EN = "English";
+
+    private static final String ORDEN_TITULO = "Título";
+    private static final String ORDEN_VALORACION = "Valoración";
+    private static final String ORDEN_ESTADO = "Estado";
+
+    private static final String VALORACION_5 = "5";
+    private static final String VALORACION_10 = "10";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +52,6 @@ public class AjustesActivity extends AppCompatActivity {
 
         preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
 
-        configurarSpinners();
         cargarPreferencias();
 
         btnGuardarAjustes.setOnClickListener(v -> guardarPreferencias());
@@ -53,74 +59,71 @@ public class AjustesActivity extends AppCompatActivity {
         btnVolver.setOnClickListener(v -> finish());
     }
 
-    private void configurarSpinners() {
-        configurarSpinner(spIdioma, new String[]{"Español", "English"});
-        configurarSpinner(spTema, new String[]{"Claro", "Oscuro"});
-        configurarSpinner(spOrdenListado, new String[]{"Título", "Valoración", "Estado"});
-        configurarSpinner(spValoracionMaxima, new String[]{"5", "10"});
-    }
-
-    private void configurarSpinner(Spinner spinner, String[] opciones) {
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(
-                this,
-                android.R.layout.simple_spinner_item,
-                opciones
-        );
-
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-    }
-
     private void cargarPreferencias() {
-        seleccionarValor(spIdioma, preferences.getString(KEY_IDIOMA, "Español"));
-        seleccionarValor(spTema, preferences.getString(KEY_TEMA, "Claro"));
-        seleccionarValor(spOrdenListado, preferences.getString(KEY_ORDEN_LISTADO, "Título"));
-        seleccionarValor(spValoracionMaxima, preferences.getString(KEY_VALORACION_MAXIMA, "5"));
+        String idiomaGuardado = preferences.getString(KEY_IDIOMA, IDIOMA_ES);
+        String ordenGuardado = preferences.getString(KEY_ORDEN_LISTADO, ORDEN_TITULO);
+        String valoracionGuardada = preferences.getString(KEY_VALORACION_MAXIMA, VALORACION_5);
+
+        seleccionarIdioma(idiomaGuardado);
+        seleccionarOrden(ordenGuardado);
+        seleccionarValoracion(valoracionGuardada);
     }
 
-    private void seleccionarValor(Spinner spinner, String valor) {
-        for (int i = 0; i < spinner.getCount(); i++) {
-            String item = spinner.getItemAtPosition(i).toString();
+    private void seleccionarIdioma(String idioma) {
+        if (idioma.equals(IDIOMA_EN)) {
+            spIdioma.setSelection(1);
+        } else {
+            spIdioma.setSelection(0);
+        }
+    }
 
-            if (item.equalsIgnoreCase(valor)) {
-                spinner.setSelection(i);
-                return;
-            }
+    private void seleccionarOrden(String orden) {
+        if (orden.equals(ORDEN_VALORACION)) {
+            spOrdenListado.setSelection(1);
+        } else if (orden.equals(ORDEN_ESTADO)) {
+            spOrdenListado.setSelection(2);
+        } else {
+            spOrdenListado.setSelection(0);
+        }
+    }
+
+    private void seleccionarValoracion(String valoracion) {
+        if (valoracion.equals(VALORACION_10)) {
+            spValoracionMaxima.setSelection(1);
+        } else {
+            spValoracionMaxima.setSelection(0);
         }
     }
 
     private void guardarPreferencias() {
-        String idiomaSeleccionado = spIdioma.getSelectedItem().toString();
-        String temaSeleccionado = spTema.getSelectedItem().toString();
+        String idiomaSeleccionado = obtenerIdiomaSeleccionado();
+        String ordenSeleccionado = obtenerOrdenSeleccionado();
+        String valoracionSeleccionada = obtenerValoracionSeleccionada();
 
         preferences.edit()
                 .putString(KEY_IDIOMA, idiomaSeleccionado)
-                .putString(KEY_TEMA, temaSeleccionado)
-                .putString(KEY_ORDEN_LISTADO, spOrdenListado.getSelectedItem().toString())
-                .putString(KEY_VALORACION_MAXIMA, spValoracionMaxima.getSelectedItem().toString())
+                .putString(KEY_ORDEN_LISTADO, ordenSeleccionado)
+                .putString(KEY_VALORACION_MAXIMA, valoracionSeleccionada)
                 .apply();
 
         aplicarIdioma(idiomaSeleccionado);
-        aplicarTema(temaSeleccionado);
 
         ToastTrackify.mostrar(
-                this,
+                AjustesActivity.this,
                 getString(R.string.ajustes_guardados)
         );
     }
 
     private void restablecerPreferencias() {
         preferences.edit()
-                .putString(KEY_IDIOMA, "Español")
-                .putString(KEY_TEMA, "Claro")
-                .putString(KEY_ORDEN_LISTADO, "Título")
-                .putString(KEY_VALORACION_MAXIMA, "5")
+                .putString(KEY_IDIOMA, IDIOMA_ES)
+                .putString(KEY_ORDEN_LISTADO, ORDEN_TITULO)
+                .putString(KEY_VALORACION_MAXIMA, VALORACION_5)
                 .apply();
 
         cargarPreferencias();
 
-        aplicarIdioma("Español");
-        aplicarTema("Claro");
+        aplicarIdioma(IDIOMA_ES);
 
         ToastTrackify.mostrar(
                 AjustesActivity.this,
@@ -128,10 +131,44 @@ public class AjustesActivity extends AppCompatActivity {
         );
     }
 
+    private String obtenerIdiomaSeleccionado() {
+        int posicion = spIdioma.getSelectedItemPosition();
+
+        if (posicion == 1) {
+            return IDIOMA_EN;
+        }
+
+        return IDIOMA_ES;
+    }
+
+    private String obtenerOrdenSeleccionado() {
+        int posicion = spOrdenListado.getSelectedItemPosition();
+
+        if (posicion == 1) {
+            return ORDEN_VALORACION;
+        }
+
+        if (posicion == 2) {
+            return ORDEN_ESTADO;
+        }
+
+        return ORDEN_TITULO;
+    }
+
+    private String obtenerValoracionSeleccionada() {
+        int posicion = spValoracionMaxima.getSelectedItemPosition();
+
+        if (posicion == 1) {
+            return VALORACION_10;
+        }
+
+        return VALORACION_5;
+    }
+
     private void aplicarIdioma(String idioma) {
         String codigoIdioma;
 
-        if (idioma.equals("English")) {
+        if (idioma.equals(IDIOMA_EN)) {
             codigoIdioma = "en";
         } else {
             codigoIdioma = "es";
@@ -140,13 +177,5 @@ public class AjustesActivity extends AppCompatActivity {
         AppCompatDelegate.setApplicationLocales(
                 LocaleListCompat.forLanguageTags(codigoIdioma)
         );
-    }
-
-    private void aplicarTema(String tema) {
-        if (tema.equals("Oscuro")) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        }
     }
 }

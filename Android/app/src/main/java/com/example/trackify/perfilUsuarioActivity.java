@@ -29,7 +29,6 @@ public class perfilUsuarioActivity extends AppCompatActivity {
 
     private TextView tvNombreUsuario;
     private TextView tvEditarPerfil;
-    private TextView tvCambiarPassword;
     private TextView tvAjustes;
     private TextView tvCerrarSesion;
 
@@ -43,7 +42,6 @@ public class perfilUsuarioActivity extends AppCompatActivity {
 
         tvNombreUsuario = findViewById(R.id.tvNombreUsuario);
         tvEditarPerfil = findViewById(R.id.tvEditarPerfil);
-        tvCambiarPassword = findViewById(R.id.tvCambiarPassword);
         tvAjustes = findViewById(R.id.tvAjustes);
         tvCerrarSesion = findViewById(R.id.tvCerrarSesion);
 
@@ -54,14 +52,7 @@ public class perfilUsuarioActivity extends AppCompatActivity {
 
         crearCanalNotificaciones();
 
-        tvEditarPerfil.setOnClickListener(v ->
-                ToastTrackify.mostrar(
-                        this,
-                        getString(R.string.funcionalidad_proximamente)
-                )
-        );
-
-        tvCambiarPassword.setOnClickListener(v -> mostrarDialogoCambiarPassword());
+        tvEditarPerfil.setOnClickListener(v -> mostrarDialogoEditarPerfil());
 
         tvAjustes.setOnClickListener(v -> {
             Intent intent = new Intent(perfilUsuarioActivity.this, AjustesActivity.class);
@@ -70,19 +61,24 @@ public class perfilUsuarioActivity extends AppCompatActivity {
 
         tvCerrarSesion.setOnClickListener(v -> confirmarCerrarSesion());
     }
-    private void mostrarDialogoCambiarPassword() {
+
+    private void mostrarDialogoEditarPerfil() {
         EditText inputPassword = new EditText(this);
         inputPassword.setHint(getString(R.string.nueva_password));
         inputPassword.setPadding(40, 20, 40, 20);
 
         new AlertDialog.Builder(this)
-                .setTitle(getString(R.string.cambiar_password))
+                .setTitle(getString(R.string.editar_perfil_opcion))
+                .setMessage(getString(R.string.cambiar_password))
                 .setView(inputPassword)
                 .setPositiveButton(getString(R.string.guardar), (dialog, which) -> {
                     String nuevaPassword = inputPassword.getText().toString().trim();
 
                     if (nuevaPassword.isEmpty()) {
-                        ToastTrackify.mostrar(perfilUsuarioActivity.this, getString(R.string.introduce_password));
+                        ToastTrackify.mostrar(
+                                perfilUsuarioActivity.this,
+                                getString(R.string.introduce_password)
+                        );
                         return;
                     }
 
@@ -169,7 +165,10 @@ public class perfilUsuarioActivity extends AppCompatActivity {
     private void cerrarSesion() {
         TokenManager.clearToken(this);
 
-        ToastTrackify.mostrar(perfilUsuarioActivity.this, getString(R.string.sesion_cerrada));
+        ToastTrackify.mostrar(
+                perfilUsuarioActivity.this,
+                getString(R.string.sesion_cerrada)
+        );
 
         Intent intent = new Intent(perfilUsuarioActivity.this, LoginActivity.class);
         startActivity(intent);

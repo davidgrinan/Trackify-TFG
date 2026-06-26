@@ -11,7 +11,8 @@
         android:layout_height="100dp"
         android:layout_gravity="center"
         android:src="@drawable/usuario"
-        android:layout_marginTop="20dp"/>
+        android:contentDescription="@string/perfil"
+        android:layout_marginTop="20dp" />
 
     <TextView
         android:id="@+id/tvNombreUsuario"
@@ -21,7 +22,7 @@
         android:layout_gravity="center"
         android:textStyle="bold"
         android:textSize="20sp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,23 +33,19 @@
         <TextView
             android:id="@+id/tvEditarPerfil"
             android:text="@string/editar_perfil_opcion"
-            style="@style/PerfilOptionStyle"/>
-
-        <TextView
-            android:id="@+id/tvCambiarPassword"
-            android:text="@string/cambiar_password_opcion"
-            style="@style/PerfilOptionStyle"/>
+            style="@style/PerfilOptionStyle" />
 
         <TextView
             android:id="@+id/tvAjustes"
             android:text="@string/ajustes_opcion"
-            style="@style/PerfilOptionStyle"/>
+            style="@style/PerfilOptionStyle" />
 
         <TextView
             android:id="@+id/tvCerrarSesion"
             android:text="@string/cerrar_sesion"
             android:textColor="#FF3D57"
-            style="@style/PerfilOptionStyle"/>
+            style="@style/PerfilOptionStyle" />
+
     </LinearLayout>
 
 </LinearLayout>
