@@ -27,15 +27,15 @@ public class AjustesActivity extends AppCompatActivity {
     public static final String KEY_ORDEN_LISTADO = "orden_listado";
     public static final String KEY_VALORACION_MAXIMA = "valoracion_maxima";
 
-    private static final String IDIOMA_ES = "Español";
-    private static final String IDIOMA_EN = "English";
+    public static final String IDIOMA_ES = "es";
+    public static final String IDIOMA_EN = "en-rGB";
 
-    private static final String ORDEN_TITULO = "Título";
-    private static final String ORDEN_VALORACION = "Valoración";
-    private static final String ORDEN_ESTADO = "Estado";
+    public static final String ORDEN_TITULO = "titulo";
+    public static final String ORDEN_VALORACION = "valoracion";
+    public static final String ORDEN_ESTADO = "estado";
 
-    private static final String VALORACION_5 = "5";
-    private static final String VALORACION_10 = "10";
+    public static final String VALORACION_5 = "5";
+    public static final String VALORACION_10 = "10";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -166,16 +166,8 @@ public class AjustesActivity extends AppCompatActivity {
     }
 
     private void aplicarIdioma(String idioma) {
-        String codigoIdioma;
-
-        if (idioma.equals(IDIOMA_EN)) {
-            codigoIdioma = "en";
-        } else {
-            codigoIdioma = "es";
-        }
-
         AppCompatDelegate.setApplicationLocales(
-                LocaleListCompat.forLanguageTags(codigoIdioma)
+                LocaleListCompat.forLanguageTags(idioma)
         );
     }
 }

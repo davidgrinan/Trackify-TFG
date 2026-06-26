@@ -4,34 +4,6 @@
     <string name="ify_text">ify</string>
     <string name="logo_trackify">Trackify logo</string>
 
-    <string-array name="generos_array">
-        <item>Action</item>
-        <item>Drama</item>
-        <item>Horror</item>
-        <item>Comedy</item>
-    </string-array>
-
-    <string-array name="estados_array">
-        <item>Watched</item>
-        <item>Pending</item>
-        <item>Do not watch</item>
-    </string-array>
-
-    <string-array name="generos_filtro_array">
-        <item>All</item>
-        <item>Action</item>
-        <item>Drama</item>
-        <item>Horror</item>
-        <item>Comedy</item>
-    </string-array>
-
-    <string-array name="estados_filtro_array">
-        <item>All</item>
-        <item>Watched</item>
-        <item>Pending</item>
-        <item>Skip</item>
-    </string-array>
-
     <string-array name="idioma_array">
         <item>Spanish</item>
         <item>English</item>

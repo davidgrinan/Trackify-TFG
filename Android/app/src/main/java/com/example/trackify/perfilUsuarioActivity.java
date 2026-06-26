@@ -50,11 +50,10 @@ public class perfilUsuarioActivity extends AppCompatActivity {
 
         tvNombreUsuario.setText(username);
 
-        crearCanalNotificaciones();
-
         tvEditarPerfil.setOnClickListener(v -> mostrarDialogoEditarPerfil());
 
         tvAjustes.setOnClickListener(v -> {
+            crearCanalNotificaciones();
             Intent intent = new Intent(perfilUsuarioActivity.this, AjustesActivity.class);
             startActivity(intent);
         });
@@ -94,11 +93,6 @@ public class perfilUsuarioActivity extends AppCompatActivity {
         API.cambiarPassword(json, token, new UtilREST.OnResponseListener() {
             @Override
             public void onSuccess(UtilREST.Response r) {
-                ToastTrackify.mostrar(
-                        perfilUsuarioActivity.this,
-                        getString(R.string.password_cambiada)
-                );
-
                 mostrarNotificacionCambioPassword();
             }
 

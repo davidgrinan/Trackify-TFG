@@ -55,7 +55,7 @@ public class ListadoActivity extends AppCompatActivity {
             tipoSeleccionado = "Pelicula";
         }
 
-        tvTituloCategoria.setText(tipoSeleccionado);
+        pintarTituloCategoria();
 
         listaContenidos = new ArrayList<>();
         adapter = new ContenidoAdapter(this, listaContenidos);
@@ -250,15 +250,18 @@ public class ListadoActivity extends AppCompatActivity {
                 getSharedPreferences(AjustesActivity.PREFS_NAME, MODE_PRIVATE);
 
         String orden =
-                preferences.getString(AjustesActivity.KEY_ORDEN_LISTADO, "Título");
+                preferences.getString(
+                        AjustesActivity.KEY_ORDEN_LISTADO,
+                        AjustesActivity.ORDEN_TITULO
+                );
 
-        if (orden.equals("Título")) {
+        if (orden.equals(AjustesActivity.ORDEN_TITULO)) {
             Collections.sort(listaContenidos, (c1, c2) ->
                     c1.getTitulo().compareToIgnoreCase(c2.getTitulo())
             );
         }
 
-        if (orden.equals("Valoración")) {
+        if (orden.equals(AjustesActivity.ORDEN_VALORACION)) {
             Collections.sort(listaContenidos, (c1, c2) -> {
                 int v1 = c1.getValoracion() == null ? 0 : c1.getValoracion();
                 int v2 = c2.getValoracion() == null ? 0 : c2.getValoracion();
@@ -267,12 +270,29 @@ public class ListadoActivity extends AppCompatActivity {
             });
         }
 
-        if (orden.equals("Estado")) {
+        if (orden.equals(AjustesActivity.ORDEN_ESTADO)) {
             Collections.sort(listaContenidos, (c1, c2) ->
                     c1.getEstado().compareToIgnoreCase(c2.getEstado())
             );
         }
     }
+
+    private void pintarTituloCategoria() {
+        if (tipoSeleccionado.equalsIgnoreCase("Pelicula")
+                || tipoSeleccionado.equalsIgnoreCase("Película")) {
+
+            tvTituloCategoria.setText(getString(R.string.peliculas));
+
+        } else if (tipoSeleccionado.equalsIgnoreCase("Serie")) {
+
+            tvTituloCategoria.setText(getString(R.string.series));
+
+        } else if (tipoSeleccionado.equalsIgnoreCase("Videojuego")) {
+
+            tvTituloCategoria.setText(getString(R.string.videojuegos));
+        }
+    }
+
     private void volverLogin() {
         Intent intent = new Intent(ListadoActivity.this, LoginActivity.class);
         startActivity(intent);

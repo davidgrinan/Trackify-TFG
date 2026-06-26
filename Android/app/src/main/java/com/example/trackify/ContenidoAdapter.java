@@ -59,26 +59,25 @@ public class ContenidoAdapter extends BaseAdapter {
         tvGenero.setText(contenido.getGenero());
         tvEstado.setText(contenido.getEstado());
 
+        android.content.SharedPreferences preferences =
+                context.getSharedPreferences(AjustesActivity.PREFS_NAME, Context.MODE_PRIVATE);
+
+        String valoracionMaxima =
+                preferences.getString(
+                        AjustesActivity.KEY_VALORACION_MAXIMA,
+                        AjustesActivity.VALORACION_5
+                );
+
         if (contenido.getValoracion() != null) {
-            android.content.SharedPreferences preferences =
-                    context.getSharedPreferences(AjustesActivity.PREFS_NAME, Context.MODE_PRIVATE);
+            int valoracion = contenido.getValoracion();
 
-            String valoracionMaxima =
-                    preferences.getString(AjustesActivity.KEY_VALORACION_MAXIMA, "5");
-
-            if (contenido.getValoracion() != null) {
-                int valoracion = contenido.getValoracion();
-
-                if (valoracionMaxima.equals("10")) {
-                    tvValoracion.setText("⭐ " + (valoracion * 2) + "/10");
-                } else {
-                    tvValoracion.setText("⭐ " + valoracion + "/5");
-                }
+            if (valoracionMaxima.equals(AjustesActivity.VALORACION_10)) {
+                tvValoracion.setText("⭐ " + (valoracion * 2) + "/10");
             } else {
-                tvValoracion.setText("Sin valoración");
+                tvValoracion.setText("⭐ " + valoracion + "/5");
             }
         } else {
-            tvValoracion.setText("Sin valoración");
+            tvValoracion.setText(getStringSeguro(context, R.string.sin_valoracion));
         }
 
         if (contenido.getImagenUrl() != null && !contenido.getImagenUrl().isEmpty()) {
@@ -92,5 +91,8 @@ public class ContenidoAdapter extends BaseAdapter {
         }
 
         return convertView;
+    }
+    private String getStringSeguro(Context context, int id) {
+        return context.getString(id);
     }
 }
