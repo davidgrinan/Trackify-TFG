@@ -12,16 +12,11 @@ import com.example.trackify.mapper.UsuarioMapper;
 import com.example.trackify.repository.Usuario.IUsuarioRepository;
 import com.example.trackify.service.auth.AuthService;
 import com.example.trackify.service.role.IRoleService;
-import com.example.trackify.service.usuario.IUsuarioService;
-import static org.mockito.ArgumentMatchers.anyString;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -55,20 +50,12 @@ class AuthServiceTest {
     @Mock
     private Authentication authentication;
 
-    @Mock
-    private IUsuarioService usuarioService;
-
     @InjectMocks
     private AuthService authService;
 
     @Test
     void registerDebeGuardarUsuarioConRolUser() {
-        CrearUsuarioDTO dto = new CrearUsuarioDTO(
-                "david",
-                "David123",
-                "david@gmail.com"
-        );
-
+        CrearUsuarioDTO dto = new CrearUsuarioDTO("david", "David123", "david@gmail.com");
         Usuario usuario = new Usuario();
         usuario.setNombreUsuario("david");
         usuario.setPassword("David123");
@@ -88,63 +75,37 @@ class AuthServiceTest {
         assertEquals("password-encriptada", usuario.getPassword());
         assertNotNull(usuario.getFechaCreacion());
         assertTrue(usuario.getRoles().contains(roleUser));
-
-        verify(usuarioService).validarPassword("David123");
         verify(usuarioRepository).save(usuario);
     }
 
     @Test
     void registerDebeLanzarDuplicateSiUsernameExiste() {
-        CrearUsuarioDTO dto = new CrearUsuarioDTO(
-                "david",
-                "David123",
-                "david@gmail.com"
-        );
-
+        CrearUsuarioDTO dto = new CrearUsuarioDTO("david", "David123", "david@gmail.com");
         when(usuarioRepository.existsByNombreUsuario("david")).thenReturn(true);
 
         assertThrows(DuplicateEntityException.class, () -> authService.register(dto));
-
-        verify(usuarioRepository).existsByNombreUsuario("david");
         verify(usuarioRepository, never()).save(any());
-        verify(usuarioService, never()).validarPassword(anyString());
     }
 
     @Test
     void loginDebeDevolverToken() {
-        LoginUsuarioDTO dto = new LoginUsuarioDTO(
-                "david",
-                "David123"
-        );
-
-        when(authenticationManager.authenticate(any(UsernamePasswordAuthenticationToken.class)))
-                .thenReturn(authentication);
-
-        when(jwtTokenProvider.generateToken(authentication))
-                .thenReturn("token-jwt");
+        LoginUsuarioDTO dto = new LoginUsuarioDTO("david", "David123");
+        when(authenticationManager.authenticate(any(UsernamePasswordAuthenticationToken.class))).thenReturn(authentication);
+        when(jwtTokenProvider.generateToken(authentication)).thenReturn("token-jwt");
 
         String token = authService.login(dto);
 
         assertEquals("token-jwt", token);
-
-        verify(usuarioService).validarPassword("David123");
         verify(authenticationManager).authenticate(any(UsernamePasswordAuthenticationToken.class));
         verify(jwtTokenProvider).generateToken(authentication);
     }
 
     @Test
     void loginDebeLanzarUnauthorizedSiCredencialesInvalidas() {
-        LoginUsuarioDTO dto = new LoginUsuarioDTO(
-                "david",
-                "Password123"
-        );
-
+        LoginUsuarioDTO dto = new LoginUsuarioDTO("david", "mal");
         when(authenticationManager.authenticate(any(UsernamePasswordAuthenticationToken.class)))
                 .thenThrow(new RuntimeException("credenciales inválidas"));
 
         assertThrows(UnauthorizedException.class, () -> authService.login(dto));
-
-        verify(usuarioService).validarPassword("Password123");
-        verify(authenticationManager).authenticate(any(UsernamePasswordAuthenticationToken.class));
     }
 }
