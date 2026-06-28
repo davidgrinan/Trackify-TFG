@@ -4,7 +4,7 @@ import org.json.JSONObject;
 
 public class API {
 
-    private static final String BASE_URL = "http://192.168.0.14:8080/";
+    private static final String BASE_URL = "http://44.195.157.25/";
 
     public static void login(JSONObject usuario, UtilREST.OnResponseListener listener) {
         UtilREST.runQuery(

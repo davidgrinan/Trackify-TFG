@@ -115,31 +115,7 @@ public class DetalleActivity extends AppCompatActivity {
         tvEstadoDetalle.setText(getString(R.string.estado_formato, contenidoActual.getEstado()));
         tvDescripcionDetalle.setText(contenidoActual.getDescripcion());
 
-        SharedPreferences preferences =
-                getSharedPreferences(AjustesActivity.PREFS_NAME, MODE_PRIVATE);
-
-        String valoracionMaxima =
-                preferences.getString(
-                        AjustesActivity.KEY_VALORACION_MAXIMA,
-                        AjustesActivity.VALORACION_5
-                );
-
-        if (contenidoActual.getValoracion() != null) {
-            int valoracion = contenidoActual.getValoracion();
-
-            if (valoracionMaxima.equals(AjustesActivity.VALORACION_10)) {
-                tvValoracionDetalle.setText(
-                        getString(R.string.valoracion_formato, String.valueOf(valoracion * 2)) + "/10"
-                );
-            } else {
-                tvValoracionDetalle.setText(
-                        getString(R.string.valoracion_formato, String.valueOf(valoracion)) + "/5"
-                );
-            }
-
-        } else {
-            tvValoracionDetalle.setText(getString(R.string.sin_valoracion));
-        }
+        pintarValoracion();
 
         if (contenidoActual.getImagenUrl() != null && !contenidoActual.getImagenUrl().isEmpty()) {
             Glide.with(this)
@@ -149,6 +125,46 @@ public class DetalleActivity extends AppCompatActivity {
                     .into(imgPortadaDetalle);
         } else {
             imgPortadaDetalle.setImageResource(R.drawable.logo_trackify);
+        }
+    }
+
+    private void pintarValoracion() {
+        if (contenidoActual.getValoracion() == null) {
+            tvValoracionDetalle.setText(getString(R.string.sin_valoracion));
+            return;
+        }
+
+        SharedPreferences preferences =
+                getSharedPreferences(AjustesActivity.PREFS_NAME, MODE_PRIVATE);
+
+        String valoracionMaxima =
+                preferences.getString(
+                        AjustesActivity.KEY_VALORACION_MAXIMA,
+                        AjustesActivity.VALORACION_5
+                );
+
+        int valoracion = contenidoActual.getValoracion();
+
+        if (valoracionMaxima.equals(AjustesActivity.VALORACION_10)) {
+            int valoracionSobre10;
+
+            if (valoracion <= 5) {
+                valoracionSobre10 = valoracion * 2;
+            } else {
+                valoracionSobre10 = valoracion;
+            }
+
+            String textoValoracion =
+                    getString(R.string.valoracion_formato, String.valueOf(valoracionSobre10));
+
+            textoValoracion = textoValoracion.replace("/5", "/10");
+
+            tvValoracionDetalle.setText(textoValoracion);
+
+        } else {
+            tvValoracionDetalle.setText(
+                    getString(R.string.valoracion_formato, String.valueOf(valoracion))
+            );
         }
     }
 

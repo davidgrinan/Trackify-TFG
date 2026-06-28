@@ -2,6 +2,7 @@ package com.example.trackify;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -54,6 +55,11 @@ public class RegistroActivity extends AppCompatActivity {
 
         if (email.isEmpty()) {
             etRegistroEmail.setError(getString(R.string.introduce_email));
+            return;
+        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            etRegistroEmail.setError("El email no tiene un formato válido");
             return;
         }
 
@@ -111,10 +117,60 @@ public class RegistroActivity extends AppCompatActivity {
     }
 
     private String obtenerMensajeErrorAPI(UtilREST.Response r, String mensajePorDefecto) {
-        if (r != null && r.content != null && !r.content.trim().isEmpty()) {
-            return r.content;
+        if (r == null || r.content == null || r.content.trim().isEmpty()) {
+            return mensajePorDefecto;
+        }
+
+        String contenido = r.content.trim();
+
+        try {
+            JSONObject jsonError = new JSONObject(contenido);
+
+            if (jsonError.has("message")) {
+                String mensaje = jsonError.optString("message");
+
+                if (mensaje != null && !mensaje.trim().isEmpty()) {
+                    return limpiarMensajeError(mensaje);
+                }
+            }
+
+            if (jsonError.has("error")) {
+                String error = jsonError.optString("error");
+
+                if (error != null && !error.trim().isEmpty()) {
+                    return limpiarMensajeError(error);
+                }
+            }
+
+        } catch (Exception e) {
+            return limpiarMensajeError(contenido);
         }
 
         return mensajePorDefecto;
+    }
+
+    private String limpiarMensajeError(String mensaje) {
+        if (mensaje == null || mensaje.trim().isEmpty()) {
+            return getString(R.string.error_registro);
+        }
+
+        mensaje = mensaje.trim();
+
+        if (mensaje.startsWith("\"") && mensaje.endsWith("\"")) {
+            mensaje = mensaje.substring(1, mensaje.length() - 1);
+        }
+
+        if (mensaje.startsWith("{") && mensaje.endsWith("}")) {
+            mensaje = mensaje.substring(1, mensaje.length() - 1);
+        }
+
+        if (mensaje.contains(":")) {
+            mensaje = mensaje.substring(mensaje.indexOf(":") + 1).trim();
+        }
+
+        mensaje = mensaje.replace("\"", "");
+        mensaje = mensaje.replace("\\", "");
+
+        return mensaje;
     }
 }

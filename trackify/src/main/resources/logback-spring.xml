@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <!-- Propiedades que se usará para indicar dónde (qué directorio) almacenar los logs y cómo (nombre del fichero) se llama el fichero -->
-    <property name="LOG_DIR" value="logs" />
+    <property name="LOG_DIR" value="/home/ubuntu/logs" />
     <property name="LOG_NAME" value="trackify" />
 
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
